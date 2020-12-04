@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 458a6b7bc333c8d42b91ac182c439e36, type: 3}
+  m_Name: Scenario3
+  m_EditorClassIdentifier: 
+  resources:
+  - {fileID: 4135591097232670978, guid: 19a5d327cbefa164483d9014a9c403de, type: 3}
+  - {fileID: 2482678504970738660, guid: 644f21ae3ecbf3b4f92592de1990a039, type: 3}
+  - {fileID: 2339156921705331413, guid: 2c1bcffbd6c79c94f86126230e23fd24, type: 3}
+  goals:
+  - {fileID: 11400000, guid: d3ca1b2608beee64aaa7a0b9996aafb4, type: 2}
