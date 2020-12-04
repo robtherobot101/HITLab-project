@@ -19,7 +19,6 @@ namespace Managers
             EventManager.Instance.missed += _collectedShapes.Clear;
             _collectedShapes.CollectionChanged += (o, a) =>
             {
-                Debug.Log(o);
                 onChanged?.Invoke();
             };
         }
