@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Fraction
   m_EditorClassIdentifier: 
   goalExpression: 0
-  numerator: 17
-  denominator: 6
+  numerator: 3
+  denominator: 8

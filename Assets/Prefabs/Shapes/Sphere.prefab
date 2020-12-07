@@ -112,5 +112,5 @@ MonoBehaviour:
   edges: 0
   vertices: 0
   shapeName: Sphere
-  numerator: 2
-  denominator: 3
+  numerator: 1
+  denominator: 8

@@ -32,7 +32,7 @@ namespace Scenarios.Goals
             return $"{count} out of {goal} {_shapeName.ToLower()}s collected.";
         }
 
-        public override string HelpText()
+        public override string FeedbackText()
         {
             var outcome = GetOutcome();
             switch (outcome)

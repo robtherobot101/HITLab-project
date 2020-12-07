@@ -29,6 +29,6 @@ namespace Scenarios.Goals
         /// A description of why the objective was (not) achieved.
         /// </summary>
         /// <returns>A string describing why the objective was (not) achieved.</returns>
-        public abstract string HelpText();
+        public abstract string FeedbackText();
     }
 }

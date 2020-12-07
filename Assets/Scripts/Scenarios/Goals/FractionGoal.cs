@@ -44,10 +44,11 @@ namespace Scenarios.Goals
         {
             var fractions = ShapeManager.Instance.CollectedShapes.Select(shape => shape.Fraction).ToList();
             var s = string.Join(" + ", fractions);
+            if (s.Equals("")) s = "0";
             return $"Try to make {goal}. You currently have {s}";
         }
 
-        public override string HelpText()
+        public override string FeedbackText()
         {
             var fractions = ShapeManager.Instance.CollectedShapes.Select(shape => shape.Fraction).ToList();
             var s = string.Join(" + ", fractions);
@@ -56,6 +57,7 @@ namespace Scenarios.Goals
                 case Outcome.Over:
                     return $"{s} is more than {goal}. Try using fewer objects or smaller fractions.";
                 case Outcome.Under:
+                    if (s.Equals("")) s = "0";
                     return $"{s} is less than {goal}. Try using more objects or bigger fractions.";
                 case Outcome.Achieved:
                     return $"That's correct. {s} = {goal}";

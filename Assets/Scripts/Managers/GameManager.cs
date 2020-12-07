@@ -46,7 +46,7 @@ using UnityEngine;
             var feedbackText = "";
             foreach (var goal in _scenarioEnumerator.Current.Goals)
             {
-                feedbackText += goal.HelpText() + "\n";
+                feedbackText += goal.FeedbackText() + "\n";
             }
             FacilitatorScript.Instance.Say(feedbackText);
         }

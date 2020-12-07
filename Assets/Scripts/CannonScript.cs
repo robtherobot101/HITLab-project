@@ -41,7 +41,7 @@ public class CannonScript : MonoBehaviour
         _audio.PlayOneShot(fireSound);
         _primed = false;
         var cannonBall = Instantiate(cannonBallPrefab);
-        StartCoroutine(FacilitatorScript.Instance.Bounce());
+        // StartCoroutine(FacilitatorScript.Instance.Bounce());
         var rb = cannonBall.GetComponent<Rigidbody>();
         var goalsOutcome = GameManager.Instance.GoalsOutcome();
         switch (goalsOutcome)

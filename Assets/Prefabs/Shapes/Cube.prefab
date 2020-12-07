@@ -113,4 +113,4 @@ MonoBehaviour:
   vertices: 8
   shapeName: Cube
   numerator: 1
-  denominator: 2
+  denominator: 4
