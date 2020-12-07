@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
+using Utils;
 
 public class InstructionsManager : MonoSingleton<InstructionsManager>
 {

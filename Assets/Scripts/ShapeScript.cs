@@ -21,18 +21,15 @@ public class ShapeScript : MonoBehaviour
     public string ShapeName => shapeName;
     [SerializeField] private string shapeName;
 
-    public int Numerator => numerator;
     [SerializeField] private int numerator;
-    
-    public int Denominator => denominator;
+
     [SerializeField] private int denominator;
 
-    public Fraction Fraction => _fraction;
-    private Fraction _fraction;
+    public Fraction Fraction { get; private set; }
 
     private void OnEnable()
     {
-        _fraction = new Fraction(numerator, denominator);
+        Fraction = new Fraction(numerator, denominator);
     }
 
     // Start is called before the first frame update

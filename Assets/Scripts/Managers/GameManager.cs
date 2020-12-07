@@ -13,7 +13,7 @@ using UnityEngine;
 
         private void Start()
         {
-            EventManager.Instance.missed += GiveFeedback;
+            EventManager.Instance.missed += GiveFeedbackAndReset;
             EventManager.Instance.sunk += NextScenario;
             ShapeManager.Instance.onChanged += UpdateInstructions;
 
@@ -41,7 +41,7 @@ using UnityEngine;
             return Outcome.Achieved;
         }
 
-        private void GiveFeedback()
+        private void GiveFeedbackAndReset()
         {
             var feedbackText = "";
             foreach (var goal in _scenarioEnumerator.Current.Goals)
@@ -49,6 +49,7 @@ using UnityEngine;
                 feedbackText += goal.FeedbackText() + "\n";
             }
             FacilitatorScript.Instance.Say(feedbackText);
+            ShapeManager.Instance.Clear();
         }
 
         private void NextScenario()

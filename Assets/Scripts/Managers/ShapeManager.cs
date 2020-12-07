@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using UnityEngine;
+using Utils;
 
 namespace Managers
 {
@@ -15,17 +16,21 @@ namespace Managers
 
         private void Start()
         {
-            EventManager.Instance.reset += _collectedShapes.Clear;
-            EventManager.Instance.missed += _collectedShapes.Clear;
+            EventManager.Instance.reset += Clear;
             _collectedShapes.CollectionChanged += (o, a) =>
             {
                 onChanged?.Invoke();
             };
         }
-        
+
         public void AddShape(ShapeScript o)
         {
             _collectedShapes.Add(o);
+        }
+
+        public void Clear()
+        {
+            _collectedShapes.Clear();
         }
     }
 }

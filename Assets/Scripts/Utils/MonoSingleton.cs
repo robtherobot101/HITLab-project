@@ -1,30 +1,30 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public abstract class MonoSingleton<T> : MonoBehaviour where T : MonoSingleton<T>
+namespace Utils
 {
+    public abstract class MonoSingleton<T> : MonoBehaviour where T : MonoSingleton<T>
+    {
     
-    private static T _instance;
-    public static T Instance
-    {
-        get
+        private static T _instance;
+        public static T Instance
         {
-            if (_instance == null) Debug.Log(typeof(T) + " is NULL.");
-            return _instance;
+            get
+            {
+                if (_instance == null) Debug.Log(typeof(T) + " is NULL.");
+                return _instance;
+            }
         }
+
+        private void Awake()
+        {
+            _instance = this as T;
+            Init();
+        }
+
+        /// <summary>
+        /// Called during Awake function
+        /// </summary>
+        protected virtual void Init() { }
+
     }
-
-    private void Awake()
-    {
-        _instance = this as T;
-        Init();
-    }
-
-    /// <summary>
-    /// Called during Awake function
-    /// </summary>
-    protected virtual void Init() { }
-
 }

@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 4135591097232671006}
   - component: {fileID: 4135591097232670977}
   - component: {fileID: 4135591097232670976}
-  - component: {fileID: 5785887703231079030}
+  - component: {fileID: 4135591097232670979}
   m_Layer: 2
-  m_Name: Cube
+  m_Name: Cube_Component
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -96,7 +96,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5785887703231079030
+--- !u!114 &4135591097232670979
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -108,9 +108,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc7905bb4d2900a49a06ad9d06cf6009, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  faces: 6
-  edges: 12
-  vertices: 8
-  shapeName: Cube
-  numerator: 1
-  denominator: 4
