@@ -47,6 +47,7 @@ public class EnemyScript : MonoBehaviour
         _rb.angularVelocity = Vector3.zero;
         _rb.velocity = Vector3.zero;
         _tr.rotation = _initialRotation;
+        _tr.position = _initialPosition - 500 * _tr.forward + 10 * Vector3.down;
         
         StartCoroutine(Lerper.Lerp(_tr, _initialPosition, _initialRotation, 3));
     }

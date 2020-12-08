@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Runtime.Serialization;
+using UnityEngine;
 
 namespace Utils
 {
@@ -10,7 +12,9 @@ namespace Utils
         {
             get
             {
-                if (_instance == null) Debug.Log(typeof(T) + " is NULL.");
+                if (_instance == null) throw new UninstantiatedException($"The singleton {typeof(T)} has" +
+                                                                         $" not been instantiated. Make sure it is" +
+                                                                         $" attached to a GameObject.");
                 return _instance;
             }
         }
@@ -25,6 +29,27 @@ namespace Utils
         /// Called during Awake function
         /// </summary>
         protected virtual void Init() { }
+        
+    }
+    [Serializable]
+    public class UninstantiatedException : Exception
+    {
+        public UninstantiatedException()
+        {
+        }
 
+        public UninstantiatedException(string message) : base(message)
+        {
+        }
+
+        public UninstantiatedException(string message, Exception inner) : base(message, inner)
+        {
+        }
+
+        protected UninstantiatedException(
+            SerializationInfo info,
+            StreamingContext context) : base(info, context)
+        {
+        }
     }
 }
