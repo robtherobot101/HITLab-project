@@ -12,7 +12,7 @@ public class HeapScript : MonoBehaviour
 
     private IEnumerator Grow()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.8f);
         float timePassed = 0;
         while (timePassed < 4)
         {
