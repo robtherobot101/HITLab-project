@@ -86,5 +86,11 @@ namespace Utils
             }
             return a | b;
         }
+
+        public float Value()
+        {
+            return num / (float) den;
+        }
+
     }
 }

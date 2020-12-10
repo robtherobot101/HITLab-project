@@ -1,5 +1,6 @@
 ﻿﻿using System.Collections.Generic;
-using Scenarios;
+ using System.Linq;
+ using Scenarios;
 using Scenarios.Goals;
 using UnityEngine;
  using Utils;
@@ -9,8 +10,10 @@ using UnityEngine;
     public class GameManager : MonoSingleton<GameManager>
     {
         [SerializeField] private List<Scenario> scenarios = new List<Scenario>();
+        [SerializeField] private GameObject barrelPrefab;
         private List<Scenario>.Enumerator _scenarioEnumerator;
-
+        private List<GameObject> _barrels = new List<GameObject>();
+        
         private void Start()
         {
             EventManager.Instance.missed += GiveFeedbackAndReset;
@@ -18,7 +21,27 @@ using UnityEngine;
             ShapeManager.Instance.onChanged += UpdateInstructions;
 
             _scenarioEnumerator = scenarios.GetEnumerator();
-            if (_scenarioEnumerator.MoveNext()) UpdateInstructions();
+            if (_scenarioEnumerator.MoveNext())
+            {
+                GenerateBarrels();
+                UpdateInstructions();
+            }
+        }
+
+        private void GenerateBarrels()
+        {
+            foreach (var barrel in _barrels)
+            {
+                Destroy(barrel);
+            }
+            _barrels.Clear();
+            var i = 0;
+            foreach (var shape in _scenarioEnumerator.Current.Resources)
+            {
+                var barrel = BarrelScript.Create(barrelPrefab, barrelPrefab.transform.position + Vector3.left * (1.5f * i), Quaternion.LookRotation(Vector3.back),  shape);
+                _barrels.Add(barrel);
+                i++;
+            }
         }
 
         private void UpdateInstructions()
@@ -58,6 +81,7 @@ using UnityEngine;
             {
                 FacilitatorScript.Instance.Say("You completed the task!\nUh-oh, here comes another.");
                 EventManager.Instance.reset?.Invoke();
+                GenerateBarrels();
             }
             else FacilitatorScript.Instance.Say("Congratulations! You finished the game.");
         }

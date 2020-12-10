@@ -1,29 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Utils;
 
 public class HeapScript : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        StartCoroutine("Grow");
-    }
-
-    private IEnumerator Grow()
+    public IEnumerator Grow(Fraction fraction)
     {
         yield return new WaitForSeconds(0.8f);
         float timePassed = 0;
         while (timePassed < 4)
         {
-            transform.localScale += Vector3.up * (Time.deltaTime * 0.4f);
+            transform.localScale += Vector3.up * (Time.deltaTime * fraction.Value() / 2);
             timePassed += Time.deltaTime;
             yield return null;
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
     }
 }

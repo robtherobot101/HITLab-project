@@ -12,6 +12,8 @@ namespace Scenarios
         /// A list of resources available to the player.
         /// </summary>
         [SerializeField] private List<GameObject> resources;
+
+        public IEnumerable<GameObject> Resources => resources;
         
         /// <summary>
         /// A list of objectives the player should complete.
