@@ -24,6 +24,7 @@ public class BarrelScript : MonoBehaviour
         var o = Instantiate(prefab, position, rotation);
         o.GetComponent<BarrelScript>().shapePrefab = shape;
         o.GetComponentInChildren<TMP_Text>().text = shape.GetComponent<ShapeScript>().ShapeName;
+        o.GetComponentInChildren<FractionScript>().SetFraction(shape.GetComponent<ShapeScript>().Fraction);
         return o;
     }
 }

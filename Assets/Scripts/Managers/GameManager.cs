@@ -38,6 +38,7 @@ using UnityEngine;
             var i = 0;
             foreach (var shape in _scenarioEnumerator.Current.Resources)
             {
+                Debug.Log(shape.GetComponent<ShapeScript>().Fraction);
                 var barrel = BarrelScript.Create(barrelPrefab, barrelPrefab.transform.position + Vector3.left * (1.5f * i), Quaternion.LookRotation(Vector3.back),  shape);
                 _barrels.Add(barrel);
                 i++;

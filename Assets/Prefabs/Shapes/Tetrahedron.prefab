@@ -48,8 +48,9 @@ MonoBehaviour:
   edges: 6
   vertices: 4
   shapeName: Tetrahedron
-  numerator: 5
-  denominator: 6
+  fraction:
+    num: 5
+    den: 6
 --- !u!1 &6772166117101601292
 GameObject:
   m_ObjectHideFlags: 0

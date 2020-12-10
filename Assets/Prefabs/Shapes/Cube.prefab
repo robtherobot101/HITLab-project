@@ -112,5 +112,6 @@ MonoBehaviour:
   edges: 12
   vertices: 8
   shapeName: Cube
-  numerator: 1
-  denominator: 4
+  fraction:
+    num: 1
+    den: 4

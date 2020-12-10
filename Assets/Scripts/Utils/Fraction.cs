@@ -4,7 +4,8 @@ using UnityEngine;
 // https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/operators/operator-overloading
 namespace Utils
 {
-    public readonly struct Fraction
+    [Serializable]
+    public struct Fraction
     {
         public bool Equals(Fraction other)
         {
@@ -24,8 +25,11 @@ namespace Utils
             }
         }
 
-        private readonly int num;
-        private readonly int den;
+        public int Numerator => num;
+        public int Denominator => den;
+
+        [SerializeField] private int num;
+        [SerializeField] private int den;
 
         public Fraction(int numerator, int denominator)
         {

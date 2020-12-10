@@ -21,16 +21,8 @@ public class ShapeScript : MonoBehaviour
     public string ShapeName => shapeName;
     [SerializeField] private string shapeName;
 
-    [SerializeField] private int numerator;
-
-    [SerializeField] private int denominator;
-
-    public Fraction Fraction { get; private set; }
-
-    private void OnEnable()
-    {
-        Fraction = new Fraction(numerator, denominator);
-    }
+    public Fraction Fraction => fraction;
+    [SerializeField] private Fraction fraction;
 
     // Start is called before the first frame update
     void Start()
