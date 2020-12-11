@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8b3b7b5debb9514a834e40120c97677, type: 3}
   m_Name: TwoSpheres
   m_EditorClassIdentifier: 
-  shape: {fileID: 2482678504970738660, guid: 644f21ae3ecbf3b4f92592de1990a039, type: 3}
+  shape: {fileID: 2482678504970738660, guid: 626dccaaa347bfd4181ca529b124e361, type: 3}
   goal: 2

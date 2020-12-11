@@ -5,8 +5,9 @@ using Managers;
 using Scenarios.Goals;
 using UnityEngine;
 using Utils;
+ using Random = UnityEngine.Random;
 
-public class CannonScript : MonoBehaviour
+ public class CannonScript : MonoBehaviour
 {
     private AudioSource _audio;
 
@@ -22,6 +23,7 @@ public class CannonScript : MonoBehaviour
     private bool _firingPosition = false;
     private bool _primed = false;
     private bool _moving = false;
+    private Fraction _gunpowder;
 
 
     private Color _initialColour;
@@ -43,20 +45,21 @@ public class CannonScript : MonoBehaviour
         var cannonBall = Instantiate(cannonBallPrefab);
         StartCoroutine(FacilitatorScript.Instance.Bounce());
         var rb = cannonBall.GetComponent<Rigidbody>();
-        var goalsOutcome = GameManager.Instance.GoalsOutcome();
-        switch (goalsOutcome)
-        {
-            case Outcome.Over:
-                rb.velocity *= 2;
-                break;
-            case Outcome.Under:
-                rb.velocity /= 2;
-                break;
-            case Outcome.Achieved:
-                break;
-            default:
-                throw new ArgumentOutOfRangeException();
-        }
+        rb.velocity *= _gunpowder.Value();
+        // var goalsOutcome = GameManager.Instance.GoalsOutcome();
+        // switch (goalsOutcome)
+        // {
+        //     case Outcome.Over:
+        //         rb.velocity *= 2;
+        //         break;
+        //     case Outcome.Under:
+        //         rb.velocity /= 2;
+        //         break;
+        //     case Outcome.Achieved:
+        //         break;
+        //     default:
+        //         throw new ArgumentOutOfRangeException();
+        // }
     }
 
     private void OnMouseDown()
@@ -72,17 +75,25 @@ public class CannonScript : MonoBehaviour
         }
 
         var o = PlayerController.Instance.Take();
-        if (o == null)
+        if (o != null)
         {
             FacilitatorScript.Instance.Hide();
+            _gunpowder = o.GetComponent<HeapScript>().Size;
             StartCoroutine(_moveCannon(firingPosition, firingRotation, MoveTime));
             _firingPosition = true;
             _primed = true;
         }
-        else
-        {
-            ShapeManager.Instance.AddShape(o.GetComponent<ShapeScript>());
-        }
+        // if (o == null)
+        // {
+        //     FacilitatorScript.Instance.Hide();
+        //     StartCoroutine(_moveCannon(firingPosition, firingRotation, MoveTime));
+        //     _firingPosition = true;
+        //     _primed = true;
+        // }
+        // else
+        // {
+        //     ShapeManager.Instance.AddShape(o.GetComponent<ShapeScript>());
+        // }
     }
 
     private void OnMouseEnter()

@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 458a6b7bc333c8d42b91ac182c439e36, type: 3}
-  m_Name: Scenario1
+  m_Name: Scenario1 1
   m_EditorClassIdentifier: 
   resources:
-  - {fileID: 4135591097232670978, guid: 1f4cc5d1fd5f99940950c6969f32e0a0, type: 3}
-  - {fileID: 2482678504970738660, guid: 626dccaaa347bfd4181ca529b124e361, type: 3}
-  - {fileID: 2339156921705331413, guid: 699b22edd73e542419891969cc5df28a, type: 3}
+  - {fileID: 2482678504970738660, guid: 471fffb5b13626f41b9fb755a300a12f, type: 3}
+  - {fileID: 2482678504970738660, guid: 98070f94c0ea40949b8a6cf8cc976882, type: 3}
+  - {fileID: 2482678504970738660, guid: 4c0a74cd3a572094b9538d7eb015b521, type: 3}
   goals:
   - {fileID: 11400000, guid: 879d8b82ece3f374fb05117cdd1e2f1f, type: 2}
   - {fileID: 11400000, guid: 20568005e582a104fa0fe26759db1791, type: 2}

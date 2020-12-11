@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Scenario3
   m_EditorClassIdentifier: 
   resources:
-  - {fileID: 4135591097232670978, guid: f0d3908522a5e494f865cf7068c611fb, type: 3}
-  - {fileID: 2482678504970738660, guid: 644f21ae3ecbf3b4f92592de1990a039, type: 3}
-  - {fileID: 2339156921705331413, guid: 2c1bcffbd6c79c94f86126230e23fd24, type: 3}
+  - {fileID: 4135591097232670978, guid: 1f4cc5d1fd5f99940950c6969f32e0a0, type: 3}
+  - {fileID: 2482678504970738660, guid: 626dccaaa347bfd4181ca529b124e361, type: 3}
+  - {fileID: 2339156921705331413, guid: 699b22edd73e542419891969cc5df28a, type: 3}
   goals:
   - {fileID: 11400000, guid: d3ca1b2608beee64aaa7a0b9996aafb4, type: 2}

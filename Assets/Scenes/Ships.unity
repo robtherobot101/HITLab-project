@@ -192,8 +192,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 14995729}
-  m_LocalRotation: {x: 0.022798615, y: 0.92534536, z: 0.056429245, w: -0.37420848}
-  m_LocalPosition: {x: 10.788907, y: -7.1651473, z: 7.328293}
+  m_LocalRotation: {x: -0.019825976, y: 0.9788458, z: 0.16663659, w: 0.11704759}
+  m_LocalPosition: {x: 5.7138376, y: -6.2788305, z: 1.7541113}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1750,7 +1750,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 963194225}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 390f972b3a1e62341ad150cbe29782f3, type: 3}
+  m_Script: {fileID: 11500000, guid: 035b04cf0971b2944a84c4d7e608f58f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   boost: 3.5
@@ -2626,7 +2626,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scenarios:
-  - {fileID: 11400000, guid: f1010628413fc0242a6d3aa6442b5799, type: 2}
+  - {fileID: 11400000, guid: cb51036c359b6984a9d58f88119ea65a, type: 2}
   - {fileID: 11400000, guid: 981ba99b631791d49930115a47b06ffd, type: 2}
   - {fileID: 11400000, guid: c86453f4182a56e4abda24b7d0e27910, type: 2}
   barrelPrefab: {fileID: 4476680892931255092, guid: 102b8cac146827f43b1e77b9ebe5584c,
@@ -7145,7 +7145,7 @@ PrefabInstance:
     - target: {fileID: 4101784985737928232, guid: 78a7b57aa5b0e5f418c0aa5721ee55eb,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 120.6
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 4101784985737928232, guid: 78a7b57aa5b0e5f418c0aa5721ee55eb,
         type: 3}
@@ -7196,6 +7196,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Enemy_Ship
+      objectReference: {fileID: 0}
+    - target: {fileID: 4105123763596147928, guid: 78a7b57aa5b0e5f418c0aa5721ee55eb,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4106262860352367055, guid: 78a7b57aa5b0e5f418c0aa5721ee55eb,
         type: 3}

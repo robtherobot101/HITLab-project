@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8b3b7b5debb9514a834e40120c97677, type: 3}
   m_Name: ThreeCubes
   m_EditorClassIdentifier: 
-  shape: {fileID: 4135591097232670978, guid: f0d3908522a5e494f865cf7068c611fb, type: 3}
+  shape: {fileID: 4135591097232670978, guid: 1f4cc5d1fd5f99940950c6969f32e0a0, type: 3}
   goal: 3
