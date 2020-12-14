@@ -42,10 +42,7 @@ namespace Scenarios.Goals
 
         public override string GoalText()
         {
-            var fractions = ShapeManager.Instance.CollectedShapes.Select(shape => shape.Fraction).ToList();
-            var s = string.Join(" + ", fractions);
-            if (s.Equals("")) s = "0";
-            return $"Try to make {goal}. You currently have {s}";
+            return $"Make {goal} kg of gunpowder to hit the ship.";
         }
 
         public override string FeedbackText()

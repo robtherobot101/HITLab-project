@@ -111,7 +111,7 @@ MonoBehaviour:
   faces: 0
   edges: 0
   vertices: 0
-  shapeName: Sphere
+  shapeName: Gunpowder
   fraction:
     num: 1
     den: 2

@@ -18,13 +18,19 @@ public class FractionScript : MonoBehaviour
         var o = GetComponentsInChildren<TMP_Text>();
         foreach (var p in o)
         {
-            if (p.name.Equals("Numerator")) p.text = _fraction.Numerator.ToString();
-            else if (p.name.Equals("Denominator")) p.text = _fraction.Denominator.ToString();
+            if (p.name.Equals("Numerator")) numText = p;
+            else if (p.name.Equals("Denominator")) denText = p;
         }
+        SetFraction(_fraction);
     }
 
     public void SetFraction(Fraction fraction)
     {
         _fraction = fraction;
+        if (numText != null)
+        {
+            numText.text = fraction.Numerator.ToString();
+            denText.text = fraction.Denominator.ToString();
+        }
     }
 }

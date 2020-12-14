@@ -96,5 +96,7 @@ namespace Utils
             return num / (float) den;
         }
 
+        public static readonly Fraction Zero = new Fraction(0, 1);
+
     }
 }
