@@ -4,7 +4,11 @@ using Utils;
 
 public class ShapeScript : MonoBehaviour
 {
-    
+    private void Start()
+    {
+        transform.localScale += transform.localScale * (4 * fraction.Value());
+    }
+
     public int Faces => faces;
     [SerializeField] private int faces;
 

@@ -1,5 +1,6 @@
 ﻿﻿using System;
-using UnityEngine;
+ using System.Collections.Generic;
+ using UnityEngine;
 
 namespace Scenarios.Goals
 {
@@ -10,7 +11,7 @@ namespace Scenarios.Goals
         Under,
         Achieved
     }
-    
+
     public abstract class Goal : ScriptableObject
     {
         /// <summary>
@@ -30,5 +31,16 @@ namespace Scenarios.Goals
         /// </summary>
         /// <returns>A string describing why the objective was (not) achieved.</returns>
         public abstract string FeedbackText();
+
+        public abstract bool RequirementsSatisfied();
+        
+        public abstract bool CanAdd();
+        
+        /// <summary>
+        /// A list of resources available to the player.
+        /// </summary>
+        [SerializeField] private List<GameObject> resources;
+
+        public IEnumerable<GameObject> Resources => resources;
     }
 }

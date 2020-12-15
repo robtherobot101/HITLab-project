@@ -4,6 +4,7 @@ using System.Linq;
 using Managers;
 using UnityEngine;
 using UnityEngine.Assertions.Comparers;
+using UnityEngine.Serialization;
 using Utils;
 
 namespace Scenarios.Goals
@@ -18,27 +19,23 @@ namespace Scenarios.Goals
         }
 
         [SerializeField] private ExpressedAs goalExpression;
-        
-        private int Numerator => numerator;
-        [SerializeField] private int numerator;
-        private int Denominator => denominator;
-        [SerializeField] private int denominator;
 
-        private Fraction goal;
+        [SerializeField] private Fraction goal;
 
-        private void OnEnable()
-        {
-            goal = new Fraction(numerator, denominator);
-        }
+        private int minTerms = 2;
+        private int maxTerms = 2;
 
         public override Outcome GetOutcome()
         {
-            var count = ShapeManager.Instance.CollectedShapes.Aggregate(new Fraction(0, 1), (current, shape) => current + shape.Fraction);
+            var count = GameManager.Instance.grinderShapes.Aggregate(new Fraction(0, 1), (current, shape) => current + shape.Fraction);
 
             if (count > goal) return Outcome.Over;
             if (count < goal) return Outcome.Under;
             return Outcome.Achieved;
         }
+
+        public override bool RequirementsSatisfied() => GameManager.Instance.grinderShapes.Count() >= minTerms;
+        public override bool CanAdd() => GameManager.Instance.grinderShapes.Count() < maxTerms;
 
         public override string GoalText()
         {
@@ -47,7 +44,7 @@ namespace Scenarios.Goals
 
         public override string FeedbackText()
         {
-            var fractions = ShapeManager.Instance.CollectedShapes.Select(shape => shape.Fraction).ToList();
+            var fractions = GameManager.Instance.grinderShapes.Select(shape => shape.Fraction).ToList();
             var s = string.Join(" + ", fractions);
             switch (GetOutcome())
             {

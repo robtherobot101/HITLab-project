@@ -1,7 +1,8 @@
 ﻿﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using Managers;
+ using Grinder;
+ using Managers;
 using Scenarios.Goals;
 using UnityEngine;
 using Utils;
@@ -45,21 +46,21 @@ using Utils;
         var cannonBall = Instantiate(cannonBallPrefab);
         StartCoroutine(FacilitatorScript.Instance.Bounce());
         var rb = cannonBall.GetComponent<Rigidbody>();
-        rb.velocity *= _gunpowder.Value();
-        // var goalsOutcome = GameManager.Instance.GoalsOutcome();
-        // switch (goalsOutcome)
-        // {
-        //     case Outcome.Over:
-        //         rb.velocity *= 2;
-        //         break;
-        //     case Outcome.Under:
-        //         rb.velocity /= 2;
-        //         break;
-        //     case Outcome.Achieved:
-        //         break;
-        //     default:
-        //         throw new ArgumentOutOfRangeException();
-        // }
+        // rb.velocity *= _gunpowder.Value();
+        var goalsOutcome = GameManager.Instance.GoalsOutcome();
+        switch (goalsOutcome)
+        {
+            case Outcome.Over:
+                rb.velocity *= 2;
+                break;
+            case Outcome.Under:
+                rb.velocity /= 2;
+                break;
+            case Outcome.Achieved:
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
     }
 
     private void OnMouseDown()
@@ -83,17 +84,6 @@ using Utils;
             _firingPosition = true;
             _primed = true;
         }
-        // if (o == null)
-        // {
-        //     FacilitatorScript.Instance.Hide();
-        //     StartCoroutine(_moveCannon(firingPosition, firingRotation, MoveTime));
-        //     _firingPosition = true;
-        //     _primed = true;
-        // }
-        // else
-        // {
-        //     ShapeManager.Instance.AddShape(o.GetComponent<ShapeScript>());
-        // }
     }
 
     private void OnMouseEnter()
