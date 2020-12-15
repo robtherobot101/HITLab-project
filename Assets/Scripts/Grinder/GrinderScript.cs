@@ -38,8 +38,6 @@ public class GrinderScript : MonoBehaviour
         if (!_grinding && GameManager.Instance.CurrentGoal.CanAdd())
         {
             _shapes.Add(grindingObject.GetComponent<ShapeScript>());
-            ScreenManager.Instance.Write(grindingObject.GetComponent<ShapeScript>().Fraction);
-            ScreenManager.Instance.Write("text");
         }
     }
 
@@ -72,6 +70,5 @@ public class GrinderScript : MonoBehaviour
     {
         _ground = false;
         _shapes.Clear();
-        ScreenManager.Instance.Clear();
     }
 }

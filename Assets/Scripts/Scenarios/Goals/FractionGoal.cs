@@ -36,6 +36,10 @@ namespace Scenarios.Goals
 
         public override bool RequirementsSatisfied() => GameManager.Instance.grinderShapes.Count() >= minTerms;
         public override bool CanAdd() => GameManager.Instance.grinderShapes.Count() < maxTerms;
+        public override void UpdateScreen()
+        {
+            throw new NotImplementedException();
+        }
 
         public override string GoalText()
         {

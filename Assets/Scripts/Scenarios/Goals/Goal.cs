@@ -1,5 +1,6 @@
 ﻿﻿using System;
  using System.Collections.Generic;
+ using Grinder;
  using UnityEngine;
 
 namespace Scenarios.Goals
@@ -14,6 +15,9 @@ namespace Scenarios.Goals
 
     public abstract class Goal : ScriptableObject
     {
+
+        [SerializeField] private GameObject screen;
+
         /// <summary>
         /// Whether the goal was achieved and if not, how it failed.
         /// </summary>
@@ -35,6 +39,14 @@ namespace Scenarios.Goals
         public abstract bool RequirementsSatisfied();
         
         public abstract bool CanAdd();
+
+        public void DisplayScreen()
+        {
+            ScreenManager.Instance.SetScreen(screen);
+        }
+
+        public abstract void UpdateScreen();
+        
         
         /// <summary>
         /// A list of resources available to the player.
