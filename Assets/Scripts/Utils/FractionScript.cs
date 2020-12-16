@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UIElements;
 using Utils;
 
 public class FractionScript : MonoBehaviour
@@ -26,11 +27,18 @@ public class FractionScript : MonoBehaviour
 
     public void SetFraction(Fraction fraction)
     {
+        SetFraction(fraction, Color.black);
+    }
+
+    public void SetFraction(Fraction fraction, Color colour)
+    {
         _fraction = fraction;
         if (numText != null)
         {
             numText.text = fraction.Numerator.ToString();
             denText.text = fraction.Denominator.ToString();
         }
+
+        foreach (var child in GetComponentsInChildren<TMP_Text>()) child.color = colour;
     }
 }

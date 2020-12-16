@@ -36,7 +36,17 @@ namespace Scenarios.Goals
 
         public override bool CanAdd()
         {
-            return _members.Any(member => member.RequirementsSatisfied());
+            return _members.All(member => member.CanAdd());
+        }
+
+        public override void ShapeAdded(ShapeScript shape)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void ClearScreen()
+        {
+            throw new NotImplementedException();
         }
     }
 }

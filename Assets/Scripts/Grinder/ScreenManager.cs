@@ -8,9 +8,9 @@ namespace Grinder
 {
     public class ScreenManager : MonoSingleton<ScreenManager>
     {
-        public void SetScreen(GameObject screen)
+        public GameObject SetScreen(GameObject screen)
         {
-            Instantiate(screen, transform);
+            return Instantiate(screen, transform);
         }
     }
 }

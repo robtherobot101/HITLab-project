@@ -191,6 +191,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8852342539699420187, guid: a6d98d4404df3fc40a08dbeea175f2bb,
+        type: 3}
+      propertyPath: m_text
+      value: +
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a6d98d4404df3fc40a08dbeea175f2bb, type: 3}
 --- !u!224 &4304711448907609815 stripped
@@ -474,7 +479,7 @@ PrefabInstance:
     - target: {fileID: 7323109155502219862, guid: 6492453cc7881b844822010b423bc70c,
         type: 3}
       propertyPath: m_Name
-      value: Fraction
+      value: Fraction1
       objectReference: {fileID: 0}
     - target: {fileID: 7323109155502219863, guid: 6492453cc7881b844822010b423bc70c,
         type: 3}

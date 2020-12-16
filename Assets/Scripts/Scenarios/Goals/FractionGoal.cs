@@ -24,7 +24,7 @@ namespace Scenarios.Goals
 
         private int minTerms = 2;
         private int maxTerms = 2;
-
+        
         public override Outcome GetOutcome()
         {
             var count = GameManager.Instance.grinderShapes.Aggregate(new Fraction(0, 1), (current, shape) => current + shape.Fraction);
@@ -35,10 +35,18 @@ namespace Scenarios.Goals
         }
 
         public override bool RequirementsSatisfied() => GameManager.Instance.grinderShapes.Count() >= minTerms;
+        
         public override bool CanAdd() => GameManager.Instance.grinderShapes.Count() < maxTerms;
-        public override void UpdateScreen()
+        
+        // TODO Make this better x10000
+        public override void ShapeAdded(ShapeScript shape)
         {
-            throw new NotImplementedException();
+            screen.GetComponentsInChildren<FractionScript>()[GameManager.Instance.grinderShapes.Count() - 1].SetFraction(shape.Fraction, Color.red);
+        }
+
+        public override void ClearScreen()
+        {
+            foreach (var fractionText in screen.GetComponentsInChildren<FractionScript>()) fractionText.SetFraction(Fraction.Zero, Color.black);
         }
 
         public override string GoalText()

@@ -38,6 +38,7 @@ public class GrinderScript : MonoBehaviour
         if (!_grinding && GameManager.Instance.CurrentGoal.CanAdd())
         {
             _shapes.Add(grindingObject.GetComponent<ShapeScript>());
+            GameManager.Instance.CurrentGoal.ShapeAdded(grindingObject.GetComponent<ShapeScript>());
         }
     }
 

@@ -1,6 +1,7 @@
 ﻿﻿using System;
  using System.Collections.Generic;
  using Grinder;
+ using Managers;
  using UnityEngine;
 
 namespace Scenarios.Goals
@@ -16,7 +17,15 @@ namespace Scenarios.Goals
     public abstract class Goal : ScriptableObject
     {
 
-        [SerializeField] private GameObject screen;
+        [SerializeField] private GameObject screenPrefab;
+        protected GameObject screen;
+
+        /// <summary>
+        /// A list of resources available to the player.
+        /// </summary>
+        [SerializeField] private List<GameObject> resources;
+
+        public IEnumerable<GameObject> Resources => resources;
 
         /// <summary>
         /// Whether the goal was achieved and if not, how it failed.
@@ -40,19 +49,14 @@ namespace Scenarios.Goals
         
         public abstract bool CanAdd();
 
+        public abstract void ShapeAdded(ShapeScript shape);
+
         public void DisplayScreen()
         {
-            ScreenManager.Instance.SetScreen(screen);
+            screen = ScreenManager.Instance.SetScreen(screenPrefab);
         }
 
-        public abstract void UpdateScreen();
-        
-        
-        /// <summary>
-        /// A list of resources available to the player.
-        /// </summary>
-        [SerializeField] private List<GameObject> resources;
+        public abstract void ClearScreen();
 
-        public IEnumerable<GameObject> Resources => resources;
     }
 }

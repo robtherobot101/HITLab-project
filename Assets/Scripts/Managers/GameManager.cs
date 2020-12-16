@@ -28,6 +28,7 @@ using UnityEngine;
             {
                 GenerateBarrels();
                 UpdateInstructions();
+                _goalEnumerator.Current.DisplayScreen();
             }
         }
 
@@ -60,6 +61,7 @@ using UnityEngine;
         private void GiveFeedbackAndReset()
         {
             FacilitatorScript.Instance.Say(_goalEnumerator.Current.FeedbackText());
+            CurrentGoal.ClearScreen();
             EventManager.Instance.reset?.Invoke();
         }
 
@@ -70,6 +72,7 @@ using UnityEngine;
                 FacilitatorScript.Instance.Say("You completed the task!\nUh-oh, here comes another.");
                 EventManager.Instance.reset?.Invoke();
                 GenerateBarrels();
+                _goalEnumerator.Current.DisplayScreen();
             }
             else FacilitatorScript.Instance.Say("Congratulations! You finished the game.");
         }

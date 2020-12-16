@@ -20,7 +20,7 @@ public class EnemyScript : MonoBehaviour
         _tr = gameObject.transform;
         _initialPosition = _tr.position;
         _initialRotation = _tr.rotation;
-        EventManager.Instance.reset += Reset;
+        //EventManager.Instance.reset += Reset;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -38,6 +38,7 @@ public class EnemyScript : MonoBehaviour
         _rb.angularVelocity = Vector3.back / 5;
         yield return new WaitUntil(() => transform.position.y < SinkHeight);
         EventManager.Instance.sunk?.Invoke();
+        Reset();
     }
 
     private void Reset()
