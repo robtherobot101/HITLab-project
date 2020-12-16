@@ -33,20 +33,13 @@ namespace Scenarios.Goals
             foreach (var target in targets)
             {
                 s += $"{i + 1}. A shape with ";
-                switch (target.attribute)
+                s += target.attribute switch
                 {
-                    case Attribute.Faces:
-                        s += target.shape.GetComponent<ShapeScript>().Faces.ToString();
-                        break;
-                    case Attribute.Edges:
-                        s += target.shape.GetComponent<ShapeScript>().Edges.ToString();
-                        break;
-                    case Attribute.Vertices:
-                        s += target.shape.GetComponent<ShapeScript>().Vertices.ToString();
-                        break;
-                    default:
-                        throw new ArgumentOutOfRangeException();
-                }
+                    Attribute.Faces => target.shape.GetComponent<ShapeScript>().Faces.ToString(),
+                    Attribute.Edges => target.shape.GetComponent<ShapeScript>().Edges.ToString(),
+                    Attribute.Vertices => target.shape.GetComponent<ShapeScript>().Vertices.ToString(),
+                    _ => throw new ArgumentOutOfRangeException()
+                };
 
                 s += $" {target.attribute.ToString().ToLower()}\n";
                 i++;

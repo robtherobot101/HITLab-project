@@ -1,37 +1,46 @@
 ﻿using TMPro;
 using UnityEngine;
-using Utils;
 
-public class FractionScript : MonoBehaviour
+namespace Utils
 {
-    private Fraction _fraction;
-    private TMP_Text denText;
-
-    private TMP_Text numText;
-
-    private void Start()
+    public class FractionScript : MonoBehaviour
     {
-        var o = GetComponentsInChildren<TMP_Text>();
-        foreach (var p in o)
-            if (p.name.Equals("Numerator")) numText = p;
-            else if (p.name.Equals("Denominator")) denText = p;
-        SetFraction(_fraction);
-    }
+        private Fraction _fraction;
+        private TMP_Text _denText;
 
-    public void SetFraction(Fraction fraction)
-    {
-        SetFraction(fraction, Color.black);
-    }
+        private TMP_Text _numText;
 
-    public void SetFraction(Fraction fraction, Color colour)
-    {
-        _fraction = fraction;
-        if (numText != null)
+        private void Start()
         {
-            numText.text = fraction.Numerator.ToString();
-            denText.text = fraction.Denominator.ToString();
+            var o = GetComponentsInChildren<TMP_Text>();
+            foreach (var p in o)
+                switch (p.name)
+                {
+                    case "Numerator":
+                        _numText = p;
+                        break;
+                    case "Denominator":
+                        _denText = p;
+                        break;
+                }
+            SetFraction(_fraction);
         }
 
-        foreach (var child in GetComponentsInChildren<TMP_Text>()) child.color = colour;
+        public void SetFraction(Fraction fraction)
+        {
+            SetFraction(fraction, Color.black);
+        }
+
+        public void SetFraction(Fraction fraction, Color colour)
+        {
+            _fraction = fraction;
+            if (_numText != null)
+            {
+                _numText.text = fraction.Numerator.ToString();
+                _denText.text = fraction.Denominator.ToString();
+            }
+
+            foreach (var child in GetComponentsInChildren<TMP_Text>()) child.color = colour;
+        }
     }
 }

@@ -25,9 +25,9 @@ public class SimpleCameraController : MonoBehaviour
     [Tooltip("Whether or not to invert our Y axis for mouse input to rotation.")]
     public bool invertY;
 
-    private readonly CameraState m_InterpolatingCameraState = new CameraState();
+    private readonly CameraState _mInterpolatingCameraState = new CameraState();
 
-    private readonly CameraState m_TargetCameraState = new CameraState();
+    private readonly CameraState _mTargetCameraState = new CameraState();
 
     private void Update()
     {
@@ -61,8 +61,8 @@ public class SimpleCameraController : MonoBehaviour
 
             var mouseSensitivityFactor = mouseSensitivityCurve.Evaluate(mouseMovement.magnitude);
 
-            m_TargetCameraState.yaw += mouseMovement.x * mouseSensitivityFactor;
-            m_TargetCameraState.pitch += mouseMovement.y * mouseSensitivityFactor;
+            _mTargetCameraState.yaw += mouseMovement.x * mouseSensitivityFactor;
+            _mTargetCameraState.pitch += mouseMovement.y * mouseSensitivityFactor;
         }
 
         // Translation
@@ -79,21 +79,21 @@ public class SimpleCameraController : MonoBehaviour
             // TODO: make the new input system work
 #endif
 
-        m_TargetCameraState.Translate(translation);
+        _mTargetCameraState.Translate(translation);
 
         // Framerate-independent interpolation
         // Calculate the lerp amount, such that we get 99% of the way to our target in the specified time
         var positionLerpPct = 1f - Mathf.Exp(Mathf.Log(1f - 0.99f) / positionLerpTime * Time.deltaTime);
         var rotationLerpPct = 1f - Mathf.Exp(Mathf.Log(1f - 0.99f) / rotationLerpTime * Time.deltaTime);
-        m_InterpolatingCameraState.LerpTowards(m_TargetCameraState, positionLerpPct, rotationLerpPct);
+        _mInterpolatingCameraState.LerpTowards(_mTargetCameraState, positionLerpPct, rotationLerpPct);
 
-        m_InterpolatingCameraState.UpdateTransform(transform);
+        _mInterpolatingCameraState.UpdateTransform(transform);
     }
 
     private void OnEnable()
     {
-        m_TargetCameraState.SetFromTransform(transform);
-        m_InterpolatingCameraState.SetFromTransform(transform);
+        _mTargetCameraState.SetFromTransform(transform);
+        _mInterpolatingCameraState.SetFromTransform(transform);
     }
 
     private Vector3 GetInputTranslationDirection()

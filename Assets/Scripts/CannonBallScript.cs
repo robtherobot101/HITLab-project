@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using Managers;
 using UnityEngine;
 
 public class CannonBallScript : MonoBehaviour
@@ -8,7 +9,7 @@ public class CannonBallScript : MonoBehaviour
     {
         // Set initial velocity
         gameObject.GetComponent<Rigidbody>().velocity = new Vector3(50, 10, 0);
-        StartCoroutine("CheckHeight");
+        StartCoroutine(nameof(CheckHeight));
     }
 
     private IEnumerator CheckHeight()

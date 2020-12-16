@@ -98,12 +98,12 @@ namespace Utils
 
         public Fraction Simplify()
         {
-            var gcd = GCD(num, den);
+            var gcd = Gcd(num, den);
             return new Fraction(num / gcd, den / gcd);
         }
 
         // https://github.com/drewnoakes/metadata-extractor-dotnet/blob/46ccdd489739ddc11dd5d4b41335290598df6ac1/MetadataExtractor/Rational.cs#L275
-        private static int GCD(int a, int b)
+        private static int Gcd(int a, int b)
         {
             while (a != 0 && b != 0)
                 if (a > b)

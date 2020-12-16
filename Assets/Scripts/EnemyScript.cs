@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using Managers;
 using UnityEngine;
 using Utils;
 
@@ -37,7 +38,7 @@ public class EnemyScript : MonoBehaviour
         if (other.gameObject.CompareTag("CannonBall"))
         {
             Destroy(other.gameObject);
-            StartCoroutine("Sinking");
+            StartCoroutine(nameof(Sinking));
         }
     }
 

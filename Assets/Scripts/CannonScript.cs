@@ -25,12 +25,12 @@ public class CannonScript : MonoBehaviour
     private Material _material;
     private bool _moving;
     private bool _primed;
-    private readonly Quaternion firingRotation = Quaternion.Euler(0, 0, 0);
-    private readonly Quaternion preparingRotation = Quaternion.Euler(0, 90, 0);
+    private readonly Quaternion _firingRotation = Quaternion.Euler(0, 0, 0);
+    private readonly Quaternion _preparingRotation = Quaternion.Euler(0, 90, 0);
 
     private void Reset()
     {
-        StartCoroutine(_moveCannon(preparingPosition, preparingRotation, MoveTime));
+        StartCoroutine(_moveCannon(preparingPosition, _preparingRotation, MoveTime));
         _firingPosition = false;
     }
 
@@ -57,7 +57,7 @@ public class CannonScript : MonoBehaviour
 
         FacilitatorScript.Instance.Hide();
         _gunpowder = o.GetComponent<HeapScript>().Size;
-        StartCoroutine(_moveCannon(firingPosition, firingRotation, MoveTime));
+        StartCoroutine(_moveCannon(firingPosition, _firingRotation, MoveTime));
         _firingPosition = true;
         _primed = true;
     }

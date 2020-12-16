@@ -21,9 +21,9 @@ namespace Scenarios.Goals
         /// </summary>
         [SerializeField] private List<GameObject> resources;
 
-        protected bool _fractionLabels;
+        protected bool fractionLabels;
         protected GameObject screen;
-        public bool FractionLabels => _fractionLabels;
+        public bool FractionLabels => fractionLabels;
 
         public IEnumerable<GameObject> Resources => resources;
 

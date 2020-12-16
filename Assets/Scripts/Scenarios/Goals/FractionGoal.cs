@@ -13,9 +13,9 @@ namespace Scenarios.Goals
 
         [SerializeField] private Fraction goal;
         private FractionScript[] _fractions;
-        private readonly int maxTerms = 2;
+        private readonly int _maxTerms = 2;
 
-        private readonly int minTerms = 2;
+        private readonly int _minTerms = 2;
 
         //protected _fractionLabels = true;
 
@@ -31,12 +31,12 @@ namespace Scenarios.Goals
 
         public override bool RequirementsSatisfied()
         {
-            return GameManager.Instance.grinderShapes.Count() >= minTerms;
+            return GameManager.Instance.grinderShapes.Count() >= _minTerms;
         }
 
         public override bool CanAdd()
         {
-            return GameManager.Instance.grinderShapes.Count() < maxTerms;
+            return GameManager.Instance.grinderShapes.Count() < _maxTerms;
         }
 
         // TODO Make this better x10000

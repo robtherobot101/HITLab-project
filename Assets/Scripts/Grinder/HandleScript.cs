@@ -1,16 +1,19 @@
 ﻿using UnityEngine;
 
-public class HandleScript : MonoBehaviour
+namespace Grinder
 {
-    private GrinderScript _grinderScript;
-
-    private void Start()
+    public class HandleScript : MonoBehaviour
     {
-        _grinderScript = GetComponentInParent<GrinderScript>();
-    }
+        private GrinderScript _grinderScript;
 
-    private void OnMouseDown()
-    {
-        _grinderScript.TurnHandle();
+        private void Start()
+        {
+            _grinderScript = GetComponentInParent<GrinderScript>();
+        }
+
+        private void OnMouseDown()
+        {
+            _grinderScript.TurnHandle();
+        }
     }
 }

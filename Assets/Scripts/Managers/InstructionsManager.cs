@@ -2,27 +2,20 @@
 using UnityEngine;
 using Utils;
 
-public class InstructionsManager : MonoSingleton<InstructionsManager>
+namespace Managers
 {
-    private Transform _cameraTransform;
-
-    private TMP_Text _tmp;
-
-    private void Update()
+    public class InstructionsManager : MonoSingleton<InstructionsManager>
     {
-        // var position = _cameraTransform.position +
-        //                2 * (-_cameraTransform.up - new Vector3(0, 2 * _cameraTransform.forward.y, 0));
-        // transform.SetPositionAndRotation(position, _cameraTransform.rotation);
-    }
+        private TMP_Text _tmp;
 
-    protected override void Init()
-    {
-        _tmp = GetComponentInChildren<TMP_Text>();
-        _cameraTransform = Camera.main.transform;
-    }
+        protected override void Init()
+        {
+            _tmp = GetComponentInChildren<TMP_Text>();
+        }
 
-    public void SetText(string text)
-    {
-        _tmp.text = text;
+        public void SetText(string text)
+        {
+            _tmp.text = text;
+        }
     }
 }
