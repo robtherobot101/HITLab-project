@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using Managers;
 using UnityEngine;
-using UnityEngine.Assertions.Comparers;
-using UnityEngine.Serialization;
 using Utils;
 
 namespace Scenarios.Goals
@@ -12,33 +9,36 @@ namespace Scenarios.Goals
     [CreateAssetMenu]
     public class FractionGoal : Goal
     {
-        private enum ExpressedAs
-        {
-            Fraction,
-            Decimal
-        }
-
         [SerializeField] private ExpressedAs goalExpression;
 
         [SerializeField] private Fraction goal;
         private FractionScript[] _fractions;
+        private readonly int maxTerms = 2;
 
-        private int minTerms = 2;
-        private int maxTerms = 2;
-        
+        private readonly int minTerms = 2;
+
+        //protected _fractionLabels = true;
+
         public override Outcome GetOutcome()
         {
-            var count = GameManager.Instance.grinderShapes.Aggregate(new Fraction(0, 1), (current, shape) => current + shape.Fraction);
+            var count = GameManager.Instance.grinderShapes.Aggregate(new Fraction(0, 1),
+                (current, shape) => current + shape.Fraction);
 
             if (count > goal) return Outcome.Over;
             if (count < goal) return Outcome.Under;
             return Outcome.Achieved;
         }
 
-        public override bool RequirementsSatisfied() => GameManager.Instance.grinderShapes.Count() >= minTerms;
-        
-        public override bool CanAdd() => GameManager.Instance.grinderShapes.Count() < maxTerms;
-        
+        public override bool RequirementsSatisfied()
+        {
+            return GameManager.Instance.grinderShapes.Count() >= minTerms;
+        }
+
+        public override bool CanAdd()
+        {
+            return GameManager.Instance.grinderShapes.Count() < maxTerms;
+        }
+
         // TODO Make this better x10000
         public override void ShapeAdded(ShapeScript shape)
         {
@@ -76,6 +76,12 @@ namespace Scenarios.Goals
                 default:
                     throw new ArgumentOutOfRangeException();
             }
+        }
+
+        private enum ExpressedAs
+        {
+            Fraction,
+            Decimal
         }
     }
 }

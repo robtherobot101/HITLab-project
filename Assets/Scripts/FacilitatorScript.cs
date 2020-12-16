@@ -1,17 +1,14 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using TMPro;
 using UnityEngine;
 using Utils;
 
 public class FacilitatorScript : MonoSingleton<FacilitatorScript>
 {
-
     private Canvas _canvas;
-    private TMP_Text _text;
     private GameObject _hat;
-    
+    private TMP_Text _text;
+
     // Start is called before the first frame update
     private void Start()
     {
@@ -36,7 +33,8 @@ public class FacilitatorScript : MonoSingleton<FacilitatorScript>
     {
         var initialPos = _hat.transform.position;
         var initialRot = _hat.transform.rotation;
-        yield return Lerper.Lerp(_hat.transform, initialPos + Vector3.up, Quaternion.FromToRotation(Vector3.left, Vector3.up), 0.15f);
+        yield return Lerper.Lerp(_hat.transform, initialPos + Vector3.up,
+            Quaternion.FromToRotation(Vector3.left, Vector3.up), 0.15f);
         yield return Lerper.Lerp(_hat.transform, initialPos, initialRot, 0.15f);
     }
 }

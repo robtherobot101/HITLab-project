@@ -6,10 +6,15 @@ namespace Grinder
 {
     public class HeapScript : MonoBehaviour
     {
+        [SerializeField] private Fraction size = new Fraction(0, 1);
+        private bool _growing;
 
         public Fraction Size => size;
-        [SerializeField] private Fraction size = new Fraction(0, 1);
-        private bool _growing = false;
+
+        private void OnMouseDown()
+        {
+            if (!_growing && PlayerController.Instance.Give(gameObject)) Revert();
+        }
 
 
         public IEnumerator Grow(Fraction fraction)
@@ -23,13 +28,9 @@ namespace Grinder
                 timePassed += Time.deltaTime;
                 yield return null;
             }
+
             size += fraction;
             _growing = false;
-        }
-
-        private void OnMouseDown()
-        {
-            if (!_growing && PlayerController.Instance.Give(gameObject)) Revert();
         }
 
         private void Revert()

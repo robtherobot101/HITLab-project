@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class HandleScript : MonoBehaviour
 {
@@ -11,6 +8,7 @@ public class HandleScript : MonoBehaviour
     {
         _grinderScript = GetComponentInParent<GrinderScript>();
     }
+
     private void OnMouseDown()
     {
         _grinderScript.TurnHandle();

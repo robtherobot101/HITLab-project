@@ -1,20 +1,29 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Security.Cryptography;
+﻿using System.Collections;
 using UnityEngine;
 using Utils;
 
 public class EnemyScript : MonoBehaviour
 {
-    private Rigidbody _rb;
-    private Transform _tr;
+    private const float SinkHeight = -65f;
     private Vector3 _initialPosition;
     private Quaternion _initialRotation;
-    private const float SinkHeight = -65f;
-    
+    private Rigidbody _rb;
+    private Transform _tr;
+
+    private void Reset()
+    {
+        _rb.useGravity = false;
+
+        _rb.angularVelocity = Vector3.zero;
+        _rb.velocity = Vector3.zero;
+        _tr.rotation = _initialRotation;
+        _tr.position = _initialPosition - 500 * _tr.forward + 10 * Vector3.down;
+
+        StartCoroutine(Lerper.Lerp(_tr, _initialPosition, _initialRotation, 3));
+    }
+
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         _rb = GetComponent<Rigidbody>();
         _tr = gameObject.transform;
@@ -40,17 +49,4 @@ public class EnemyScript : MonoBehaviour
         EventManager.Instance.sunk?.Invoke();
         Reset();
     }
-
-    private void Reset()
-    {
-        _rb.useGravity = false;
-        
-        _rb.angularVelocity = Vector3.zero;
-        _rb.velocity = Vector3.zero;
-        _tr.rotation = _initialRotation;
-        _tr.position = _initialPosition - 500 * _tr.forward + 10 * Vector3.down;
-        
-        StartCoroutine(Lerper.Lerp(_tr, _initialPosition, _initialRotation, 3));
-    }
-    
 }

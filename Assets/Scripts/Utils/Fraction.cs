@@ -7,6 +7,21 @@ namespace Utils
     [Serializable]
     public struct Fraction
     {
+        public static readonly Fraction Zero = new Fraction(0, 1);
+
+        [SerializeField] private int num;
+        [SerializeField] private int den;
+
+        public Fraction(int numerator, int denominator)
+        {
+            if (denominator == 0) throw new ArgumentException("Denominator cannot be zero.", nameof(denominator));
+            num = numerator;
+            den = denominator;
+        }
+
+        public int Numerator => num;
+        public int Denominator => den;
+
         public bool Equals(Fraction other)
         {
             return num == other.num && den == other.den;
@@ -25,69 +40,76 @@ namespace Utils
             }
         }
 
-        public int Numerator => num;
-        public int Denominator => den;
-
-        [SerializeField] private int num;
-        [SerializeField] private int den;
-
-        public Fraction(int numerator, int denominator)
+        public static Fraction operator +(Fraction a)
         {
-            if (denominator == 0)
-            {
-                throw new ArgumentException("Denominator cannot be zero.", nameof(denominator));
-            }
-            num = numerator;
-            den = denominator;
+            return a;
         }
 
-        public static Fraction operator +(Fraction a) => a;
-        public static Fraction operator -(Fraction a) => new Fraction(-a.num, a.den);
+        public static Fraction operator -(Fraction a)
+        {
+            return new Fraction(-a.num, a.den);
+        }
 
         public static Fraction operator +(Fraction a, Fraction b)
-            => new Fraction(a.num * b.den + b.num * a.den, a.den * b.den);
+        {
+            return new Fraction(a.num * b.den + b.num * a.den, a.den * b.den);
+        }
 
         public static Fraction operator -(Fraction a, Fraction b)
-            => a + (-b);
+        {
+            return a + -b;
+        }
 
         public static Fraction operator *(Fraction a, Fraction b)
-            => new Fraction(a.num * b.num, a.den * b.den);
+        {
+            return new Fraction(a.num * b.num, a.den * b.den);
+        }
 
         public static Fraction operator /(Fraction a, Fraction b)
         {
-            if (b.num == 0)
-            {
-                throw new DivideByZeroException();
-            }
+            if (b.num == 0) throw new DivideByZeroException();
             return new Fraction(a.num * b.den, a.den * b.num);
         }
 
-        public static bool operator ==(Fraction a, Fraction b) => (a - b).num == 0;
+        public static bool operator ==(Fraction a, Fraction b)
+        {
+            return (a - b).num == 0;
+        }
 
-        public static bool operator !=(Fraction a, Fraction b) => !(a == b);
+        public static bool operator !=(Fraction a, Fraction b)
+        {
+            return !(a == b);
+        }
 
-        public static bool operator >(Fraction a, Fraction b) => (a - b).num > 0;
+        public static bool operator >(Fraction a, Fraction b)
+        {
+            return (a - b).num > 0;
+        }
 
-        public static bool operator <(Fraction a, Fraction b) => (a - b).num < 0;
-            
-        public override string ToString() => $"{num} / {den}";
+        public static bool operator <(Fraction a, Fraction b)
+        {
+            return (a - b).num < 0;
+        }
+
+        public override string ToString()
+        {
+            return $"{num}/{den}";
+        }
 
         public Fraction Simplify()
         {
             var gcd = GCD(num, den);
-            return new Fraction(num/gcd, den/gcd);
+            return new Fraction(num / gcd, den / gcd);
         }
-    
+
         // https://github.com/drewnoakes/metadata-extractor-dotnet/blob/46ccdd489739ddc11dd5d4b41335290598df6ac1/MetadataExtractor/Rational.cs#L275
         private static int GCD(int a, int b)
         {
             while (a != 0 && b != 0)
-            {
                 if (a > b)
                     a %= b;
                 else
                     b %= a;
-            }
             return a | b;
         }
 
@@ -95,8 +117,5 @@ namespace Utils
         {
             return num / (float) den;
         }
-
-        public static readonly Fraction Zero = new Fraction(0, 1);
-
     }
 }

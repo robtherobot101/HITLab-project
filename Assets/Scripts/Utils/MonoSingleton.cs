@@ -6,15 +6,16 @@ namespace Utils
 {
     public abstract class MonoSingleton<T> : MonoBehaviour where T : MonoSingleton<T>
     {
-    
         private static T _instance;
+
         public static T Instance
         {
             get
             {
-                if (_instance == null) throw new UninstantiatedException($"The singleton {typeof(T)} has" +
-                                                                         $" not been instantiated. Make sure it is" +
-                                                                         $" attached to a GameObject.");
+                if (_instance == null)
+                    throw new UninstantiatedException($"The singleton {typeof(T)} has" +
+                                                      " not been instantiated. Make sure it is" +
+                                                      " attached to a GameObject.");
                 return _instance;
             }
         }
@@ -26,11 +27,13 @@ namespace Utils
         }
 
         /// <summary>
-        /// Called during Awake function
+        ///     Called during Awake function
         /// </summary>
-        protected virtual void Init() { }
-        
+        protected virtual void Init()
+        {
+        }
     }
+
     [Serializable]
     public class UninstantiatedException : Exception
     {

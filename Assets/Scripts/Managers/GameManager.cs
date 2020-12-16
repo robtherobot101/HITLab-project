@@ -1,23 +1,21 @@
-﻿﻿using System.Collections.Generic;
- using System.Collections.Specialized;
- using System.Linq;
- using Scenarios;
+﻿using System.Collections.Generic;
+using System.Linq;
 using Scenarios.Goals;
 using UnityEngine;
- using Utils;
+using Utils;
 
- namespace Managers
+namespace Managers
 {
     public class GameManager : MonoSingleton<GameManager>
     {
         [SerializeField] private List<Goal> goals = new List<Goal>();
         [SerializeField] private GameObject barrelPrefab;
+        private readonly List<GameObject> _barrels = new List<GameObject>();
         private List<Goal>.Enumerator _goalEnumerator;
-        public Goal CurrentGoal => _goalEnumerator.Current;
-        private List<GameObject> _barrels = new List<GameObject>();
 
         public IEnumerable<ShapeScript> grinderShapes;
-        
+        public Goal CurrentGoal => _goalEnumerator.Current;
+
         private void Start()
         {
             EventManager.Instance.missed += GiveFeedbackAndReset;
@@ -35,16 +33,15 @@ using UnityEngine;
 
         private void GenerateBarrels()
         {
-            foreach (var barrel in _barrels)
-            {
-                Destroy(barrel);
-            }
+            foreach (var barrel in _barrels) Destroy(barrel);
             _barrels.Clear();
             var i = 0;
-            
+
             foreach (var shape in _goalEnumerator.Current.Resources.OrderBy(value => Random.value))
             {
-                var barrel = BarrelScript.Create(barrelPrefab, barrelPrefab.transform.position + Vector3.left * (1.5f * i), Quaternion.LookRotation(Vector3.back),  shape);
+                var barrel = BarrelScript.Create(barrelPrefab,
+                    barrelPrefab.transform.position + Vector3.left * (1.5f * i), Quaternion.LookRotation(Vector3.back),
+                    shape);
                 _barrels.Add(barrel);
                 i++;
             }
@@ -77,7 +74,10 @@ using UnityEngine;
                 UpdateInstructions();
                 _goalEnumerator.Current.DisplayScreen();
             }
-            else FacilitatorScript.Instance.Say("Congratulations! You finished the game.");
+            else
+            {
+                FacilitatorScript.Instance.Say("Congratulations! You finished the game.");
+            }
         }
     }
 }

@@ -1,26 +1,23 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Grinder;
 using Managers;
-using UnityEditor.Analytics;
 using UnityEngine;
 using Utils;
 
 public class GrinderScript : MonoBehaviour
 {
+    private bool _grinding;
+    private bool _ground;
 
     private GameObject _handle;
-    private ParticleSystem _powder;
     private HeapScript _heap;
-    
-    private bool _grinding = false;
-    private bool _ground = false;
+    private ParticleSystem _powder;
+    private readonly ICollection<ShapeScript> _shapes = new List<ShapeScript>();
 
     public IEnumerable<ShapeScript> Shapes => _shapes;
-    private ICollection<ShapeScript> _shapes = new List<ShapeScript>();
-    
+
     // Start is called before the first frame update
     private void Start()
     {
@@ -35,10 +32,10 @@ public class GrinderScript : MonoBehaviour
     private void OnMouseDown()
     {
         if (_grinding || !GameManager.Instance.CurrentGoal.CanAdd()) return;
-        
+
         var grindingObject = PlayerController.Instance.Take("Shape");
         if (grindingObject == null) return;
-        
+
         _shapes.Add(grindingObject.GetComponent<ShapeScript>());
         GameManager.Instance.CurrentGoal.ShapeAdded(grindingObject.GetComponent<ShapeScript>());
     }
@@ -47,7 +44,7 @@ public class GrinderScript : MonoBehaviour
     {
         _grinding = true;
         _powder.Play();
-        StartCoroutine(_heap.Grow(_shapes.Aggregate(Fraction.Zero, (current, shape) => current + shape.Fraction))); 
+        StartCoroutine(_heap.Grow(_shapes.Aggregate(Fraction.Zero, (current, shape) => current + shape.Fraction)));
         float t = 0;
         while (t < 4)
         {
@@ -55,6 +52,7 @@ public class GrinderScript : MonoBehaviour
             t += Time.deltaTime;
             yield return null;
         }
+
         _powder.Stop();
         _grinding = false;
     }
@@ -67,7 +65,7 @@ public class GrinderScript : MonoBehaviour
             _ground = true;
         }
     }
-    
+
     private void Clear()
     {
         _ground = false;

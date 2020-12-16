@@ -10,30 +10,16 @@ namespace Scenarios.Goals
     [CreateAssetMenu]
     public class MixGoal : Goal
     {
-
-        private enum Attribute
-        {
-            Faces,
-            Edges,
-            Vertices,
-        }
-
-        [Serializable]
-        private struct Target
-        {
-            public GameObject shape;
-            public Attribute attribute;
-        }
-
         [SerializeField] private List<Target> targets;
         private TMP_Text _screenText;
 
         public override Outcome GetOutcome()
         {
-            int i = 0;
+            var i = 0;
             foreach (var shape in GameManager.Instance.grinderShapes)
             {
-                if (!shape.ShapeName.Equals(targets[i].shape.GetComponent<ShapeScript>().ShapeName)) return Outcome.NotAchieved;
+                if (!shape.ShapeName.Equals(targets[i].shape.GetComponent<ShapeScript>().ShapeName))
+                    return Outcome.NotAchieved;
                 i++;
             }
 
@@ -46,7 +32,7 @@ namespace Scenarios.Goals
             var i = 0;
             foreach (var target in targets)
             {
-                s += $"{i+1}. A shape with ";
+                s += $"{i + 1}. A shape with ";
                 switch (target.attribute)
                 {
                     case Attribute.Faces:
@@ -65,6 +51,7 @@ namespace Scenarios.Goals
                 s += $" {target.attribute.ToString().ToLower()}\n";
                 i++;
             }
+
             return s;
         }
 
@@ -73,9 +60,15 @@ namespace Scenarios.Goals
             return "THIS PLACEHOLDER TEXT _WILL_ BE CHANGED";
         }
 
-        public override bool RequirementsSatisfied() => GameManager.Instance.grinderShapes.Count() >= targets.Count;
+        public override bool RequirementsSatisfied()
+        {
+            return GameManager.Instance.grinderShapes.Count() >= targets.Count;
+        }
 
-        public override bool CanAdd() => GameManager.Instance.grinderShapes.Count() < targets.Count;
+        public override bool CanAdd()
+        {
+            return GameManager.Instance.grinderShapes.Count() < targets.Count;
+        }
 
         public override void ShapeAdded(ShapeScript shape)
         {
@@ -90,6 +83,20 @@ namespace Scenarios.Goals
         public override void ClearScreen()
         {
             _screenText.text = "";
+        }
+
+        private enum Attribute
+        {
+            Faces,
+            Edges,
+            Vertices
+        }
+
+        [Serializable]
+        private struct Target
+        {
+            public GameObject shape;
+            public Attribute attribute;
         }
     }
 }

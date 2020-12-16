@@ -1,17 +1,20 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
 using Utils;
 
 public class InstructionsManager : MonoSingleton<InstructionsManager>
 {
+    private Transform _cameraTransform;
 
     private TMP_Text _tmp;
-    private Transform _cameraTransform;
-    
+
+    private void Update()
+    {
+        // var position = _cameraTransform.position +
+        //                2 * (-_cameraTransform.up - new Vector3(0, 2 * _cameraTransform.forward.y, 0));
+        // transform.SetPositionAndRotation(position, _cameraTransform.rotation);
+    }
+
     protected override void Init()
     {
         _tmp = GetComponentInChildren<TMP_Text>();
@@ -21,12 +24,5 @@ public class InstructionsManager : MonoSingleton<InstructionsManager>
     public void SetText(string text)
     {
         _tmp.text = text;
-    }
-
-    private void Update()
-    {
-        // var position = _cameraTransform.position +
-        //                2 * (-_cameraTransform.up - new Vector3(0, 2 * _cameraTransform.forward.y, 0));
-        // transform.SetPositionAndRotation(position, _cameraTransform.rotation);
     }
 }

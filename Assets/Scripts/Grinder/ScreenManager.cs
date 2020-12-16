@@ -1,7 +1,4 @@
-﻿using Managers;
-using TMPro;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 using Utils;
 
 namespace Grinder
@@ -10,10 +7,7 @@ namespace Grinder
     {
         public GameObject SetScreen(GameObject screen)
         {
-            foreach (Transform t in transform)
-            {
-                Destroy(t.gameObject);
-            }
+            foreach (Transform t in transform) Destroy(t.gameObject);
             return Instantiate(screen, transform);
         }
     }
