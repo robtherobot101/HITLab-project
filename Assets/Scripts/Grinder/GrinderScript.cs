@@ -34,12 +34,13 @@ public class GrinderScript : MonoBehaviour
 
     private void OnMouseDown()
     {
-        var grindingObject = PlayerController.Instance.Take();
-        if (!_grinding && GameManager.Instance.CurrentGoal.CanAdd())
-        {
-            _shapes.Add(grindingObject.GetComponent<ShapeScript>());
-            GameManager.Instance.CurrentGoal.ShapeAdded(grindingObject.GetComponent<ShapeScript>());
-        }
+        if (_grinding || !GameManager.Instance.CurrentGoal.CanAdd()) return;
+        
+        var grindingObject = PlayerController.Instance.Take("Shape");
+        if (grindingObject == null) return;
+        
+        _shapes.Add(grindingObject.GetComponent<ShapeScript>());
+        GameManager.Instance.CurrentGoal.ShapeAdded(grindingObject.GetComponent<ShapeScript>());
     }
 
     private IEnumerator Grind()

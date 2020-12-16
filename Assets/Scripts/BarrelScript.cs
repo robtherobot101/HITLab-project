@@ -13,7 +13,7 @@ public class BarrelScript : MonoBehaviour
     
     private void OnMouseDown()
     {
-        PlayerController.Instance.Take();
+        PlayerController.Instance.Take("Shape");
         PlayerController.Instance.Give(shapePrefab);
     }
 

@@ -29,11 +29,7 @@ namespace Grinder
 
         private void OnMouseDown()
         {
-            if (!_growing)
-            {
-                PlayerController.Instance.Give(gameObject);
-                Revert();
-            }
+            if (!_growing && PlayerController.Instance.Give(gameObject)) Revert();
         }
 
         private void Revert()

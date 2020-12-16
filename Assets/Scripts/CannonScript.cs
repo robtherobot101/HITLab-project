@@ -78,15 +78,14 @@ using Utils;
             return;
         }
 
-        var o = PlayerController.Instance.Take();
-        if (o != null)
-        {
-            FacilitatorScript.Instance.Hide();
-            _gunpowder = o.GetComponent<HeapScript>().Size;
-            StartCoroutine(_moveCannon(firingPosition, firingRotation, MoveTime));
-            _firingPosition = true;
-            _primed = true;
-        }
+        var o = PlayerController.Instance.Take("Gunpowder");
+        if (o == null) return;
+        
+        FacilitatorScript.Instance.Hide();
+        _gunpowder = o.GetComponent<HeapScript>().Size;
+        StartCoroutine(_moveCannon(firingPosition, firingRotation, MoveTime));
+        _firingPosition = true;
+        _primed = true;
     }
 
     private void OnMouseEnter()
