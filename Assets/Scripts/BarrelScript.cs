@@ -11,8 +11,6 @@ public class BarrelScript : MonoBehaviour
 
     [SerializeField] private GameObject shapePrefab;
     
-
-    
     private void OnMouseDown()
     {
         PlayerController.Instance.Take();

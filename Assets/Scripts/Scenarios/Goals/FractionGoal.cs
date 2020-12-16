@@ -21,6 +21,7 @@ namespace Scenarios.Goals
         [SerializeField] private ExpressedAs goalExpression;
 
         [SerializeField] private Fraction goal;
+        private FractionScript[] _fractions;
 
         private int minTerms = 2;
         private int maxTerms = 2;
@@ -41,12 +42,17 @@ namespace Scenarios.Goals
         // TODO Make this better x10000
         public override void ShapeAdded(ShapeScript shape)
         {
-            screen.GetComponentsInChildren<FractionScript>()[GameManager.Instance.grinderShapes.Count() - 1].SetFraction(shape.Fraction, Color.red);
+            _fractions[GameManager.Instance.grinderShapes.Count() - 1].SetFraction(shape.Fraction, Color.red);
+        }
+
+        protected override void ScreenRegistered()
+        {
+            _fractions = screen.GetComponentsInChildren<FractionScript>();
         }
 
         public override void ClearScreen()
         {
-            foreach (var fractionText in screen.GetComponentsInChildren<FractionScript>()) fractionText.SetFraction(Fraction.Zero, Color.black);
+            foreach (var fractionText in _fractions) fractionText.SetFraction(Fraction.Zero, Color.black);
         }
 
         public override string GoalText()

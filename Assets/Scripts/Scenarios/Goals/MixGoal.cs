@@ -26,6 +26,7 @@ namespace Scenarios.Goals
         }
 
         [SerializeField] private List<Target> targets;
+        private TMP_Text _screenText;
 
         public override Outcome GetOutcome()
         {
@@ -78,12 +79,17 @@ namespace Scenarios.Goals
 
         public override void ShapeAdded(ShapeScript shape)
         {
-            screen.GetComponentInChildren<TMP_Text>().text += $"{GameManager.Instance.grinderShapes.Count()}. {shape.ShapeName}\n";
+            _screenText.text += $"{GameManager.Instance.grinderShapes.Count()}. {shape.ShapeName}\n";
+        }
+
+        protected override void ScreenRegistered()
+        {
+            _screenText = screen.GetComponentInChildren<TMP_Text>();
         }
 
         public override void ClearScreen()
         {
-            screen.GetComponentInChildren<TMP_Text>().text = "\n";
+            _screenText.text = "";
         }
     }
 }

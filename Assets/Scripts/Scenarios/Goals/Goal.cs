@@ -55,7 +55,10 @@ namespace Scenarios.Goals
         public void DisplayScreen()
         {
             screen = ScreenManager.Instance.SetScreen(screenPrefab);
+            ScreenRegistered();
         }
+
+        protected abstract void ScreenRegistered();
 
         public abstract void ClearScreen();
 
