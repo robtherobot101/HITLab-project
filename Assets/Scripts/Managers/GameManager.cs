@@ -42,7 +42,7 @@ namespace Managers
             {
                 var barrel = BarrelScript.Create(barrelPrefab,
                     barrelPrefab.transform.position + Vector3.left * (1.5f * i), Quaternion.LookRotation(Vector3.back),
-                    shape);
+                    shape, CurrentGoal.FractionLabels);
                 _barrels.Add(barrel);
                 i++;
             }

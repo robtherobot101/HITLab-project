@@ -17,7 +17,7 @@ namespace Scenarios.Goals
 
         private readonly int _minTerms = 2;
 
-        //protected _fractionLabels = true;
+        public override bool FractionLabels => true;
 
         public override Outcome GetOutcome()
         {

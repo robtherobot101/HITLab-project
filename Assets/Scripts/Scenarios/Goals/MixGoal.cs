@@ -12,6 +12,8 @@ namespace Scenarios.Goals
     {
         [SerializeField] private List<Target> targets;
         private TMP_Text _screenText;
+        public override bool FractionLabels => false;
+
 
         public override Outcome GetOutcome()
         {

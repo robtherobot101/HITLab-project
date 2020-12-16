@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Grinder;
 using UnityEngine;
 
@@ -21,9 +22,8 @@ namespace Scenarios.Goals
         /// </summary>
         [SerializeField] private List<GameObject> resources;
 
-        protected bool fractionLabels;
+        public virtual bool FractionLabels => true;
         protected GameObject screen;
-        public bool FractionLabels => fractionLabels;
 
         public IEnumerable<GameObject> Resources => resources;
 
