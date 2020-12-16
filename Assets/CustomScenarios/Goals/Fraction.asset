@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ac71d923302ee349825632d63d2d996, type: 3}
   m_Name: Fraction
   m_EditorClassIdentifier: 
+  screenPrefab: {fileID: 9020772216965816971, guid: 7e75425d53bc22c4696832e699bdbf2d,
+    type: 3}
   resources:
   - {fileID: 2482678504970738660, guid: 471fffb5b13626f41b9fb755a300a12f, type: 3}
   - {fileID: 2482678504970738660, guid: 98070f94c0ea40949b8a6cf8cc976882, type: 3}

@@ -19,7 +19,7 @@ public class GrinderScript : MonoBehaviour
     private bool _ground = false;
 
     public IEnumerable<ShapeScript> Shapes => _shapes;
-    private ISet<ShapeScript> _shapes = new HashSet<ShapeScript>();
+    private ICollection<ShapeScript> _shapes = new List<ShapeScript>();
     
     // Start is called before the first frame update
     private void Start()

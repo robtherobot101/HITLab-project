@@ -10,6 +10,10 @@ namespace Grinder
     {
         public GameObject SetScreen(GameObject screen)
         {
+            foreach (Transform t in transform)
+            {
+                Destroy(t.gameObject);
+            }
             return Instantiate(screen, transform);
         }
     }

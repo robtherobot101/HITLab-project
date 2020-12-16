@@ -58,6 +58,9 @@ using Utils;
                 break;
             case Outcome.Achieved:
                 break;
+            case Outcome.NotAchieved:
+                rb.velocity *= 0;
+                break;
             default:
                 throw new ArgumentOutOfRangeException();
         }
