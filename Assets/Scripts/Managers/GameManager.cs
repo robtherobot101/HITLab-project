@@ -14,7 +14,7 @@ namespace Managers
         private readonly List<GameObject> _barrels = new List<GameObject>();
         private List<Goal>.Enumerator _goalEnumerator;
 
-        public IEnumerable<ShapeScript> grinderShapes;
+        public List<ShapeScript> grinderShapes;
         public Goal CurrentGoal => _goalEnumerator.Current;
 
         private void Start()

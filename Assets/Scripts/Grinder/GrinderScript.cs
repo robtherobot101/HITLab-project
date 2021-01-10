@@ -15,9 +15,9 @@ namespace Grinder
         private GameObject _handle;
         private HeapScript _heap;
         private ParticleSystem _powder;
-        private readonly ICollection<ShapeScript> _shapes = new List<ShapeScript>();
+        private readonly List<ShapeScript> _shapes = new List<ShapeScript>();
 
-        public IEnumerable<ShapeScript> Shapes => _shapes;
+        public List<ShapeScript> Shapes => _shapes;
 
         // Start is called before the first frame update
         private void Start()

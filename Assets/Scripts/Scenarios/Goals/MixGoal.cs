@@ -20,7 +20,7 @@ namespace Scenarios.Goals
             var i = 0;
             foreach (var shape in GameManager.Instance.grinderShapes)
             {
-                if (!shape.ShapeName.Equals(targets[i].shape.GetComponent<ShapeScript>().ShapeName))
+                if (!shape.ShapeName.Equals(targets[i].Shape.ShapeName))
                     return Outcome.NotAchieved;
                 i++;
             }
@@ -37,9 +37,9 @@ namespace Scenarios.Goals
                 s += $"{i + 1}. A shape with ";
                 s += target.attribute switch
                 {
-                    Attribute.Faces => target.shape.GetComponent<ShapeScript>().Faces.ToString(),
-                    Attribute.Edges => target.shape.GetComponent<ShapeScript>().Edges.ToString(),
-                    Attribute.Vertices => target.shape.GetComponent<ShapeScript>().Vertices.ToString(),
+                    Attribute.Faces => target.Shape.Faces.ToString(),
+                    Attribute.Edges => target.Shape.Edges.ToString(),
+                    Attribute.Vertices => target.Shape.Vertices.ToString(),
                     _ => throw new ArgumentOutOfRangeException()
                 };
 
@@ -52,7 +52,34 @@ namespace Scenarios.Goals
 
         public override string FeedbackText()
         {
-            return "THIS PLACEHOLDER TEXT _WILL_ BE CHANGED";
+            var s = "";
+
+            for (var i = 0; i < targets.Count; i++)
+            {
+                s += $"{i + 1}. ";
+                int goal;
+                int count;
+                switch (targets[i].attribute)
+                {
+                    case Attribute.Faces:
+                        goal = targets[i].Shape.Faces;
+                        count = GameManager.Instance.grinderShapes[i].Faces;
+                        break;
+                    case Attribute.Edges:
+                        goal = targets[i].Shape.Edges;
+                        count = GameManager.Instance.grinderShapes[i].Edges;
+                        break;
+                    case Attribute.Vertices:
+                        goal = targets[i].Shape.Vertices;
+                        count = GameManager.Instance.grinderShapes[i].Vertices;
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+                if (goal == count) s += $"That's correct. {GameManager.Instance.grinderShapes[i].ShapeName}s have {goal} {targets[i].attribute.ToString()}.\n";
+                else s += $"That's incorrect. {GameManager.Instance.grinderShapes[i].ShapeName}s do not have {goal} {targets[i].attribute.ToString()}.\n";
+            }
+            return s;
         }
 
         public override bool RequirementsSatisfied()
@@ -90,8 +117,10 @@ namespace Scenarios.Goals
         [Serializable]
         private struct Target
         {
-            public GameObject shape;
+            [SerializeField] private GameObject shape;
+            public ShapeScript Shape => shape.GetComponent<ShapeScript>();
             public Attribute attribute;
+            
         }
     }
 }
