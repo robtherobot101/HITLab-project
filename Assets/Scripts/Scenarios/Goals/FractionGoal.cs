@@ -57,7 +57,7 @@ namespace Scenarios.Goals
 
         public override string GoalText()
         {
-            return $"Make {goal} kg of gunpowder to hit the ship.";
+            return $"Add two fractions to make {goal} kg of gunpowder.";
         }
 
         public override string FeedbackText()

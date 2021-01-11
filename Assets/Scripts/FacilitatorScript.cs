@@ -31,9 +31,9 @@ public class FacilitatorScript : MonoSingleton<FacilitatorScript>
 
     public IEnumerator Bounce()
     {
-        var initialPos = _hat.transform.position;
-        var initialRot = _hat.transform.rotation;
-        yield return Lerper.Lerp(_hat.transform, initialPos + Vector3.up,
+        var initialPos = _hat.transform.localPosition;
+        var initialRot = _hat.transform.localRotation;
+        yield return Lerper.Lerp(_hat.transform, initialPos + 0.05f * Vector3.up,
             Quaternion.FromToRotation(Vector3.left, Vector3.up), 0.15f);
         yield return Lerper.Lerp(_hat.transform, initialPos, initialRot, 0.15f);
     }

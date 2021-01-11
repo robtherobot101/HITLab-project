@@ -30,7 +30,7 @@ namespace Scenarios.Goals
 
         public override string GoalText()
         {
-            var s = "";
+            var s = "Put the following shapes into the machine, in the order they are given:\n";
             var i = 0;
             foreach (var target in targets)
             {

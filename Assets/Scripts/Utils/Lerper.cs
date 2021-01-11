@@ -8,21 +8,21 @@ namespace Utils
         public static IEnumerator Lerp(Transform tf, Vector3 goalPos, Quaternion goalRot, float duration)
         {
             float time = 0;
-            var startPos = tf.position;
-            var startRot = tf.rotation;
+            var startPos = tf.localPosition;
+            var startRot = tf.localRotation;
 
             while (time < duration)
             {
                 var t = time / duration;
                 t = t * t * (3f - 2f * t);
-                tf.position = Vector3.Lerp(startPos, goalPos, t);
-                tf.rotation = Quaternion.Lerp(startRot, goalRot, t);
+                tf.localPosition = Vector3.Lerp(startPos, goalPos, t);
+                tf.localRotation = Quaternion.Lerp(startRot, goalRot, t);
                 time += Time.deltaTime;
                 yield return null;
             }
 
-            tf.position = goalPos;
-            tf.rotation = goalRot;
+            tf.localPosition = goalPos;
+            tf.localRotation = goalRot;
         }
     }
 }
