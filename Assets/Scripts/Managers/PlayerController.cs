@@ -32,7 +32,7 @@ namespace Managers
 
         public bool Give([CanBeNull] GameObject o)
         {
-            if (_holding != null) return false;
+            if (_isHolding) return false;
             _holding = Instantiate(o);
             _holding.layer = 2;
             _isHolding = true;
@@ -42,8 +42,7 @@ namespace Managers
         [CanBeNull]
         public GameObject Take(string ttag)
         {
-            if (_holding == null || !_holding.CompareTag(ttag)) return null;
-
+            if (!_isHolding || !_holding.CompareTag(ttag)) return null;
             Destroy(_holding);
             _isHolding = false;
             return _holding;

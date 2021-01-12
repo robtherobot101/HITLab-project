@@ -14,8 +14,7 @@ public class BarrelScript : MonoBehaviour
 
     private void OnMouseDown()
     {
-        PlayerController.Instance.Take("Shape");
-        PlayerController.Instance.Give(shapePrefab);
+        if (PlayerController.Instance.Take("Shape") == null) PlayerController.Instance.Give(shapePrefab);
     }
 
     public void Init(GameObject shape, bool showFraction = false)
