@@ -12,10 +12,10 @@ namespace Scenarios.Goals
         [SerializeField] private ExpressedAs goalExpression;
 
         [SerializeField] private Fraction goal;
-        private FractionScript[] _fractions;
         private readonly int _maxTerms = 2;
 
         private readonly int _minTerms = 2;
+        private FractionScript[] _fractions;
 
         public override bool FractionLabels => true;
 

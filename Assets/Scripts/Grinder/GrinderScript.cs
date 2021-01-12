@@ -15,9 +15,8 @@ namespace Grinder
         private GameObject _handle;
         private HeapScript _heap;
         private ParticleSystem _powder;
-        private readonly List<ShapeScript> _shapes = new List<ShapeScript>();
 
-        public List<ShapeScript> Shapes => _shapes;
+        public List<ShapeScript> Shapes { get; } = new List<ShapeScript>();
 
         // Start is called before the first frame update
         private void Start()
@@ -37,7 +36,7 @@ namespace Grinder
             var grindingObject = PlayerController.Instance.Take("Shape");
             if (grindingObject == null) return;
 
-            _shapes.Add(grindingObject.GetComponent<ShapeScript>());
+            Shapes.Add(grindingObject.GetComponent<ShapeScript>());
             GameManager.Instance.CurrentGoal.ShapeAdded(grindingObject.GetComponent<ShapeScript>());
         }
 
@@ -45,7 +44,7 @@ namespace Grinder
         {
             _grinding = true;
             _powder.Play();
-            StartCoroutine(_heap.Grow(_shapes.Aggregate(Fraction.Zero, (current, shape) => current + shape.Fraction)));
+            StartCoroutine(_heap.Grow(Shapes.Aggregate(Fraction.Zero, (current, shape) => current + shape.Fraction)));
             float t = 0;
             while (t < 4)
             {
@@ -70,7 +69,7 @@ namespace Grinder
         private void Clear()
         {
             _ground = false;
-            _shapes.Clear();
+            Shapes.Clear();
         }
     }
 }

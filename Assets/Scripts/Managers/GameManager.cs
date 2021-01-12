@@ -11,10 +11,10 @@ namespace Managers
     {
         [SerializeField] private List<Goal> goals = new List<Goal>();
         [SerializeField] private GameObject barrelPrefab;
-        private readonly List<GameObject> _barrels = new List<GameObject>();
-        private List<Goal>.Enumerator _goalEnumerator;
 
         public List<ShapeScript> grinderShapes;
+        private readonly List<GameObject> _barrels = new List<GameObject>();
+        private List<Goal>.Enumerator _goalEnumerator;
         public Goal CurrentGoal => _goalEnumerator.Current;
 
         private void Start()

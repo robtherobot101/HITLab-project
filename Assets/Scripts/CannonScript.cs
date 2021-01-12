@@ -16,6 +16,8 @@ public class CannonScript : MonoBehaviour
 
     [SerializeField] private Vector3 firingPosition = new Vector3(8.11462307f, 4.34617138f, 0.218954653f);
     [SerializeField] private Vector3 preparingPosition = new Vector3(6.20499992f, 4.34617138f, 0.218954653f);
+    private readonly Quaternion _firingRotation = Quaternion.Euler(0, 0, 0);
+    private readonly Quaternion _preparingRotation = Quaternion.Euler(0, 90, 0);
     private AudioSource _audio;
     private bool _firingPosition;
     private Fraction _gunpowder;
@@ -25,8 +27,6 @@ public class CannonScript : MonoBehaviour
     private Material _material;
     private bool _moving;
     private bool _primed;
-    private readonly Quaternion _firingRotation = Quaternion.Euler(0, 0, 0);
-    private readonly Quaternion _preparingRotation = Quaternion.Euler(0, 90, 0);
 
     private void Reset()
     {

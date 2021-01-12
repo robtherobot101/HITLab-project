@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using Managers;
 using TMPro;
 using UnityEngine;
@@ -76,25 +75,31 @@ namespace Scenarios.Goals
                     default:
                         throw new ArgumentOutOfRangeException();
                 }
-                if (goal == count) s += $"That's correct. {GameManager.Instance.grinderShapes[i].ShapeName}s have {goal} {targets[i].attribute.ToString()}.\n";
-                else s += $"That's incorrect. {GameManager.Instance.grinderShapes[i].ShapeName}s do not have {goal} {targets[i].attribute.ToString()}.\n";
+
+                if (goal == count)
+                    s +=
+                        $"That's correct. {GameManager.Instance.grinderShapes[i].ShapeName}s have {goal} {targets[i].attribute.ToString()}.\n";
+                else
+                    s +=
+                        $"That's incorrect. {GameManager.Instance.grinderShapes[i].ShapeName}s do not have {goal} {targets[i].attribute.ToString()}.\n";
             }
+
             return s;
         }
 
         public override bool RequirementsSatisfied()
         {
-            return GameManager.Instance.grinderShapes.Count() >= targets.Count;
+            return GameManager.Instance.grinderShapes.Count >= targets.Count;
         }
 
         public override bool CanAdd()
         {
-            return GameManager.Instance.grinderShapes.Count() < targets.Count;
+            return GameManager.Instance.grinderShapes.Count < targets.Count;
         }
 
         public override void ShapeAdded(ShapeScript shape)
         {
-            _screenText.text += $"{GameManager.Instance.grinderShapes.Count()}. {shape.ShapeName}\n";
+            _screenText.text += $"{GameManager.Instance.grinderShapes.Count}. {shape.ShapeName}\n";
         }
 
         protected override void ScreenRegistered()
@@ -118,9 +123,8 @@ namespace Scenarios.Goals
         private struct Target
         {
             [SerializeField] private GameObject shape;
-            public ShapeScript Shape => shape.GetComponent<ShapeScript>();
             public Attribute attribute;
-            
+            public ShapeScript Shape => shape.GetComponent<ShapeScript>();
         }
     }
 }

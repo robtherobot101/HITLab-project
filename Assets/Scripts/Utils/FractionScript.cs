@@ -5,8 +5,8 @@ namespace Utils
 {
     public class FractionScript : MonoBehaviour
     {
-        private Fraction _fraction;
         private TMP_Text _denText;
+        private Fraction _fraction;
 
         private TMP_Text _numText;
 
@@ -23,6 +23,7 @@ namespace Utils
                         _denText = p;
                         break;
                 }
+
             SetFraction(_fraction);
         }
 
