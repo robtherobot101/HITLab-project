@@ -5,25 +5,13 @@ namespace Utils
 {
     public class FractionScript : MonoBehaviour
     {
-        private TMP_Text _denText;
+        [SerializeField] private TMP_Text numText;
+        [SerializeField] private TMP_Text denText;
+        [SerializeField] private TMP_Text vinculum;
         private Fraction _fraction;
-
-        private TMP_Text _numText;
 
         private void Start()
         {
-            var o = GetComponentsInChildren<TMP_Text>();
-            foreach (var p in o)
-                switch (p.name)
-                {
-                    case "Numerator":
-                        _numText = p;
-                        break;
-                    case "Denominator":
-                        _denText = p;
-                        break;
-                }
-
             SetFraction(_fraction);
         }
 
@@ -35,13 +23,15 @@ namespace Utils
         public void SetFraction(Fraction fraction, Color colour)
         {
             _fraction = fraction;
-            if (_numText != null)
+            if (numText != null)
             {
-                _numText.text = fraction.Numerator.ToString();
-                _denText.text = fraction.Denominator.ToString();
+                numText.text = fraction.Numerator.ToString();
+                denText.text = fraction.Denominator.ToString();
             }
 
-            foreach (var child in GetComponentsInChildren<TMP_Text>()) child.color = colour;
+            numText.color = colour;
+            denText.color = colour;
+            vinculum.color = colour;
         }
     }
 }

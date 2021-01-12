@@ -7,10 +7,9 @@ namespace Grinder
 {
     public class HeapScript : MonoBehaviour
     {
-        [SerializeField] private Fraction size = new Fraction(0, 1);
         private bool _growing;
 
-        public Fraction Size => size;
+        public Fraction Size { get; private set; } = new Fraction(0, 1);
 
         private void OnMouseDown()
         {
@@ -30,14 +29,14 @@ namespace Grinder
                 yield return null;
             }
 
-            size += fraction;
+            Size += fraction;
             _growing = false;
         }
 
         private void Revert()
         {
             transform.localScale -= new Vector3(0, transform.localScale.y, 0);
-            size = new Fraction(0, 1);
+            Size = new Fraction(0, 1);
         }
     }
 }

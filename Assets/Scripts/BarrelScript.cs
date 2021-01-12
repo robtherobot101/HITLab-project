@@ -1,4 +1,5 @@
-﻿using Managers;
+﻿using System;
+using Managers;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,7 +7,10 @@ using Utils;
 
 public class BarrelScript : MonoBehaviour
 {
-    [SerializeField] private GameObject shapePrefab;
+    private GameObject shapePrefab;
+    [SerializeField] private TMP_Text text;
+    [SerializeField] private FractionScript fraction;
+    [SerializeField] private HorizontalLayoutGroup fractionText;
 
     private void OnMouseDown()
     {
@@ -14,14 +18,11 @@ public class BarrelScript : MonoBehaviour
         PlayerController.Instance.Give(shapePrefab);
     }
 
-    public static GameObject Create(GameObject prefab, Vector3 position, Quaternion rotation, GameObject shape,
-        bool showFraction = false)
+    public void Init(GameObject shape, bool showFraction = false)
     {
-        var o = Instantiate(prefab, position, rotation);
-        o.GetComponent<BarrelScript>().shapePrefab = shape;
-        o.GetComponentInChildren<TMP_Text>().text = shape.GetComponent<ShapeScript>().ShapeName;
-        o.GetComponentInChildren<FractionScript>().SetFraction(shape.GetComponent<ShapeScript>().Fraction);
-        if (!showFraction) Destroy(o.GetComponentInChildren<HorizontalLayoutGroup>().gameObject);
-        return o;
+        shapePrefab = shape;
+        text.text = shape.GetComponent<ShapeScript>().ShapeName;
+        fraction.SetFraction(shape.GetComponent<ShapeScript>().Fraction);
+        if (!showFraction) Destroy(fractionText.gameObject);
     }
 }

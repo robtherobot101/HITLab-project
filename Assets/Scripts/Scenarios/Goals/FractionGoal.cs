@@ -21,7 +21,7 @@ namespace Scenarios.Goals
 
         public override Outcome GetOutcome()
         {
-            var count = GameManager.Instance.grinderShapes.Aggregate(new Fraction(0, 1),
+            var count = GameManager.Instance.GrinderShapes.Aggregate(new Fraction(0, 1),
                 (current, shape) => current + shape.Fraction);
 
             if (count > goal) return Outcome.Over;
@@ -31,18 +31,18 @@ namespace Scenarios.Goals
 
         public override bool RequirementsSatisfied()
         {
-            return GameManager.Instance.grinderShapes.Count() >= _minTerms;
+            return GameManager.Instance.GrinderShapes.Count() >= _minTerms;
         }
 
         public override bool CanAdd()
         {
-            return GameManager.Instance.grinderShapes.Count() < _maxTerms;
+            return GameManager.Instance.GrinderShapes.Count() < _maxTerms;
         }
 
         // TODO Make this better x10000
         public override void ShapeAdded(ShapeScript shape)
         {
-            _fractions[GameManager.Instance.grinderShapes.Count() - 1].SetFraction(shape.Fraction, Color.red);
+            _fractions[GameManager.Instance.GrinderShapes.Count() - 1].SetFraction(shape.Fraction, Color.red);
         }
 
         protected override void ScreenRegistered()
@@ -62,7 +62,7 @@ namespace Scenarios.Goals
 
         public override string FeedbackText()
         {
-            var fractions = GameManager.Instance.grinderShapes.Select(shape => shape.Fraction).ToList();
+            var fractions = GameManager.Instance.GrinderShapes.Select(shape => shape.Fraction).ToList();
             var s = string.Join(" + ", fractions);
             switch (GetOutcome())
             {

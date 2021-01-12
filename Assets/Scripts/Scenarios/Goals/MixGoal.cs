@@ -17,7 +17,7 @@ namespace Scenarios.Goals
         public override Outcome GetOutcome()
         {
             var i = 0;
-            foreach (var shape in GameManager.Instance.grinderShapes)
+            foreach (var shape in GameManager.Instance.GrinderShapes)
             {
                 if (!shape.ShapeName.Equals(targets[i].Shape.ShapeName))
                     return Outcome.NotAchieved;
@@ -62,15 +62,15 @@ namespace Scenarios.Goals
                 {
                     case Attribute.Faces:
                         goal = targets[i].Shape.Faces;
-                        count = GameManager.Instance.grinderShapes[i].Faces;
+                        count = GameManager.Instance.GrinderShapes[i].Faces;
                         break;
                     case Attribute.Edges:
                         goal = targets[i].Shape.Edges;
-                        count = GameManager.Instance.grinderShapes[i].Edges;
+                        count = GameManager.Instance.GrinderShapes[i].Edges;
                         break;
                     case Attribute.Vertices:
                         goal = targets[i].Shape.Vertices;
-                        count = GameManager.Instance.grinderShapes[i].Vertices;
+                        count = GameManager.Instance.GrinderShapes[i].Vertices;
                         break;
                     default:
                         throw new ArgumentOutOfRangeException();
@@ -78,10 +78,10 @@ namespace Scenarios.Goals
 
                 if (goal == count)
                     s +=
-                        $"That's correct. {GameManager.Instance.grinderShapes[i].ShapeName}s have {goal} {targets[i].attribute.ToString()}.\n";
+                        $"That's correct. {GameManager.Instance.GrinderShapes[i].ShapeName}s have {goal} {targets[i].attribute.ToString()}.\n";
                 else
                     s +=
-                        $"That's incorrect. {GameManager.Instance.grinderShapes[i].ShapeName}s do not have {goal} {targets[i].attribute.ToString()}.\n";
+                        $"That's incorrect. {GameManager.Instance.GrinderShapes[i].ShapeName}s do not have {goal} {targets[i].attribute.ToString()}.\n";
             }
 
             return s;
@@ -89,17 +89,17 @@ namespace Scenarios.Goals
 
         public override bool RequirementsSatisfied()
         {
-            return GameManager.Instance.grinderShapes.Count >= targets.Count;
+            return GameManager.Instance.GrinderShapes.Count >= targets.Count;
         }
 
         public override bool CanAdd()
         {
-            return GameManager.Instance.grinderShapes.Count < targets.Count;
+            return GameManager.Instance.GrinderShapes.Count < targets.Count;
         }
 
         public override void ShapeAdded(ShapeScript shape)
         {
-            _screenText.text += $"{GameManager.Instance.grinderShapes.Count}. {shape.ShapeName}\n";
+            _screenText.text += $"{GameManager.Instance.GrinderShapes.Count}. {shape.ShapeName}\n";
         }
 
         protected override void ScreenRegistered()

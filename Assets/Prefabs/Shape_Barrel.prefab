@@ -441,7 +441,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9faf9c1b05dbbf14cab9b169dfb97872, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shapePrefab: {fileID: 0}
+  text: {fileID: 261235499791032461}
+  fraction: {fileID: 1826078531130273826}
+  fractionText: {fileID: 3184088634431409785}
 --- !u!1 &4609294705748622019
 GameObject:
   m_ObjectHideFlags: 0
@@ -632,14 +634,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7800769332416585645}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.6}
+  m_LocalRotation: {x: 0.17175928, y: -0, z: -0, w: 0.98513895}
+  m_LocalPosition: {x: 0, y: 0.367, z: -0.556}
   m_LocalScale: {x: 1.2, y: 0.6, z: 0.1}
   m_Children:
   - {fileID: 2476184682995359831}
   m_Father: {fileID: 4479152765241474660}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 19.78, y: 0, z: 0}
 --- !u!33 &5493393573124965508
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -962,3 +964,15 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1272939506553512184}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1826078531130273826 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: -8575439715592679206, guid: 6492453cc7881b844822010b423bc70c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1272939506553512184}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 508d968981cd6bb4b84521bd8c0d3f6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

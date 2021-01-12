@@ -11,8 +11,9 @@ namespace Managers
     {
         [SerializeField] private List<Goal> goals = new List<Goal>();
         [SerializeField] private GameObject barrelPrefab;
+        [SerializeField] private GrinderScript grinder;
 
-        public List<ShapeScript> grinderShapes;
+        public List<ShapeScript> GrinderShapes => grinder.Shapes;
         private readonly List<GameObject> _barrels = new List<GameObject>();
         private List<Goal>.Enumerator _goalEnumerator;
         public Goal CurrentGoal => _goalEnumerator.Current;
@@ -21,7 +22,6 @@ namespace Managers
         {
             EventManager.Instance.missed += GiveFeedbackAndReset;
             EventManager.Instance.sunk += NextScenario;
-            grinderShapes = GameObject.Find("Grinder").GetComponent<GrinderScript>().Shapes;
 
             _goalEnumerator = goals.GetEnumerator();
             if (_goalEnumerator.MoveNext())
@@ -40,9 +40,9 @@ namespace Managers
 
             foreach (var shape in _goalEnumerator.Current.Resources.OrderBy(value => Random.value))
             {
-                var barrel = BarrelScript.Create(barrelPrefab,
-                    barrelPrefab.transform.position + Vector3.left * (1.5f * i), Quaternion.LookRotation(Vector3.back),
-                    shape, CurrentGoal.FractionLabels);
+                
+                var barrel = Instantiate(barrelPrefab, barrelPrefab.transform.position + Vector3.left * (1.5f * i), Quaternion.LookRotation(Vector3.back));
+                barrel.GetComponent<BarrelScript>().Init(shape, CurrentGoal.FractionLabels);
                 _barrels.Add(barrel);
                 i++;
             }
