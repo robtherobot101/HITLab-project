@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5408532412304232273}
   - component: {fileID: 5406576641207320550}
   m_Layer: 0
-  m_Name: Cannon_R_02
+  m_Name: Cannon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -109,7 +109,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78eb338f359d9e94795bedbea2998d68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cannonBallPrefab: {fileID: 1741076848593762074, guid: b70e09b5d64c32042bf038d92c8bc76c, type: 3}
+  fireSound: {fileID: 8300000, guid: 0d65dffa2e457aa4c943d17e0121a7d2, type: 3}
+  moveSound: {fileID: 8300000, guid: 1e6f6c240367cb04b9fc8e9f9c610fb3, type: 3}
+  cannonBallPrefab: {fileID: 1741076848593762074, guid: b70e09b5d64c32042bf038d92c8bc76c,
+    type: 3}
+  firingPosition: {x: 8.114623, y: 4.3461714, z: 0.21895465}
+  preparingPosition: {x: 6.205, y: 4.3461714, z: 0.21895465}
+  audioSource: {fileID: 5406576641207320550}
+  material: {fileID: 2100000, guid: 11ca4bc407f018f48993c28818e2822d, type: 2}
 --- !u!82 &5406576641207320550
 AudioSource:
   m_ObjectHideFlags: 0

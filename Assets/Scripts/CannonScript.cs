@@ -18,13 +18,13 @@ public class CannonScript : MonoBehaviour
     [SerializeField] private Vector3 preparingPosition = new Vector3(6.20499992f, 4.34617138f, 0.218954653f);
     private readonly Quaternion _firingRotation = Quaternion.Euler(0, 0, 0);
     private readonly Quaternion _preparingRotation = Quaternion.Euler(0, 90, 0);
-    private AudioSource _audio;
+    [SerializeField] private AudioSource audioSource;
     private bool _firingPosition;
     private Fraction _gunpowder;
 
 
     private Color _initialColour;
-    private Material _material;
+    [SerializeField] private Material material;
     private bool _moving;
     private bool _primed;
 
@@ -37,8 +37,6 @@ public class CannonScript : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        _audio = gameObject.GetComponent<AudioSource>();
-        _material = gameObject.GetComponent<Renderer>().material;
         EventManager.Instance.missed += Reset;
         EventManager.Instance.reset += Reset;
     }
@@ -64,18 +62,18 @@ public class CannonScript : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        _initialColour = _material.color;
-        _material.color = Color.yellow;
+        _initialColour = material.color;
+        material.color = Color.yellow;
     }
 
     private void OnMouseExit()
     {
-        _material.color = _initialColour;
+        material.color = _initialColour;
     }
 
     private void Fire()
     {
-        _audio.PlayOneShot(fireSound);
+        audioSource.PlayOneShot(fireSound);
         _primed = false;
         var cannonBall = Instantiate(cannonBallPrefab);
         StartCoroutine(FacilitatorScript.Instance.Bounce());
@@ -103,7 +101,7 @@ public class CannonScript : MonoBehaviour
     private IEnumerator _moveCannon(Vector3 goalPos, Quaternion goalRot, float duration)
     {
         _moving = true;
-        _audio.PlayOneShot(moveSound);
+        audioSource.PlayOneShot(moveSound);
         yield return Lerper.Lerp(gameObject.transform, goalPos, goalRot, duration);
         _moving = false;
     }
