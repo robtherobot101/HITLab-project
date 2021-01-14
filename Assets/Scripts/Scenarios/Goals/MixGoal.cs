@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using Grinder;
 using Managers;
 using TMPro;
 using UnityEngine;
 
 namespace Scenarios.Goals
 {
-    [CreateAssetMenu]
     public class MixGoal : Goal
     {
         [SerializeField] private List<Target> targets;

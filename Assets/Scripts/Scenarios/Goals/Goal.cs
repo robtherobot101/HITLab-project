@@ -11,8 +11,8 @@ namespace Scenarios.Goals
         NotAchieved,
         Achieved
     }
-
-    public abstract class Goal : ScriptableObject
+    
+    public abstract class Goal : MonoBehaviour
     {
         [SerializeField] private GameObject screenPrefab;
 
@@ -25,7 +25,7 @@ namespace Scenarios.Goals
 
         public virtual bool FractionLabels => true;
 
-        public IEnumerable<GameObject> Resources => resources;
+        public virtual List<GameObject> Resources => resources;
 
         /// <summary>
         ///     Whether the goal was achieved and if not, how it failed.
@@ -51,7 +51,7 @@ namespace Scenarios.Goals
 
         public abstract void ShapeAdded(ShapeScript shape);
 
-        public void DisplayScreen()
+        public virtual void DisplayScreen()
         {
             screen = ScreenManager.Instance.SetScreen(screenPrefab);
             ScreenRegistered();

@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Linq;
+using Grinder;
 using Managers;
 using UnityEngine;
 using Utils;
 
 namespace Scenarios.Goals
 {
-    [CreateAssetMenu]
     public class FractionGoal : Goal
     {
         [SerializeField] private ExpressedAs goalExpression;

@@ -31,6 +31,7 @@ public class EnemyScript : MonoBehaviour
         _initialPosition = _tr.position;
         _initialRotation = _tr.rotation;
         //EventManager.Instance.reset += Reset;
+        Reset();
     }
 
     private void OnTriggerEnter(Collider other)

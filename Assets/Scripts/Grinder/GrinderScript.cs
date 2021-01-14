@@ -15,6 +15,7 @@ namespace Grinder
         [SerializeField] private GameObject handle;
         [SerializeField] private HeapScript heap;
         [SerializeField] private ParticleSystem powder;
+        [SerializeField] private ScreenManager screenManager;
 
         public List<ShapeScript> Shapes { get; } = new List<ShapeScript>();
 

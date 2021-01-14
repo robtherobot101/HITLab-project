@@ -1,53 +1,64 @@
-﻿// using System;
-// using System.Collections.Generic;
-// using System.Linq;
-// using UnityEngine;
-//
-// namespace Scenarios.Goals
-// {
-//     public class CompositeGoal : Goal
-//     {
-//         
-//         private IEnumerable<Goal> _members = new List<Goal>();
-//         
-//         public override Outcome GetOutcome()
-//         {
-//             foreach (var member in _members)
-//             {
-//                 if (member.GetOutcome() != Outcome.Achieved) return member.GetOutcome();
-//             }
-//             return Outcome.Achieved;
-//         }
-//
-//         public override string GoalText()
-//         {
-//             return _members.Aggregate("", (current, member) => current + (member.GoalText() + '\n'));
-//         }
-//
-//         public override string FeedbackText()
-//         {
-//             return _members.Aggregate("", (current, member) => current + (member.FeedbackText() + '\n'));
-//         }
-//
-//         public override bool RequirementsSatisfied()
-//         {
-//             return _members.All(member => member.RequirementsSatisfied());
-//         }
-//
-//         public override bool CanAdd()
-//         {
-//             return _members.All(member => member.CanAdd());
-//         }
-//
-//         public override void ShapeAdded(ShapeScript shape)
-//         {
-//             throw new NotImplementedException();
-//         }
-//
-//         public override void ClearScreen()
-//         {
-//             throw new NotImplementedException();
-//         }
-//     }
-// }
+﻿using System.Collections.Generic;
+using Managers;
+using UnityEngine;
 
+namespace Scenarios.Goals
+{
+    public class CompositeGoal : Goal
+    {
+        public override bool FractionLabels => CurrentGoal.FractionLabels;
+        public override List<GameObject> Resources => CurrentGoal.Resources;
+
+        [SerializeField] private List<Goal> goals;
+        private int _goalIndex = 0;
+        private Goal CurrentGoal => goals[_goalIndex];
+        public override Outcome GetOutcome()
+        {
+            return CurrentGoal.GetOutcome();
+        }
+
+        public override string GoalText()
+        {
+            return CurrentGoal.GoalText();
+        }
+
+        public override string FeedbackText()
+        {
+            return CurrentGoal.FeedbackText();
+        }
+
+        public override bool RequirementsSatisfied()
+        {
+            return CurrentGoal.RequirementsSatisfied();
+        }
+
+        public override bool CanAdd()
+        {
+            return CurrentGoal.CanAdd();
+        }
+
+        public override void ShapeAdded(ShapeScript shape)
+        {
+            CurrentGoal.ShapeAdded(shape);
+            if (CurrentGoal.GetOutcome() != Outcome.Achieved) return;
+            _goalIndex++;
+            if (_goalIndex >= goals.Count) EventManager.Instance.sunk?.Invoke();
+            else GameManager.Instance.SetupGoal();
+        }
+
+        protected override void ScreenRegistered()
+        {
+            
+        }
+
+        public override void ClearScreen()
+        {
+            CurrentGoal.ClearScreen();
+        }
+
+        public override void DisplayScreen()
+        {
+            CurrentGoal.DisplayScreen();
+        }
+    }
+}

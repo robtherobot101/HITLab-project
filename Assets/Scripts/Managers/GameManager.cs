@@ -24,12 +24,14 @@ namespace Managers
             EventManager.Instance.sunk += NextScenario;
 
             _goalEnumerator = goals.GetEnumerator();
-            if (_goalEnumerator.MoveNext())
-            {
-                GenerateBarrels();
-                UpdateInstructions();
-                _goalEnumerator.Current.DisplayScreen();
-            }
+            if (_goalEnumerator.MoveNext()) SetupGoal();
+        }
+
+        public void SetupGoal()
+        {
+            GenerateBarrels();
+            UpdateInstructions();
+            _goalEnumerator.Current.DisplayScreen();
         }
 
         private void GenerateBarrels()
