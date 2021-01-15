@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using Managers;
 using UnityEngine;
 using Utils;
@@ -11,7 +12,7 @@ public class EnemyScript : MonoBehaviour
     private Rigidbody _rb;
     private Transform _tr;
 
-    private void Reset()
+    private void OnEnable()
     {
         _rb.useGravity = false;
 
@@ -24,14 +25,15 @@ public class EnemyScript : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    private void Start()
+    private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
         _tr = gameObject.transform;
         _initialPosition = _tr.position;
         _initialRotation = _tr.rotation;
         //EventManager.Instance.reset += Reset;
-        Reset();
+        //Reset();
+        gameObject.SetActive(false);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -48,7 +50,8 @@ public class EnemyScript : MonoBehaviour
         _rb.useGravity = true;
         _rb.angularVelocity = Vector3.back / 5;
         yield return new WaitUntil(() => transform.position.y < SinkHeight);
+        gameObject.SetActive(false);
         EventManager.Instance.sunk?.Invoke();
-        Reset();
+        //Reset();
     }
 }

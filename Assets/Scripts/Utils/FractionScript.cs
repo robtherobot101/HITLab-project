@@ -10,7 +10,10 @@ namespace Utils
         [SerializeField] private TMP_Text vinculum;
         private Fraction _fraction;
 
-        private void Start()
+        public TMP_Text NumText => numText;
+        public TMP_Text DenText => denText;
+
+        private void OnEnable()
         {
             SetFraction(_fraction);
         }

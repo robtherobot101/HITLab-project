@@ -22,9 +22,9 @@ namespace Scenarios.Goals
             return CurrentGoal.GoalText();
         }
 
-        public override string FeedbackText()
+        public override void GiveFeedback()
         {
-            return CurrentGoal.FeedbackText();
+            CurrentGoal.GiveFeedback();
         }
 
         public override bool RequirementsSatisfied()

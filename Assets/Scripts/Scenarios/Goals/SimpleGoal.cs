@@ -12,12 +12,14 @@ namespace Scenarios.Goals
         [SerializeField] private string instructions;
         [SerializeField] private string machineMessage;
         [SerializeField] private ShapeScript goalShape;
+        
         [SerializeField] private bool showFractions;
+        public override bool FractionLabels => showFractions;
 
         private TMP_Text _machineText;
         private ShapeScript _givenShape;
         
-        public override bool FractionLabels => showFractions;
+        
         
         public override Outcome GetOutcome()
         {
@@ -30,9 +32,9 @@ namespace Scenarios.Goals
             return instructions;
         }
 
-        public override string FeedbackText()
+        public override void GiveFeedback()
         {
-            return "Here is some feedback? Not entirely sure what this is supposed to say ¯\\_(ツ)_/¯";
+            FacilitatorScript.Instance.Say("Here is some feedback? Not entirely sure what this is supposed to say ¯\\_(ツ)_/¯");
         }
 
         public override bool RequirementsSatisfied()

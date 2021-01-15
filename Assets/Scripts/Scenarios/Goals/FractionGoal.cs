@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using Facilitator;
 using Grinder;
 using Managers;
 using UnityEngine;
@@ -10,6 +11,7 @@ namespace Scenarios.Goals
     public class FractionGoal : Goal
     {
         [SerializeField] private ExpressedAs goalExpression;
+        [SerializeField] private GameObject feedbackPrefab;
 
         [SerializeField] private Fraction goal;
         private readonly int _maxTerms = 2;
@@ -60,22 +62,27 @@ namespace Scenarios.Goals
             return $"Add two fractions to make {goal} kg of gunpowder.";
         }
 
-        public override string FeedbackText()
+        public override void GiveFeedback()
         {
+            // var fractions = GameManager.Instance.GrinderShapes.Select(shape => shape.Fraction).ToList();
+            // var s = string.Join(" + ", fractions);
+            // switch (GetOutcome())
+            // {
+            //     case Outcome.Over:
+            //         return $"{s} is more than {goal}. Try using fewer objects or smaller fractions.";
+            //     case Outcome.Under:
+            //         if (s.Equals("")) s = "0";
+            //         return $"{s} is less than {goal}. Try using more objects or bigger fractions.";
+            //     case Outcome.Achieved:
+            //         return $"That's correct. {s} = {goal}";
+            //     default:
+            //         throw new ArgumentOutOfRangeException();
+            // }
+            
             var fractions = GameManager.Instance.GrinderShapes.Select(shape => shape.Fraction).ToList();
-            var s = string.Join(" + ", fractions);
-            switch (GetOutcome())
-            {
-                case Outcome.Over:
-                    return $"{s} is more than {goal}. Try using fewer objects or smaller fractions.";
-                case Outcome.Under:
-                    if (s.Equals("")) s = "0";
-                    return $"{s} is less than {goal}. Try using more objects or bigger fractions.";
-                case Outcome.Achieved:
-                    return $"That's correct. {s} = {goal}";
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
+            var o = Instantiate(feedbackPrefab);
+            o.GetComponent<FractionAdditionExplanation>().Init(fractions[0], fractions[1]);
+            FacilitatorScript.Instance.Say(o);
         }
 
         private enum ExpressedAs

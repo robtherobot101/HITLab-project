@@ -11,6 +11,7 @@ namespace Managers
     {
         [SerializeField] private List<Goal> goals = new List<Goal>();
         [SerializeField] private GameObject barrelPrefab;
+        [SerializeField] private EnemyScript enemyShip;
         [SerializeField] private GrinderScript grinder;
 
         public List<ShapeScript> GrinderShapes => grinder.Shapes;
@@ -62,7 +63,7 @@ namespace Managers
 
         private void GiveFeedbackAndReset()
         {
-            FacilitatorScript.Instance.Say(_goalEnumerator.Current.FeedbackText());
+            _goalEnumerator.Current.GiveFeedback();
             CurrentGoal.ClearScreen();
             EventManager.Instance.reset?.Invoke();
         }
@@ -72,6 +73,7 @@ namespace Managers
             if (_goalEnumerator.MoveNext())
             {
                 FacilitatorScript.Instance.Say("You completed the task!\nUh-oh, here comes another.");
+                if (_goalEnumerator.Current.usesShip) enemyShip.gameObject.SetActive(true);
                 EventManager.Instance.reset?.Invoke();
                 GenerateBarrels();
                 UpdateInstructions();

@@ -7,7 +7,8 @@ public class FacilitatorScript : MonoSingleton<FacilitatorScript>
 {
     [SerializeField] private Canvas canvas;
     [SerializeField] private GameObject hat;
-    [SerializeField] private TMP_Text text;
+    [SerializeField] private TMP_Text textPrefab;
+    [SerializeField] private Transform messageArea;
 
     public void Hide()
     {
@@ -16,7 +17,15 @@ public class FacilitatorScript : MonoSingleton<FacilitatorScript>
 
     public void Say(string text)
     {
-        this.text.text = text;
+        var o = Instantiate(textPrefab);
+        o.text = text;
+        Say(o.gameObject);
+    }
+
+    public void Say(GameObject message)
+    {
+        messageArea.DestroyAllChildren();
+        message.transform.SetParent(messageArea.transform, false);
         canvas.enabled = true;
     }
 

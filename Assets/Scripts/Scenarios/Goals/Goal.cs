@@ -21,9 +21,12 @@ namespace Scenarios.Goals
         /// </summary>
         [SerializeField] private List<GameObject> resources;
 
+        [SerializeField] public bool usesShip;
+
         protected GameObject screen;
 
         public virtual bool FractionLabels => true;
+        
 
         public virtual List<GameObject> Resources => resources;
 
@@ -43,7 +46,7 @@ namespace Scenarios.Goals
         ///     A description of why the objective was (not) achieved.
         /// </summary>
         /// <returns>A string describing why the objective was (not) achieved.</returns>
-        public abstract string FeedbackText();
+        public abstract void GiveFeedback();
 
         public abstract bool RequirementsSatisfied();
 

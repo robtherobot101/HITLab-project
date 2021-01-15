@@ -49,7 +49,7 @@ namespace Scenarios.Goals
             return s;
         }
 
-        public override string FeedbackText()
+        public override void GiveFeedback()
         {
             var s = "";
 
@@ -84,7 +84,7 @@ namespace Scenarios.Goals
                         $"That's incorrect. {GameManager.Instance.GrinderShapes[i].ShapeName}s do not have {goal} {targets[i].attribute.ToString()}.\n";
             }
 
-            return s;
+            FacilitatorScript.Instance.Say(s);
         }
 
         public override bool RequirementsSatisfied()
