@@ -15,6 +15,8 @@ namespace Scenarios.Goals
     public abstract class Goal : MonoBehaviour
     {
         [SerializeField] private GameObject screenPrefab;
+        [SerializeField] private string facilitatorMessage;
+        public string FacilitatorMessage => facilitatorMessage;
 
         /// <summary>
         ///     A list of resources available to the player.

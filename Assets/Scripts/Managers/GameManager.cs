@@ -11,6 +11,7 @@ namespace Managers
     {
         [SerializeField] private List<Goal> goals = new List<Goal>();
         [SerializeField] private GameObject barrelPrefab;
+        [SerializeField] private Transform barrelArea;
         [SerializeField] private EnemyScript enemyShip;
         [SerializeField] private GrinderScript grinder;
 
@@ -31,6 +32,7 @@ namespace Managers
         public void SetupGoal()
         {
             GenerateBarrels();
+            FacilitatorScript.Instance.Say(_goalEnumerator.Current.FacilitatorMessage);
             UpdateInstructions();
             _goalEnumerator.Current.DisplayScreen();
         }
@@ -39,12 +41,12 @@ namespace Managers
         {
             foreach (var barrel in _barrels) Destroy(barrel);
             _barrels.Clear();
+            
             var i = 0;
-
             foreach (var shape in _goalEnumerator.Current.Resources.OrderBy(value => Random.value))
             {
-                
-                var barrel = Instantiate(barrelPrefab, barrelPrefab.transform.position + Vector3.left * (1.5f * i), Quaternion.LookRotation(Vector3.back));
+                var barrel = Instantiate(barrelPrefab, barrelArea.position, barrelArea.rotation, barrelArea);
+                barrel.transform.Translate(Vector3.left * (1.5f * i), barrel.transform);
                 barrel.GetComponent<BarrelScript>().Init(shape, CurrentGoal.FractionLabels);
                 _barrels.Add(barrel);
                 i++;
@@ -72,12 +74,9 @@ namespace Managers
         {
             if (_goalEnumerator.MoveNext())
             {
-                FacilitatorScript.Instance.Say("You completed the task!\nUh-oh, here comes another.");
                 if (_goalEnumerator.Current.usesShip) enemyShip.gameObject.SetActive(true);
                 EventManager.Instance.reset?.Invoke();
-                GenerateBarrels();
-                UpdateInstructions();
-                _goalEnumerator.Current.DisplayScreen();
+                SetupGoal();
             }
             else
             {

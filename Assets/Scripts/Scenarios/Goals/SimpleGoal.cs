@@ -8,7 +8,6 @@ namespace Scenarios.Goals
 {
     public class SimpleGoal : Goal
     {
-
         [SerializeField] private string instructions;
         [SerializeField] private string machineMessage;
         [SerializeField] private ShapeScript goalShape;
