@@ -9,13 +9,12 @@ namespace Grinder
 {
     public class GrinderScript : MonoBehaviour
     {
-        private bool _grinding;
-        private bool _ground;
-
         [SerializeField] private GameObject handle;
         [SerializeField] private HeapScript heap;
         [SerializeField] private ParticleSystem powder;
         [SerializeField] private ScreenManager screenManager;
+        private bool _grinding;
+        private bool _ground;
 
         public List<ShapeScript> Shapes { get; } = new List<ShapeScript>();
 

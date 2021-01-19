@@ -1,7 +1,5 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using Facilitator;
-using Grinder;
 using Managers;
 using UnityEngine;
 using Utils;
@@ -78,7 +76,7 @@ namespace Scenarios.Goals
             //     default:
             //         throw new ArgumentOutOfRangeException();
             // }
-            
+
             var fractions = GameManager.Instance.GrinderShapes.Select(shape => shape.Fraction).ToList();
             var o = Instantiate(feedbackPrefab);
             o.GetComponent<FractionAdditionExplanation>().Init(fractions[0], fractions[1]);

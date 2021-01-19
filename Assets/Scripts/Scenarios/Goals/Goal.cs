@@ -11,12 +11,11 @@ namespace Scenarios.Goals
         NotAchieved,
         Achieved
     }
-    
+
     public abstract class Goal : MonoBehaviour
     {
         [SerializeField] private GameObject screenPrefab;
         [SerializeField] private string facilitatorMessage;
-        public string FacilitatorMessage => facilitatorMessage;
 
         /// <summary>
         ///     A list of resources available to the player.
@@ -26,9 +25,10 @@ namespace Scenarios.Goals
         [SerializeField] public bool usesShip;
 
         protected GameObject screen;
+        public string FacilitatorMessage => facilitatorMessage;
 
         public virtual bool FractionLabels => true;
-        
+
 
         public virtual List<GameObject> Resources => resources;
 

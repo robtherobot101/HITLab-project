@@ -1,6 +1,5 @@
-﻿using System.Collections;
+﻿using System;
 using Grinder;
-using Managers;
 using TMPro;
 using UnityEngine;
 
@@ -11,15 +10,14 @@ namespace Scenarios.Goals
         [SerializeField] private string instructions;
         [SerializeField] private string machineMessage;
         [SerializeField] private ShapeScript goalShape;
-        
+
         [SerializeField] private bool showFractions;
-        public override bool FractionLabels => showFractions;
+        private ShapeScript _givenShape;
 
         private TMP_Text _machineText;
-        private ShapeScript _givenShape;
-        
-        
-        
+        public override bool FractionLabels => showFractions;
+
+
         public override Outcome GetOutcome()
         {
             if (_givenShape != null && _givenShape.ShapeName.Equals(goalShape.ShapeName)) return Outcome.Achieved;
@@ -33,7 +31,8 @@ namespace Scenarios.Goals
 
         public override void GiveFeedback()
         {
-            FacilitatorScript.Instance.Say("Here is some feedback? Not entirely sure what this is supposed to say ¯\\_(ツ)_/¯");
+            FacilitatorScript.Instance.Say(
+                "Here is some feedback? Not entirely sure what this is supposed to say ¯\\_(ツ)_/¯");
         }
 
         public override bool RequirementsSatisfied()
@@ -61,7 +60,7 @@ namespace Scenarios.Goals
 
         public override void ClearScreen()
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
     }
 }

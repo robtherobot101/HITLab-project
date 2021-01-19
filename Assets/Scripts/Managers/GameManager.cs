@@ -13,12 +13,12 @@ namespace Managers
         [SerializeField] private GameObject barrelPrefab;
         [SerializeField] private Transform barrelArea;
         [SerializeField] private EnemyScript enemyShip;
-        public Vector3 EnemyPosition => enemyShip.transform.position;
         [SerializeField] private GrinderScript grinder;
-
-        public List<ShapeScript> GrinderShapes => grinder.Shapes;
         private readonly List<GameObject> _barrels = new List<GameObject>();
         private List<Goal>.Enumerator _goalEnumerator;
+        public Vector3 EnemyPosition => enemyShip.transform.position;
+
+        public List<ShapeScript> GrinderShapes => grinder.Shapes;
         public Goal CurrentGoal => _goalEnumerator.Current;
 
         private void Start()
@@ -43,7 +43,7 @@ namespace Managers
         {
             foreach (var barrel in _barrels) Destroy(barrel);
             _barrels.Clear();
-            
+
             var i = 0;
             foreach (var shape in CurrentGoal.Resources.OrderBy(value => Random.value))
             {

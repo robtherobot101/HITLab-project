@@ -5,7 +5,6 @@ using Managers;
 using Scenarios.Goals;
 using UnityEngine;
 using Utils;
-using Random = UnityEngine.Random;
 
 public class CannonScript : MonoBehaviour
 {
@@ -17,15 +16,15 @@ public class CannonScript : MonoBehaviour
 
     [SerializeField] private Vector3 firingPosition = new Vector3(8.11462307f, 4.34617138f, 0.218954653f);
     [SerializeField] private Vector3 preparingPosition = new Vector3(6.20499992f, 4.34617138f, 0.218954653f);
-    private readonly Quaternion _preparingRotation = Quaternion.Euler(0, 180, 0);
     [SerializeField] private AudioSource audioSource;
-    private bool _firingPosition;
-    
-    private Fraction _gunpowder;
     [SerializeField] private Transform cannonBallSpawn;
-    
-    private Color _initialColour;
     [SerializeField] private Material material;
+    private readonly Quaternion _preparingRotation = Quaternion.Euler(0, 180, 0);
+    private bool _firingPosition;
+
+    private Fraction _gunpowder;
+
+    private Color _initialColour;
     private bool _moving;
     private bool _primed;
 
@@ -56,8 +55,9 @@ public class CannonScript : MonoBehaviour
 
         FacilitatorScript.Instance.Hide();
         _gunpowder = o.GetComponent<HeapScript>().Size;
-        
-        var lookDirection = Quaternion.LookRotation(GameManager.Instance.EnemyPosition - transform.position).eulerAngles.y;
+
+        var lookDirection = Quaternion.LookRotation(GameManager.Instance.EnemyPosition - transform.position).eulerAngles
+            .y;
         StartCoroutine(_moveCannon(firingPosition, Quaternion.Euler(0, lookDirection, 0), MoveTime));
         _firingPosition = true;
         _primed = true;
@@ -81,12 +81,17 @@ public class CannonScript : MonoBehaviour
         var cannonBall = Instantiate(cannonBallPrefab);
         cannonBall.transform.position = cannonBallSpawn.position;
         cannonBall.transform.rotation = transform.rotation;
-        
+
         StartCoroutine(FacilitatorScript.Instance.Bounce());
         var rb = cannonBall.GetComponent<Rigidbody>();
         // rb.velocity *= _gunpowder.Value();
         var goalsOutcome = GameManager.Instance.GoalsOutcome();
-        var velocityMultiplier = (float) ((-0.8825 + Math.Sqrt(Math.Pow(0.8825, 2) - 4 * 1.0015 * (12.032 - (GameManager.Instance.EnemyPosition - new Vector3(transform.position.x, 0, transform.position.z)).magnitude))) / (2 * 1.0015));
+
+        //TODO Probably hide this away somewhere
+        var velocityMultiplier = (float) ((-0.8825 + Math.Sqrt(Math.Pow(0.8825, 2) - 4 * 1.0015 *
+            (12.032 - (GameManager.Instance.EnemyPosition - new Vector3(transform.position.x, 0, transform.position.z))
+                .magnitude))) / (2 * 1.0015));
+
         rb.velocity = velocityMultiplier * (transform.forward * 5 + Vector3.up);
         switch (goalsOutcome)
         {

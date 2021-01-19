@@ -1,5 +1,4 @@
-﻿using System;
-using Managers;
+﻿using Managers;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,10 +6,10 @@ using Utils;
 
 public class BarrelScript : MonoBehaviour
 {
-    private GameObject shapePrefab;
     [SerializeField] private TMP_Text text;
     [SerializeField] private FractionScript fraction;
     [SerializeField] private HorizontalLayoutGroup fractionText;
+    private GameObject shapePrefab;
 
     private void OnMouseDown()
     {

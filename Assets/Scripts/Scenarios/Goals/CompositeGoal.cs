@@ -6,12 +6,12 @@ namespace Scenarios.Goals
 {
     public class CompositeGoal : Goal
     {
+        [SerializeField] private List<Goal> goals;
+        private int _goalIndex;
         public override bool FractionLabels => CurrentGoal.FractionLabels;
         public override List<GameObject> Resources => CurrentGoal.Resources;
-
-        [SerializeField] private List<Goal> goals;
-        private int _goalIndex = 0;
         private Goal CurrentGoal => goals[_goalIndex];
+
         public override Outcome GetOutcome()
         {
             return CurrentGoal.GetOutcome();
@@ -48,7 +48,6 @@ namespace Scenarios.Goals
 
         protected override void ScreenRegistered()
         {
-            
         }
 
         public override void ClearScreen()

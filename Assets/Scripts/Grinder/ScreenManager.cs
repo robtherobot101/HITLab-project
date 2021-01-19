@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using TMPro;
+﻿using System.Collections;
 using UnityEngine;
 using Utils;
 
@@ -8,10 +6,10 @@ namespace Grinder
 {
     public class ScreenManager : MonoSingleton<ScreenManager>
     {
-
-        private GameObject _screen;
         [SerializeField] private GameObject correct;
         [SerializeField] private GameObject incorrect;
+
+        private GameObject _screen;
 
         private void Start()
         {
@@ -43,7 +41,5 @@ namespace Grinder
             o.SetActive(false);
             yield return new WaitForSeconds(0.5f);
         }
-        
-        
     }
 }

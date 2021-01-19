@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using Managers;
 using UnityEngine;
 using Utils;
@@ -12,18 +11,6 @@ public class EnemyScript : MonoBehaviour
     private Rigidbody _rb;
     private Transform _tr;
 
-    private void OnEnable()
-    {
-        _rb.useGravity = false;
-
-        _rb.angularVelocity = Vector3.zero;
-        _rb.velocity = Vector3.zero;
-        _tr.rotation = _initialRotation;
-        _tr.position = _initialPosition - 500 * _tr.forward + 10 * Vector3.down;
-
-        StartCoroutine(Lerper.Lerp(_tr, _initialPosition, _initialRotation, 3));
-    }
-
     // Start is called before the first frame update
     private void Awake()
     {
@@ -34,6 +21,18 @@ public class EnemyScript : MonoBehaviour
         //EventManager.Instance.reset += Reset;
         //Reset();
         gameObject.SetActive(false);
+    }
+
+    private void OnEnable()
+    {
+        _rb.useGravity = false;
+
+        _rb.angularVelocity = Vector3.zero;
+        _rb.velocity = Vector3.zero;
+        _tr.rotation = _initialRotation;
+        _tr.position = _initialPosition - 500 * _tr.forward + 10 * Vector3.down;
+
+        StartCoroutine(Lerper.Lerp(_tr, _initialPosition, _initialRotation, 3));
     }
 
     private void OnTriggerEnter(Collider other)
