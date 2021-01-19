@@ -13,6 +13,7 @@ namespace Managers
         [SerializeField] private GameObject barrelPrefab;
         [SerializeField] private Transform barrelArea;
         [SerializeField] private EnemyScript enemyShip;
+        public Vector3 EnemyPosition => enemyShip.transform.position;
         [SerializeField] private GrinderScript grinder;
 
         public List<ShapeScript> GrinderShapes => grinder.Shapes;
@@ -32,9 +33,10 @@ namespace Managers
         public void SetupGoal()
         {
             GenerateBarrels();
-            FacilitatorScript.Instance.Say(_goalEnumerator.Current.FacilitatorMessage);
+            enemyShip.gameObject.SetActive(CurrentGoal.usesShip);
+            FacilitatorScript.Instance.Say(CurrentGoal.FacilitatorMessage);
             UpdateInstructions();
-            _goalEnumerator.Current.DisplayScreen();
+            CurrentGoal.DisplayScreen();
         }
 
         private void GenerateBarrels()
@@ -43,7 +45,7 @@ namespace Managers
             _barrels.Clear();
             
             var i = 0;
-            foreach (var shape in _goalEnumerator.Current.Resources.OrderBy(value => Random.value))
+            foreach (var shape in CurrentGoal.Resources.OrderBy(value => Random.value))
             {
                 var barrel = Instantiate(barrelPrefab, barrelArea.position, barrelArea.rotation, barrelArea);
                 barrel.transform.Translate(Vector3.left * (1.5f * i), barrel.transform);
@@ -55,17 +57,17 @@ namespace Managers
 
         private void UpdateInstructions()
         {
-            InstructionsManager.Instance.SetText(_goalEnumerator.Current.GoalText());
+            InstructionsManager.Instance.SetText(CurrentGoal.GoalText());
         }
 
         public Outcome GoalsOutcome()
         {
-            return _goalEnumerator.Current.GetOutcome();
+            return CurrentGoal.GetOutcome();
         }
 
         private void GiveFeedbackAndReset()
         {
-            _goalEnumerator.Current.GiveFeedback();
+            CurrentGoal.GiveFeedback();
             CurrentGoal.ClearScreen();
             EventManager.Instance.reset?.Invoke();
         }
@@ -74,7 +76,6 @@ namespace Managers
         {
             if (_goalEnumerator.MoveNext())
             {
-                if (_goalEnumerator.Current.usesShip) enemyShip.gameObject.SetActive(true);
                 EventManager.Instance.reset?.Invoke();
                 SetupGoal();
             }

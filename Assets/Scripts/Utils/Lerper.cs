@@ -9,7 +9,7 @@ namespace Utils
         {
             float time = 0;
             var startPos = tf.localPosition;
-            var startRot = tf.localRotation;
+            var startRot = tf.rotation;
 
             while (time < duration)
             {
