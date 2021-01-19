@@ -28,6 +28,10 @@ public class CannonScript : MonoBehaviour
     private bool _moving;
     private bool _primed;
 
+    private const float a = 1.0015f;
+    private const float b = 0.8825f;
+    private const float c = 12.032f;
+
     private void Reset()
     {
         StartCoroutine(_moveCannon(preparingPosition, _preparingRotation, MoveTime));
@@ -84,13 +88,10 @@ public class CannonScript : MonoBehaviour
 
         StartCoroutine(FacilitatorScript.Instance.Bounce());
         var rb = cannonBall.GetComponent<Rigidbody>();
-        // rb.velocity *= _gunpowder.Value();
         var goalsOutcome = GameManager.Instance.GoalsOutcome();
-
-        //TODO Probably hide this away somewhere
-        var velocityMultiplier = (float) ((-0.8825 + Math.Sqrt(Math.Pow(0.8825, 2) - 4 * 1.0015 *
-            (12.032 - (GameManager.Instance.EnemyPosition - new Vector3(transform.position.x, 0, transform.position.z))
-                .magnitude))) / (2 * 1.0015));
+        
+        var distanceToShip = (GameManager.Instance.EnemyPosition - transform.position).magnitude;
+        var velocityMultiplier = (float) Polynomial.QuadraticFormula(a, b, c - distanceToShip).Item1;
 
         rb.velocity = velocityMultiplier * (transform.forward * 5 + Vector3.up);
         switch (goalsOutcome)
