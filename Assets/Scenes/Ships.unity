@@ -1418,9 +1418,9 @@ MonoBehaviour:
     type: 3}
   facilitatorMessage: 
   resources:
-  - {fileID: 4135591097232670978, guid: 1f4cc5d1fd5f99940950c6969f32e0a0, type: 3}
-  - {fileID: 2482678504970738660, guid: 626dccaaa347bfd4181ca529b124e361, type: 3}
-  - {fileID: 2339156921705331413, guid: 699b22edd73e542419891969cc5df28a, type: 3}
+  - {fileID: 5785887703231079030, guid: 1f4cc5d1fd5f99940950c6969f32e0a0, type: 3}
+  - {fileID: 8776090296815469457, guid: 626dccaaa347bfd4181ca529b124e361, type: 3}
+  - {fileID: -7376122852829535808, guid: 699b22edd73e542419891969cc5df28a, type: 3}
   usesShip: 0
   instructions: Put the 5/6 kg shape into the machine
   machineMessage: 5/6
@@ -1693,9 +1693,9 @@ MonoBehaviour:
   facilitatorMessage: An enemy ship has appeared! Follow your instructions to make
     some gunpowder for the cannon.
   resources:
-  - {fileID: 4135591097232670978, guid: 1f4cc5d1fd5f99940950c6969f32e0a0, type: 3}
-  - {fileID: 2482678504970738660, guid: 626dccaaa347bfd4181ca529b124e361, type: 3}
-  - {fileID: 2339156921705331413, guid: 699b22edd73e542419891969cc5df28a, type: 3}
+  - {fileID: 5785887703231079030, guid: 1f4cc5d1fd5f99940950c6969f32e0a0, type: 3}
+  - {fileID: 8776090296815469457, guid: 626dccaaa347bfd4181ca529b124e361, type: 3}
+  - {fileID: -7376122852829535808, guid: 699b22edd73e542419891969cc5df28a, type: 3}
   usesShip: 1
   targets:
   - shape: {fileID: 4135591097232670978, guid: 1f4cc5d1fd5f99940950c6969f32e0a0, type: 3}
@@ -3684,9 +3684,9 @@ MonoBehaviour:
     type: 3}
   facilitatorMessage: Read the instructions in your hand to complete the game.
   resources:
-  - {fileID: 4135591097232670978, guid: 1f4cc5d1fd5f99940950c6969f32e0a0, type: 3}
-  - {fileID: 2482678504970738660, guid: 626dccaaa347bfd4181ca529b124e361, type: 3}
-  - {fileID: 2339156921705331413, guid: 699b22edd73e542419891969cc5df28a, type: 3}
+  - {fileID: 5785887703231079030, guid: 1f4cc5d1fd5f99940950c6969f32e0a0, type: 3}
+  - {fileID: 8776090296815469457, guid: 626dccaaa347bfd4181ca529b124e361, type: 3}
+  - {fileID: -7376122852829535808, guid: 699b22edd73e542419891969cc5df28a, type: 3}
   usesShip: 0
   instructions: Take a cube from the barrel by clicking, and click on the machine
     to put it in.
@@ -4364,12 +4364,9 @@ MonoBehaviour:
   facilitatorMessage: Oh no, another one! This time, combine two amounts of gunpowder
     to hit the ship.
   resources:
-  - {fileID: 2482678504970738660, guid: 471fffb5b13626f41b9fb755a300a12f, type: 3}
-  - {fileID: 2482678504970738660, guid: 98070f94c0ea40949b8a6cf8cc976882, type: 3}
-  - {fileID: 2482678504970738660, guid: 4c0a74cd3a572094b9538d7eb015b521, type: 3}
-  - {fileID: 1704318994936510561, guid: 37ce6bd4ea1958f4e9b80fad33a55046, type: 3}
-  - {fileID: 4472911064960488003, guid: 9e86ed2b9d5a6e54e918926a63954c57, type: 3}
-  - {fileID: 3369764881391616569, guid: 036f69c3432cbae4abbba187d1272acc, type: 3}
+  - {fileID: 8776090296815469457, guid: 471fffb5b13626f41b9fb755a300a12f, type: 3}
+  - {fileID: 8776090296815469457, guid: 98070f94c0ea40949b8a6cf8cc976882, type: 3}
+  - {fileID: 8776090296815469457, guid: 4c0a74cd3a572094b9538d7eb015b521, type: 3}
   usesShip: 1
   goalExpression: 0
   feedbackPrefab: {fileID: 2455744527702415268, guid: 5447f35523d393f40b14064bf062366a,
@@ -5249,8 +5246,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1850079839}
-  m_LocalRotation: {x: -0.053631976, y: -0.33683798, z: -0.025495548, w: 0.93968815}
-  m_LocalPosition: {x: -99.89218, y: -27.207644, z: -24.433018}
+  m_LocalRotation: {x: -0.41263574, y: -0.31524077, z: -0.16218096, w: 0.83907825}
+  m_LocalPosition: {x: 154.85867, y: -481.44113, z: -470.57837}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using Facilitator;
 using Grinder;
 using Managers;
 using Scenarios.Goals;
@@ -28,6 +29,7 @@ public class CannonScript : MonoBehaviour
     private bool _moving;
     private bool _primed;
 
+    // Coefficients for trajectory polynomial
     private const float a = 1.0015f;
     private const float b = 0.8825f;
     private const float c = 12.032f;

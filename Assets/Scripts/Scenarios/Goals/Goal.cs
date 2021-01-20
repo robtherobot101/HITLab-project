@@ -20,7 +20,7 @@ namespace Scenarios.Goals
         /// <summary>
         ///     A list of resources available to the player.
         /// </summary>
-        [SerializeField] private List<GameObject> resources;
+        [SerializeField] private List<ShapeScript> resources;
 
         [SerializeField] public bool usesShip;
 
@@ -30,7 +30,7 @@ namespace Scenarios.Goals
         public virtual bool FractionLabels => true;
 
 
-        public virtual List<GameObject> Resources => resources;
+        public virtual List<ShapeScript> Resources => resources;
 
         /// <summary>
         ///     Whether the goal was achieved and if not, how it failed.

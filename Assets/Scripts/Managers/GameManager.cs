@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Facilitator;
 using Grinder;
 using Scenarios.Goals;
 using UnityEngine;
@@ -34,7 +35,8 @@ namespace Managers
         {
             GenerateBarrels();
             enemyShip.gameObject.SetActive(CurrentGoal.usesShip);
-            FacilitatorScript.Instance.Say(CurrentGoal.FacilitatorMessage);
+            //FacilitatorScript.Instance.Say(CurrentGoal.FacilitatorMessage);
+            FacilitatorScript.Instance.Say(new string[] {});
             UpdateInstructions();
             CurrentGoal.DisplayScreen();
         }

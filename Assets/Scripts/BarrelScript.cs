@@ -17,11 +17,11 @@ public class BarrelScript : MonoBehaviour
         if (PlayerController.Instance.Take("Shape") == null) PlayerController.Instance.Give(shapePrefab);
     }
 
-    public void Init(GameObject shape, bool showFraction = false)
+    public void Init(ShapeScript shape, bool showFraction = false)
     {
-        shapePrefab = shape;
-        text.text = shape.GetComponent<ShapeScript>().ShapeName;
-        fraction.SetFraction(shape.GetComponent<ShapeScript>().Fraction);
+        shapePrefab = shape.gameObject;
+        text.text = shape.ShapeName;
+        fraction.SetFraction(shape.Fraction);
         if (!showFraction) Destroy(fractionText.gameObject);
     }
 }

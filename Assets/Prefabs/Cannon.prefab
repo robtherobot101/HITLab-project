@@ -223,7 +223,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 4.326453, y: 1.7983707, z: 1.6712667}
+  m_Size: {x: 1.671267, y: 1.7983707, z: 4.326453}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &5408532412304232273
 MonoBehaviour:
@@ -244,6 +244,7 @@ MonoBehaviour:
   firingPosition: {x: 8.114623, y: 4.3461714, z: 0.21895465}
   preparingPosition: {x: 6.205, y: 4.3461714, z: 0.21895465}
   audioSource: {fileID: 5406576641207320550}
+  cannonBallSpawn: {fileID: 0}
   material: {fileID: 2100000, guid: 11ca4bc407f018f48993c28818e2822d, type: 2}
 --- !u!82 &5406576641207320550
 AudioSource:

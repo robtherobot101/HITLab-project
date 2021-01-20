@@ -9,7 +9,7 @@ namespace Scenarios.Goals
         [SerializeField] private List<Goal> goals;
         private int _goalIndex;
         public override bool FractionLabels => CurrentGoal.FractionLabels;
-        public override List<GameObject> Resources => CurrentGoal.Resources;
+        public override List<ShapeScript> Resources => CurrentGoal.Resources;
         private Goal CurrentGoal => goals[_goalIndex];
 
         public override Outcome GetOutcome()
