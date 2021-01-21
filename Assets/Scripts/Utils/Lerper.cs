@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Utils
 {
-    public class Lerper : MonoBehaviour
+    public static class Lerper
     {
         public static IEnumerator Lerp(Transform tf, Vector3 goalPos, Quaternion goalRot, float duration)
         {
