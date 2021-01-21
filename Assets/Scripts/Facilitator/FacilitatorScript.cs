@@ -10,7 +10,6 @@ namespace Facilitator
     public class FacilitatorScript : MonoSingleton<FacilitatorScript>
     {
         [SerializeField] private Canvas canvas;
-        [SerializeField] private GameObject hat;
         [SerializeField] private TMP_Text textPrefab;
         [SerializeField] private Transform messageArea;
         [SerializeField] private GameObject nextButton;
@@ -47,15 +46,6 @@ namespace Facilitator
             messageArea.DestroyAllChildren();
             message.transform.SetParent(messageArea, false);
             canvas.enabled = true;
-        }
-
-        public IEnumerator Bounce()
-        {
-            var initialPos = hat.transform.localPosition;
-            var initialRot = hat.transform.localRotation;
-            yield return Lerper.Lerp(hat.transform, initialPos + 0.05f * Vector3.up,
-                Quaternion.FromToRotation(Vector3.left, Vector3.up), 0.15f);
-            yield return Lerper.Lerp(hat.transform, initialPos, initialRot, 0.15f);
         }
     }
 }

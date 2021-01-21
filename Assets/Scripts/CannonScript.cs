@@ -88,7 +88,7 @@ public class CannonScript : MonoBehaviour
         cannonBall.transform.position = cannonBallSpawn.position;
         cannonBall.transform.rotation = transform.rotation;
 
-        StartCoroutine(FacilitatorScript.Instance.Bounce());
+        EventManager.Instance.cannonFired?.Invoke();
         var rb = cannonBall.GetComponent<Rigidbody>();
         var goalsOutcome = GameManager.Instance.GoalsOutcome();
         

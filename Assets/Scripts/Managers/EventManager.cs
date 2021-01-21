@@ -24,5 +24,7 @@ namespace Managers
         ///     Triggered after the ship has completely sunk
         /// </summary>
         public Action sunk;
+
+        public Action cannonFired;
     }
 }
