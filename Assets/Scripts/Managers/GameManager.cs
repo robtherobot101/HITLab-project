@@ -35,8 +35,7 @@ namespace Managers
         {
             GenerateBarrels();
             enemyShip.gameObject.SetActive(CurrentGoal.usesShip);
-            //FacilitatorScript.Instance.Say(CurrentGoal.FacilitatorMessage);
-            FacilitatorScript.Instance.Say(new string[] {});
+            FacilitatorScript.Instance.Say(CurrentGoal.FacilitatorMessage);
             UpdateInstructions();
             CurrentGoal.DisplayScreen();
         }

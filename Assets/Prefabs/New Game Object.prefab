@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &854724158783963552
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 854724158783963566}
+  - component: {fileID: 854724158783963567}
+  m_Layer: 0
+  m_Name: New Game Object
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &854724158783963566
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 854724158783963552}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &854724158783963567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 854724158783963552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f82765c0740b2df42a6bbc386f0c0eba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chestSmall: {fileID: 100094, guid: f1fbee7f135f4b54189d3be87753a3d3, type: 3}
+  chestMedium: {fileID: 100094, guid: 90a23a0779cd42841a670ce4ca6835b2, type: 3}
+  chestLarge: {fileID: 100094, guid: e31f601f5da4d61439e494f015f586ec, type: 3}
+  borderWood: {fileID: 2800000, guid: ae1bef9d05f61184f9d5bd5e6f4f75b2, type: 3}
+  borderMetal: {fileID: 2800000, guid: ad08b5223491bef4f886460924db5965, type: 3}
+  baseWood: {fileID: 2800000, guid: 84572024170b4e646874f09041b3dd6b, type: 3}
+  baseMetal: {fileID: 2800000, guid: 32bf4a9193d3a3641a0f6e59422cfc48, type: 3}

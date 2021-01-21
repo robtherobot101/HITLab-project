@@ -10,6 +10,8 @@ namespace Scenarios.Goals
         private int _goalIndex;
         public override bool FractionLabels => CurrentGoal.FractionLabels;
         public override List<ShapeScript> Resources => CurrentGoal.Resources;
+
+        public override List<string> FacilitatorMessage => CurrentGoal.FacilitatorMessage;
         private Goal CurrentGoal => goals[_goalIndex];
 
         public override Outcome GetOutcome()
