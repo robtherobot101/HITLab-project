@@ -5,11 +5,10 @@ using Utils;
 public class ActivateChest : MonoBehaviour {
 
 	public Transform lid, lidOpen, lidClose;	// Lid, Lid open rotation, Lid close rotation
-	public float openSpeed = 5F;				// Opening speed
-	public bool canClose;						// Can the chest be closed
+	[SerializeField] private float openSpeed = 5F;				// Opening speed
+	[SerializeField] private bool canClose;						// Can the chest be closed
 	
-	[HideInInspector]
-	public bool _open;							// Is the chest opened
+	private bool _open;											// Is the chest opened
 
 	private bool _opening = false;
 

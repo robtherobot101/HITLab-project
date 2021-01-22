@@ -15,8 +15,9 @@ public class CannonScript : MonoBehaviour
     [SerializeField] private AudioClip moveSound;
     [SerializeField] private GameObject cannonBallPrefab;
 
-    [SerializeField] private Vector3 firingPosition = new Vector3(8.11462307f, 4.34617138f, 0.218954653f);
-    [SerializeField] private Vector3 preparingPosition = new Vector3(6.20499992f, 4.34617138f, 0.218954653f);
+    [SerializeField] private Transform firingPosition;
+    [SerializeField] private Transform preparingPosition;
+    
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private Transform cannonBallSpawn;
     [SerializeField] private Material material;
@@ -36,7 +37,7 @@ public class CannonScript : MonoBehaviour
 
     private void Reset()
     {
-        StartCoroutine(_moveCannon(preparingPosition, _preparingRotation, MoveTime));
+        StartCoroutine(_moveCannon(preparingPosition.localPosition, preparingPosition.localRotation, MoveTime));
         _firingPosition = false;
     }
 
@@ -64,7 +65,7 @@ public class CannonScript : MonoBehaviour
 
         var lookDirection = Quaternion.LookRotation(GameManager.Instance.EnemyPosition - transform.position).eulerAngles
             .y;
-        StartCoroutine(_moveCannon(firingPosition, Quaternion.Euler(0, lookDirection, 0), MoveTime));
+        StartCoroutine(_moveCannon(firingPosition.localPosition, Quaternion.Euler(0, lookDirection, 0), MoveTime));
         _firingPosition = true;
         _primed = true;
     }
