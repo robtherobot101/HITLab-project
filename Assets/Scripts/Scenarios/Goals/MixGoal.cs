@@ -10,6 +10,9 @@ namespace Scenarios.Goals
     public class MixGoal : Goal
     {
         [SerializeField] private List<Target> targets;
+
+        [SerializeField] private GeometryFeedback FeedbackScreen;
+        
         private TMP_Text _screenText;
         public override bool FractionLabels => false;
 
@@ -84,7 +87,8 @@ namespace Scenarios.Goals
                         $"That's incorrect. {GameManager.Instance.GrinderShapes[i].ShapeName}s do not have {goal} {targets[i].attribute.ToString()}.\n";
             }
 
-            FacilitatorScript.Instance.Say(s);
+            var o = Instantiate(FeedbackScreen);
+            FacilitatorScript.Instance.Say(o.gameObject);
         }
 
         public override bool RequirementsSatisfied()
