@@ -14,7 +14,15 @@ public class BarrelScript : MonoBehaviour
     private void OnMouseDown()
     {
         // Either take the shape held by the player, or give them the contents of the barrel
-        if (PlayerController.Instance.Take("Shape") == null) PlayerController.Instance.Give(shapePrefab);
+        var o = PlayerController.Instance.Take("Shape");
+        if (o == null)
+        {
+            PlayerController.Instance.Give(shapePrefab);
+        }
+        else
+        {
+            Destroy(o);
+        }
     }
 
     public void Init(ShapeScript shape, bool showFraction = false)

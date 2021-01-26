@@ -28,7 +28,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5404794448344371917}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3466403838342106363
 GameObject:
@@ -56,12 +56,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3466403838342106363}
-  m_LocalRotation: {x: 0.674109, y: 0, z: 0, w: 0.73863196}
-  m_LocalPosition: {x: 0, y: 0.6, z: 2.07}
-  m_LocalScale: {x: 0.030000001, y: 0.030000001, z: 0.03}
+  m_LocalRotation: {x: 0.47666702, y: 0.52229166, z: -0.47666702, w: 0.52229166}
+  m_LocalPosition: {x: 2.0699954, y: 0.5999999, z: 0}
+  m_LocalScale: {x: 0.03, y: 0.03, z: 0.03}
   m_Children: []
-  m_Father: {fileID: 5404794448344371917}
-  m_RootOrder: 1
+  m_Father: {fileID: 6206230450896959403}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 84.77, y: 0, z: 0}
 --- !u!33 &2786796655528769969
 MeshFilter:
@@ -154,7 +154,8 @@ Transform:
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1330643982035840668}
   m_Father: {fileID: 5404794448344371917}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
@@ -238,7 +239,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6206230450896959403}
-  - {fileID: 1330643982035840668}
   - {fileID: 1680228527446532010}
   - {fileID: 8258008730833098246}
   m_Father: {fileID: 0}
@@ -273,10 +273,8 @@ MonoBehaviour:
   moveSound: {fileID: 8300000, guid: 1e6f6c240367cb04b9fc8e9f9c610fb3, type: 3}
   cannonBallPrefab: {fileID: 1741076848593762074, guid: b70e09b5d64c32042bf038d92c8bc76c,
     type: 3}
-  firingPosition: {x: 8.114623, y: 4.3461714, z: 0.21895465}
-  preparingPosition: {x: 6.205, y: 4.3461714, z: 0.21895465}
-  firing: {fileID: 1680228527446532010}
-  preparing: {fileID: 8258008730833098246}
+  firingPosition: {fileID: 0}
+  preparingPosition: {fileID: 0}
   audioSource: {fileID: 5406576641207320550}
   cannonBallSpawn: {fileID: 0}
   material: {fileID: 2100000, guid: 11ca4bc407f018f48993c28818e2822d, type: 2}
@@ -404,5 +402,5 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5404794448344371917}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}

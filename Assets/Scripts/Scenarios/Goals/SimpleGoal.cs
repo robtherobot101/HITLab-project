@@ -11,6 +11,7 @@ namespace Scenarios.Goals
         [SerializeField] private string instructions;
         [SerializeField] private string machineMessage;
         [SerializeField] private ShapeScript goalShape;
+        [SerializeField] private bool isTutorial;
 
         [SerializeField] private bool showFractions;
         private ShapeScript _givenShape;
@@ -38,18 +39,38 @@ namespace Scenarios.Goals
 
         public override bool RequirementsSatisfied()
         {
-            return false;
+            return isTutorial && GetOutcome() == Outcome.Achieved || !isTutorial;
         }
 
         public override bool CanAdd()
         {
-            return true;
+            return _givenShape == null;
         }
 
         public override void ShapeAdded(ShapeScript shape)
         {
-            _givenShape = shape;
-            ScreenManager.Instance.FlashResult(GetOutcome() == Outcome.Achieved);
+
+            if (isTutorial)
+            {
+                if (shape.ShapeName.Equals(goalShape.ShapeName))
+                {
+                    ScreenManager.Instance.FlashResult(true);
+                    _givenShape = shape;
+                }
+                else
+                {
+                    ScreenManager.Instance.FlashResult(false);
+                    return;
+                }
+            }
+
+            else
+            {
+                _givenShape = shape;
+            }
+            
+            _machineText.text = "Now turn the handle ->";
+            
         }
 
         protected override void ScreenRegistered()

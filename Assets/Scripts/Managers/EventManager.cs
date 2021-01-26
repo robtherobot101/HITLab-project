@@ -5,10 +5,10 @@ namespace Managers
 {
     public class EventManager : MonoSingleton<EventManager>
     {
-        /// <summary>
-        ///     Triggered when a cannon shot misses
-        /// </summary>
-        public Action missed;
+        // /// <summary>
+        // ///     Triggered when a cannon shot misses
+        // /// </summary>
+        // public Action missed;
 
         // /// <summary>
         // /// Triggered when a shape is given to the cannon

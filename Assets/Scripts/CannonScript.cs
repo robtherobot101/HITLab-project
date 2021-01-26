@@ -17,11 +17,11 @@ public class CannonScript : MonoBehaviour
 
     [SerializeField] private Transform firingPosition;
     [SerializeField] private Transform preparingPosition;
+    [SerializeField] private Transform cannonTransform;
     
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private Transform cannonBallSpawn;
     [SerializeField] private Material material;
-    private readonly Quaternion _preparingRotation = Quaternion.Euler(0, 180, 0);
     private bool _firingPosition;
 
     private Fraction _gunpowder;
@@ -44,7 +44,7 @@ public class CannonScript : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        EventManager.Instance.missed += Reset;
+        // EventManager.Instance.missed += Reset;
         EventManager.Instance.reset += Reset;
     }
 
@@ -63,9 +63,10 @@ public class CannonScript : MonoBehaviour
         FacilitatorScript.Instance.Hide();
         _gunpowder = o.GetComponent<HeapScript>().Size;
 
-        var lookDirection = Quaternion.LookRotation(GameManager.Instance.EnemyPosition - transform.position).eulerAngles
-            .y;
-        StartCoroutine(_moveCannon(firingPosition.localPosition, Quaternion.Euler(0, lookDirection, 0), MoveTime));
+        // var lookDirection = Quaternion.LookRotation(GameManager.Instance.EnemyPosition - transform.position).eulerAngles
+        //     .y;
+        // StartCoroutine(_moveCannon(firingPosition.localPosition, Quaternion.Euler(0, lookDirection, 0), MoveTime));
+        StartCoroutine(_moveCannon(firingPosition.localPosition, firingPosition.localRotation, MoveTime));
         _firingPosition = true;
         _primed = true;
     }
@@ -119,7 +120,7 @@ public class CannonScript : MonoBehaviour
     {
         _moving = true;
         audioSource.PlayOneShot(moveSound);
-        yield return Lerper.Lerp(gameObject.transform, goalPos, goalRot, duration);
+        yield return Lerper.Lerp(cannonTransform, goalPos, goalRot, duration);
         _moving = false;
     }
 }

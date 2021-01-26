@@ -43,7 +43,7 @@ namespace Managers
         public GameObject Take(string ttag)
         {
             if (!_isHolding || !_holding.CompareTag(ttag)) return null;
-            Destroy(_holding);
+            _holding.SetActive(false);
             _isHolding = false;
             return _holding;
         }

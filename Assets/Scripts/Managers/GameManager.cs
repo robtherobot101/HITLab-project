@@ -24,11 +24,24 @@ namespace Managers
 
         private void Start()
         {
-            EventManager.Instance.missed += GiveFeedbackAndReset;
-            EventManager.Instance.sunk += NextScenario;
+            // EventManager.Instance.missed += GiveFeedbackAndReset;
+            // EventManager.Instance.sunk += NextScenario;
+            EventManager.Instance.sunk += ProgressOrReset;
 
             _goalEnumerator = goals.GetEnumerator();
             if (_goalEnumerator.MoveNext()) SetupGoal();
+        }
+
+        private void ProgressOrReset()
+        {
+            if (CurrentGoal.GetOutcome() == Outcome.Achieved)
+            {
+                NextScenario();
+            }
+            else
+            {
+                GiveFeedbackAndReset();
+            }
         }
 
         public void SetupGoal()

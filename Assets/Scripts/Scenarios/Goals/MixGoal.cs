@@ -36,16 +36,17 @@ namespace Scenarios.Goals
             var i = 0;
             foreach (var target in targets)
             {
-                s += $"{i + 1}. A shape with ";
+                s += $"{i + 1}. ";
                 s += target.attribute switch
                 {
-                    Attribute.Faces => target.Shape.Faces.ToString(),
-                    Attribute.Edges => target.Shape.Edges.ToString(),
-                    Attribute.Vertices => target.Shape.Vertices.ToString(),
+                    Attribute.Faces => $"A shape with {target.Shape.Faces.ToString()} faces.",
+                    Attribute.Edges => $"A shape with {target.Shape.Edges.ToString()} edges.",
+                    Attribute.Vertices => $"A shape with {target.Shape.Vertices.ToString()} vertices.",
+                    Attribute.Name => $"A {target.Shape.ShapeName}.",
                     _ => throw new ArgumentOutOfRangeException()
                 };
 
-                s += $" {target.attribute.ToString().ToLower()}\n";
+                s += " \n";
                 i++;
             }
 
@@ -59,8 +60,8 @@ namespace Scenarios.Goals
             for (var i = 0; i < targets.Count; i++)
             {
                 s += $"{i + 1}. ";
-                int goal;
-                int count;
+                object goal;
+                object count;
                 switch (targets[i].attribute)
                 {
                     case Attribute.Faces:
@@ -75,16 +76,30 @@ namespace Scenarios.Goals
                         goal = targets[i].Shape.Vertices;
                         count = GameManager.Instance.GrinderShapes[i].Vertices;
                         break;
+                    case Attribute.Name:
+                        goal = targets[i].Shape.ShapeName;
+                        count = GameManager.Instance.GrinderShapes[i].Vertices;
+                        break;
                     default:
                         throw new ArgumentOutOfRangeException();
                 }
 
-                if (goal == count)
-                    s +=
-                        $"That's correct. {GameManager.Instance.GrinderShapes[i].ShapeName}s have {goal} {targets[i].attribute.ToString()}.\n";
+                if (targets[i].attribute == Attribute.Name)
+                {
+                    if (goal == count)
+                    {
+                        s += $"Shape {i + 1} was not a {goal}.";
+                    }
+                }
                 else
-                    s +=
-                        $"That's incorrect. {GameManager.Instance.GrinderShapes[i].ShapeName}s do not have {goal} {targets[i].attribute.ToString()}.\n";
+                {
+                    if (goal == count)
+                        s +=
+                            $"That's correct. {GameManager.Instance.GrinderShapes[i].ShapeName}s have {goal} {targets[i].attribute.ToString()}.\n";
+                    else
+                        s +=
+                            $"That's incorrect. {GameManager.Instance.GrinderShapes[i].ShapeName}s do not have {goal} {targets[i].attribute.ToString()}.\n";
+                }
             }
 
             var o = Instantiate(FeedbackScreen);
@@ -120,15 +135,16 @@ namespace Scenarios.Goals
         {
             Faces,
             Edges,
-            Vertices
+            Vertices,
+            Name
         }
 
         [Serializable]
         private struct Target
         {
-            [SerializeField] private GameObject shape;
+            [SerializeField] private ShapeScript shape;
             public Attribute attribute;
-            public ShapeScript Shape => shape.GetComponent<ShapeScript>();
+            public ShapeScript Shape => shape;
         }
     }
 }

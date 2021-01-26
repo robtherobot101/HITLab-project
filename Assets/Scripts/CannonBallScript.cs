@@ -13,7 +13,7 @@ public class CannonBallScript : MonoBehaviour
     private IEnumerator CheckHeight()
     {
         yield return new WaitUntil(() => transform.position.y <= 0);
-        EventManager.Instance.missed?.Invoke();
+        EventManager.Instance.sunk?.Invoke();
         Destroy(gameObject);
     }
 }

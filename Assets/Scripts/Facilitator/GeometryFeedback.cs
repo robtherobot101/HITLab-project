@@ -4,9 +4,9 @@ namespace Facilitator
 {
     public class GeometryFeedback : MonoBehaviour
     {
-        [SerializeField] private Transform facesMessage;
-        [SerializeField] private Transform verticesMessage;
-        [SerializeField] private Transform edgesMessage;
+        [SerializeField] private GameObject facesMessage;
+        [SerializeField] private GameObject verticesMessage;
+        [SerializeField] private GameObject edgesMessage;
 
         [SerializeField] private GameObject faceHelper;
         [SerializeField] private GameObject vertexHelper;
@@ -15,19 +15,19 @@ namespace Facilitator
 
         public void ShowFaceHelp()
         {
-            var o = Instantiate(faceHelper, transform.parent.parent.parent.parent.parent, false);
+            var o = Instantiate(faceHelper, FacilitatorScript.Instance.transform, false);
             o.transform.Translate(Vector3.up * 2.5f);
         }
 
         public void ShowVertexHelp()
         {
-            var o = Instantiate(vertexHelper, transform.parent.parent.parent.parent.parent, false);
+            var o = Instantiate(vertexHelper, FacilitatorScript.Instance.transform, false);
             o.transform.Translate(Vector3.up * 2.5f);
         }
 
         public void ShowEdgeHelp()
         {
-            var o = Instantiate(edgeHelper, transform.parent.parent.parent.parent.parent, false);
+            var o = Instantiate(edgeHelper, FacilitatorScript.Instance.transform, false);
             o.transform.Translate(Vector3.up * 2.5f);
         }
     
