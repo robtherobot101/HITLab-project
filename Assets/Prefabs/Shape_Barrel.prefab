@@ -514,6 +514,7 @@ MonoBehaviour:
   text: {fileID: 261235499791032461}
   fraction: {fileID: 1826078531130273826}
   fractionText: {fileID: 3184088634431409785}
+  label: {fileID: 7800769332416585645}
 --- !u!65 &6102339028486460159
 BoxCollider:
   m_ObjectHideFlags: 0

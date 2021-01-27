@@ -34,7 +34,7 @@ namespace Scenarios.Goals
         public override void GiveFeedback()
         {
             FacilitatorScript.Instance.Say(
-                "Here is some feedback? Not entirely sure what this is supposed to say ¯\\_(ツ)_/¯");
+                "Whoops, that was not the correct shape, try again.");
         }
 
         public override bool RequirementsSatisfied()
@@ -82,7 +82,8 @@ namespace Scenarios.Goals
 
         public override void ClearScreen()
         {
-            throw new NotImplementedException();
+            _givenShape = null;
+            _machineText.text = machineMessage;
         }
     }
 }

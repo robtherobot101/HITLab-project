@@ -9,6 +9,7 @@ public class BarrelScript : MonoBehaviour
     [SerializeField] private TMP_Text text;
     [SerializeField] private FractionScript fraction;
     [SerializeField] private HorizontalLayoutGroup fractionText;
+    [SerializeField] private GameObject label;
     private GameObject shapePrefab;
 
     private void OnMouseDown()
@@ -25,11 +26,12 @@ public class BarrelScript : MonoBehaviour
         }
     }
 
-    public void Init(ShapeScript shape, bool showFraction = false)
+    public void Init(ShapeScript shape, bool showFraction = false, bool showLabel = true)
     {
         shapePrefab = shape.gameObject;
         text.text = shape.ShapeName;
         fraction.SetFraction(shape.Fraction);
         if (!showFraction) Destroy(fractionText.gameObject);
+        if (!showLabel) Destroy(label);
     }
 }

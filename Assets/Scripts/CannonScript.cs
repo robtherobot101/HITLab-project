@@ -45,7 +45,7 @@ public class CannonScript : MonoBehaviour
     private void Start()
     {
         // EventManager.Instance.missed += Reset;
-        EventManager.Instance.reset += Reset;
+        EventManager.Instance.sunk += Reset;
     }
 
     private void OnMouseDown()

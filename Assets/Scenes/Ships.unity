@@ -2241,6 +2241,7 @@ MonoBehaviour:
   - {fileID: 440058361720189612, guid: 9e86ed2b9d5a6e54e918926a63954c57, type: 3}
   - {fileID: 1896641098556408377, guid: 036f69c3432cbae4abbba187d1272acc, type: 3}
   usesShip: 1
+  barrelLabels: 0
   instructions: Put a cylinder into the machine. You will have to work out which
     barrel contains the cylinders first.
   machineMessage: ACME Gunpowder-tron
@@ -3458,6 +3459,7 @@ MonoBehaviour:
   - {fileID: 1896641098556408377, guid: 036f69c3432cbae4abbba187d1272acc, type: 3}
   - {fileID: 440058361720189612, guid: 9e86ed2b9d5a6e54e918926a63954c57, type: 3}
   usesShip: 0
+  barrelLabels: 1
   instructions: Put one sphere into the machine
   machineMessage: ACME Gunpowder-tron
   goalShape: {fileID: 8776090296815469457, guid: 626dccaaa347bfd4181ca529b124e361,
@@ -5013,8 +5015,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1850079839}
-  m_LocalRotation: {x: 0.0041085905, y: 0.9909886, z: -0.052635953, w: 0.12310249}
-  m_LocalPosition: {x: -157.59485, y: -7.5113053, z: -3.0230284}
+  m_LocalRotation: {x: 0.07085411, y: -0.7022927, z: 0.07059923, w: 0.7048266}
+  m_LocalPosition: {x: 12.674475, y: -8.732141, z: 12.674477}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -5029,6 +5031,66 @@ Skybox:
   m_GameObject: {fileID: 1850079839}
   m_Enabled: 1
   m_CustomSkybox: {fileID: 0}
+--- !u!1 &1879804701
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1879804702}
+  - component: {fileID: 1879804703}
+  m_Layer: 0
+  m_Name: Faces
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1879804702
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1879804701}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1945594635}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1879804703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1879804701}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48817ab4e6b4321418e050fbd248550b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  screenPrefab: {fileID: 9020772216965816971, guid: 7b7b607580586e14baa17c41c3b0f7d5,
+    type: 3}
+  facilitatorMessage:
+  - 
+  - 
+  - 
+  resources:
+  - {fileID: 5785887703231079030, guid: f2927fb2cae1eb847b907cba9752f8df, type: 3}
+  - {fileID: -7376122852829535808, guid: 7ca5f9523def9db4f912a9b5b653163f, type: 3}
+  - {fileID: 1889523580504934590, guid: 249bfccbf12edef41bc22c52ef6e6bfa, type: 3}
+  usesShip: 1
+  barrelLabels: 1
+  targets:
+  - shape: {fileID: 5785887703231079030, guid: f2927fb2cae1eb847b907cba9752f8df, type: 3}
+    attribute: 0
+  FeedbackScreen: {fileID: 6610905993076720092, guid: 270facb46de3eb940a2b0456f0035229,
+    type: 3}
 --- !u!1 &1905661487 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5182003405794353607, guid: c1e1a645c8500bd48beece03ee7eea58,
@@ -5080,6 +5142,7 @@ MonoBehaviour:
   goals:
   - {fileID: 1162538925}
   - {fileID: 784385549}
+  - {fileID: 1879804703}
   barrelPrefab: {fileID: 4476680892931255092, guid: 102b8cac146827f43b1e77b9ebe5584c,
     type: 3}
   barrelArea: {fileID: 1016222069}
@@ -5098,6 +5161,7 @@ Transform:
   m_Children:
   - {fileID: 1162538924}
   - {fileID: 784385548}
+  - {fileID: 1879804702}
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

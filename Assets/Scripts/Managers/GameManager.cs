@@ -15,6 +15,7 @@ namespace Managers
         [SerializeField] private Transform barrelArea;
         [SerializeField] private EnemyScript enemyShip;
         [SerializeField] private GrinderScript grinder;
+        [SerializeField] private GameObject treasure;
         private readonly List<GameObject> _barrels = new List<GameObject>();
         private List<Goal>.Enumerator _goalEnumerator;
         public Vector3 EnemyPosition => enemyShip.transform.position;
@@ -63,7 +64,7 @@ namespace Managers
             {
                 var barrel = Instantiate(barrelPrefab, barrelArea.position, barrelArea.rotation, barrelArea);
                 barrel.transform.Translate(Vector3.left * (1.5f * i), barrel.transform);
-                barrel.GetComponent<BarrelScript>().Init(shape, CurrentGoal.FractionLabels);
+                barrel.GetComponent<BarrelScript>().Init(shape, CurrentGoal.FractionLabels, CurrentGoal.BarrelLabels);
                 _barrels.Add(barrel);
                 i++;
             }
@@ -95,6 +96,7 @@ namespace Managers
             }
             else
             {
+                treasure.SetActive(true);
                 FacilitatorScript.Instance.Say("Congratulations! You finished the game.");
             }
         }
