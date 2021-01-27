@@ -36,13 +36,9 @@ namespace Managers
         private void ProgressOrReset()
         {
             if (CurrentGoal.GetOutcome() == Outcome.Achieved)
-            {
                 NextScenario();
-            }
             else
-            {
                 GiveFeedbackAndReset();
-            }
         }
 
         public void SetupGoal()

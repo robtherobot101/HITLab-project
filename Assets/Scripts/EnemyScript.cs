@@ -37,11 +37,9 @@ public class EnemyScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("CannonBall"))
-        {
-            Destroy(other.gameObject);
-            StartCoroutine(nameof(Sinking));
-        }
+        if (!other.gameObject.CompareTag("CannonBall")) return;
+        Destroy(other.gameObject);
+        StartCoroutine(nameof(Sinking));
     }
 
     private IEnumerator Sinking()

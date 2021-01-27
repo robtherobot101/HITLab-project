@@ -1,5 +1,4 @@
-﻿using System;
-using Facilitator;
+﻿using Facilitator;
 using Grinder;
 using TMPro;
 using UnityEngine;
@@ -49,7 +48,6 @@ namespace Scenarios.Goals
 
         public override void ShapeAdded(ShapeScript shape)
         {
-
             if (isTutorial)
             {
                 if (shape.ShapeName.Equals(goalShape.ShapeName))
@@ -68,9 +66,8 @@ namespace Scenarios.Goals
             {
                 _givenShape = shape;
             }
-            
+
             _machineText.text = "Now turn the handle ->";
-            
         }
 
         protected override void ScreenRegistered()

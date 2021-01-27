@@ -55,11 +55,10 @@ namespace Grinder
 
         public void TurnHandle()
         {
-            if (!_ground && GameManager.Instance.CurrentGoal.RequirementsSatisfied())
-            {
-                StartCoroutine(nameof(Grind));
-                _ground = true;
-            }
+            if (_ground || !GameManager.Instance.CurrentGoal.RequirementsSatisfied()) return;
+            
+            StartCoroutine(nameof(Grind));
+            _ground = true;
         }
 
         private void Clear()

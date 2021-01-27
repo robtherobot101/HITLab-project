@@ -13,6 +13,7 @@ namespace Utils
                 Debug.LogWarning("Polynomial has complex roots! Zeros will be given instead.");
                 return new Tuple<double, double>(0, 0);
             }
+
             var discriminantRoot = Math.Sqrt(discriminant);
             return new Tuple<double, double>((-b + discriminantRoot) / (2 * a), (-b - discriminantRoot) / (2 * a));
         }

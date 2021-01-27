@@ -10,25 +10,21 @@ public class BarrelScript : MonoBehaviour
     [SerializeField] private FractionScript fraction;
     [SerializeField] private HorizontalLayoutGroup fractionText;
     [SerializeField] private GameObject label;
-    private GameObject shapePrefab;
+    private GameObject _shapePrefab;
 
     private void OnMouseDown()
     {
         // Either take the shape held by the player, or give them the contents of the barrel
         var o = PlayerController.Instance.Take("Shape");
         if (o == null)
-        {
-            PlayerController.Instance.Give(shapePrefab);
-        }
+            PlayerController.Instance.Give(_shapePrefab);
         else
-        {
             Destroy(o);
-        }
     }
 
     public void Init(ShapeScript shape, bool showFraction = false, bool showLabel = true)
     {
-        shapePrefab = shape.gameObject;
+        _shapePrefab = shape.gameObject;
         text.text = shape.ShapeName;
         fraction.SetFraction(shape.Fraction);
         if (!showFraction) Destroy(fractionText.gameObject);

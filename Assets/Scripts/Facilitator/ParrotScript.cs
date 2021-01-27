@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using Managers;
 using UnityEngine;
@@ -8,7 +7,6 @@ namespace Facilitator
 {
     public class ParrotScript : MonoBehaviour
     {
-    
         [SerializeField] private GameObject hat;
 
         private void Start()
@@ -16,7 +14,7 @@ namespace Facilitator
             EventManager.Instance.cannonFired += () => StartCoroutine(Bounce());
         }
 
-        public IEnumerator Bounce()
+        private IEnumerator Bounce()
         {
             var initialPos = hat.transform.localPosition;
             var initialRot = hat.transform.localRotation;

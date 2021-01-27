@@ -11,6 +11,11 @@ public class CannonScript : MonoBehaviour
 {
     private const float MoveTime = 2f;
 
+    // Coefficients for trajectory polynomial
+    private const float a = 1.0015f;
+    private const float b = 0.8825f;
+    private const float c = 12.032f;
+
     [SerializeField] private AudioClip fireSound;
     [SerializeField] private AudioClip moveSound;
     [SerializeField] private GameObject cannonBallPrefab;
@@ -18,22 +23,15 @@ public class CannonScript : MonoBehaviour
     [SerializeField] private Transform firingPosition;
     [SerializeField] private Transform preparingPosition;
     [SerializeField] private Transform cannonTransform;
-    
+
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private Transform cannonBallSpawn;
     [SerializeField] private Material material;
     private bool _firingPosition;
-
-    private Fraction _gunpowder;
-
+    
     private Color _initialColour;
     private bool _moving;
     private bool _primed;
-
-    // Coefficients for trajectory polynomial
-    private const float a = 1.0015f;
-    private const float b = 0.8825f;
-    private const float c = 12.032f;
 
     private void Reset()
     {
@@ -61,7 +59,6 @@ public class CannonScript : MonoBehaviour
         if (o == null) return;
 
         FacilitatorScript.Instance.Hide();
-        _gunpowder = o.GetComponent<HeapScript>().Size;
 
         // var lookDirection = Quaternion.LookRotation(GameManager.Instance.EnemyPosition - transform.position).eulerAngles
         //     .y;
@@ -93,7 +90,7 @@ public class CannonScript : MonoBehaviour
         EventManager.Instance.cannonFired?.Invoke();
         var rb = cannonBall.GetComponent<Rigidbody>();
         var goalsOutcome = GameManager.Instance.GoalsOutcome();
-        
+
         var distanceToShip = (GameManager.Instance.EnemyPosition - transform.position).magnitude;
         var velocityMultiplier = (float) Polynomial.QuadraticFormula(a, b, c - distanceToShip).Item1;
 

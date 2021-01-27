@@ -31,18 +31,18 @@ namespace Scenarios.Goals
 
         public override bool RequirementsSatisfied()
         {
-            return GameManager.Instance.GrinderShapes.Count() >= _minTerms;
+            return GameManager.Instance.GrinderShapes.Count >= _minTerms;
         }
 
         public override bool CanAdd()
         {
-            return GameManager.Instance.GrinderShapes.Count() < _maxTerms;
+            return GameManager.Instance.GrinderShapes.Count < _maxTerms;
         }
 
         // TODO Make this better x10000
         public override void ShapeAdded(ShapeScript shape)
         {
-            _fractions[GameManager.Instance.GrinderShapes.Count() - 1].SetFraction(shape.Fraction, Color.red);
+            _fractions[GameManager.Instance.GrinderShapes.Count - 1].SetFraction(shape.Fraction, Color.red);
         }
 
         protected override void ScreenRegistered()

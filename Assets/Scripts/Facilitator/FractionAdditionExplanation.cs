@@ -25,11 +25,6 @@ namespace Facilitator
             StartCoroutine(nameof(NextInstruction));
         }
 
-        // Update is called once per frame
-        private void Update()
-        {
-        }
-
         public void Init(Fraction fraction1, Fraction fraction2)
         {
             _fraction1 = fraction1;

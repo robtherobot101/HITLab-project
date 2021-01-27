@@ -11,8 +11,8 @@ namespace Scenarios.Goals
     {
         [SerializeField] private List<Target> targets;
 
-        [SerializeField] private GeometryFeedback FeedbackScreen;
-        
+        [SerializeField] private GeometryFeedback feedbackScreen;
+
         private TMP_Text _screenText;
         public override bool FractionLabels => false;
 
@@ -86,10 +86,7 @@ namespace Scenarios.Goals
 
                 if (targets[i].attribute == Attribute.Name)
                 {
-                    if (goal == count)
-                    {
-                        s += $"Shape {i + 1} was not a {goal}.";
-                    }
+                    if (goal == count) s += $"Shape {i + 1} was not a {goal}.";
                 }
                 else
                 {
@@ -102,7 +99,7 @@ namespace Scenarios.Goals
                 }
             }
 
-            var o = Instantiate(FeedbackScreen);
+            var o = Instantiate(feedbackScreen);
             FacilitatorScript.Instance.Say(o.gameObject);
         }
 

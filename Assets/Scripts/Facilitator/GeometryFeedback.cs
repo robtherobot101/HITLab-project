@@ -30,6 +30,5 @@ namespace Facilitator
             var o = Instantiate(edgeHelper, FacilitatorScript.Instance.transform, false);
             o.transform.Translate(Vector3.up * 2.5f);
         }
-    
     }
 }

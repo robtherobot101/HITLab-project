@@ -21,12 +21,10 @@ namespace Managers
         // Update is called once per frame
         private void Update()
         {
-            if (_isHolding)
-            {
-                _holding.transform.position =
-                    _camera.ScreenToWorldPoint(Input.mousePosition + HoldDistance * Vector3.forward);
-                _holding.transform.Rotate(Vector3.up, Time.deltaTime * 360 * SpinFrequency);
-            }
+            if (!_isHolding) return;
+            
+            _holding.transform.position = _camera.ScreenToWorldPoint(Input.mousePosition + HoldDistance * Vector3.forward);
+            _holding.transform.Rotate(Vector3.up, Time.deltaTime * 360 * SpinFrequency);
         }
 
 
