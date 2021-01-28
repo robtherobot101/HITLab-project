@@ -5,7 +5,7 @@ using Utils;
 
 public class EnemyScript : MonoBehaviour
 {
-    private const float SinkHeight = -65f;
+    private const float SinkHeight = -55f;
     private Vector3 _initialPosition;
     private Quaternion _initialRotation;
     private Rigidbody _rb;
