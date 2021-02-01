@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using NUnit.Framework.Constraints;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class AmbientSound : MonoBehaviour
 {
 

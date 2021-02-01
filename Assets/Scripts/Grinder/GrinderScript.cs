@@ -13,6 +13,7 @@ namespace Grinder
         [SerializeField] private HeapScript heap;
         [SerializeField] private ParticleSystem powder;
         [SerializeField] private ScreenManager screenManager;
+        [SerializeField] private AudioSource grindSound;
         private bool _grinding;
         private bool _ground;
 
@@ -40,11 +41,12 @@ namespace Grinder
         {
             _grinding = true;
             powder.Play();
+            grindSound.Play();
             StartCoroutine(heap.Grow(Shapes.Aggregate(Fraction.Zero, (current, shape) => current + shape.Fraction)));
             float t = 0;
             while (t < 4)
             {
-                handle.transform.Rotate(0, -1, 0);
+                handle.transform.Rotate(0, -Time.deltaTime * 150f, 0);
                 t += Time.deltaTime;
                 yield return null;
             }
