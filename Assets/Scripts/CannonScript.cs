@@ -18,6 +18,7 @@ public class CannonScript : MonoBehaviour
 
     [SerializeField] private AudioClip fireSound;
     [SerializeField] private AudioClip moveSound;
+    [SerializeField] private ParticleSystem explosionEffect;
     [SerializeField] private GameObject cannonBallPrefab;
 
     [SerializeField] private Transform firingPosition;
@@ -111,6 +112,10 @@ public class CannonScript : MonoBehaviour
             default:
                 throw new ArgumentOutOfRangeException();
         }
+        explosionEffect.Play();
+        StartCoroutine(Coroutines.OneAfterTheOther(
+            Lerper.Lerp(cannonTransform, cannonTransform.localPosition - cannonTransform.forward * 0.7f - Vector3.down * 0.3f, cannonTransform.localRotation * Quaternion.Euler(-5, 0, 10), 0.1f),
+            Lerper.Lerp(cannonTransform, cannonTransform.localPosition, cannonTransform.localRotation, 0.5f)));
     }
 
     private IEnumerator _moveCannon(Vector3 goalPos, Quaternion goalRot, float duration)

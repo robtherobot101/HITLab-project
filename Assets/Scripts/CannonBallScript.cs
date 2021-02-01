@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class CannonBallScript : MonoBehaviour
 {
+
+    [SerializeField] private AudioSource splashSound;
+
+    [SerializeField] private TrailRenderer trail;
     // Start is called before the first frame update
     private void Start()
     {
@@ -13,7 +17,9 @@ public class CannonBallScript : MonoBehaviour
     private IEnumerator CheckHeight()
     {
         yield return new WaitUntil(() => transform.position.y <= 0);
+        splashSound.Play();
         EventManager.Instance.sunk?.Invoke();
-        Destroy(gameObject);
+        trail.enabled = false;
+        Destroy(gameObject, 3);
     }
 }

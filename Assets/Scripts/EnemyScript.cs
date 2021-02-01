@@ -5,6 +5,9 @@ using Utils;
 
 public class EnemyScript : MonoBehaviour
 {
+
+    [SerializeField] private AudioSource destroySound;
+    
     private const float SinkHeight = -55f;
     private Vector3 _initialPosition;
     private Quaternion _initialRotation;
@@ -38,6 +41,7 @@ public class EnemyScript : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (!other.gameObject.CompareTag("CannonBall")) return;
+        destroySound.Play();
         Destroy(other.gameObject);
         StartCoroutine(nameof(Sinking));
     }
