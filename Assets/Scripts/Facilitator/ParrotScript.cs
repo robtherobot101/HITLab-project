@@ -18,9 +18,16 @@ namespace Facilitator
         {
             var initialPos = hat.transform.localPosition;
             var initialRot = hat.transform.localRotation;
-            yield return Lerper.Lerp(hat.transform, initialPos + 0.05f * Vector3.up,
-                Quaternion.FromToRotation(Vector3.left, Vector3.up), 0.15f);
+            StartCoroutine(Flip());
+            yield return Lerper.Lerp(hat.transform, initialPos + 0.05f * Vector3.up, initialRot, 0.15f);
             yield return Lerper.Lerp(hat.transform, initialPos, initialRot, 0.15f);
+            StopCoroutine(Flip());
+        }
+
+        private IEnumerator Flip()
+        {
+            hat.transform.Rotate(0, 0, Time.deltaTime * 360);
+            yield return null;
         }
     }
 }

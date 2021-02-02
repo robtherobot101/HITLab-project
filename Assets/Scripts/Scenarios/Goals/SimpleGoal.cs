@@ -21,8 +21,7 @@ namespace Scenarios.Goals
 
         public override Outcome GetOutcome()
         {
-            if (_givenShape != null && _givenShape.ShapeName.Equals(goalShape.ShapeName)) return Outcome.Achieved;
-            return Outcome.NotAchieved;
+            return goalShape.Equals(_givenShape) ? Outcome.Achieved : Outcome.NotAchieved;
         }
 
         public override string GoalText()
@@ -50,7 +49,7 @@ namespace Scenarios.Goals
         {
             if (isTutorial)
             {
-                if (shape.ShapeName.Equals(goalShape.ShapeName))
+                if (shape.Equals(goalShape))
                 {
                     ScreenManager.Instance.FlashResult(true);
                     _givenShape = shape;

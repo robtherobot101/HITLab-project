@@ -24,5 +24,10 @@ namespace Utils
             tf.localPosition = goalPos;
             tf.localRotation = goalRot;
         }
+
+        public static IEnumerator Lerp(Transform tf, Vector3 goalPos, float duration)
+        {
+            yield return Lerp(tf, goalPos, tf.localRotation, duration);
+        }
     }
 }

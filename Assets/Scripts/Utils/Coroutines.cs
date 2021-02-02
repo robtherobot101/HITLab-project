@@ -1,4 +1,6 @@
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Utils
 {
@@ -11,8 +13,6 @@ namespace Utils
             {
                 while ( item.MoveNext() ) yield return item.Current;
             }
-
-            yield break;
         }
     }
 }

@@ -297,6 +297,70 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &69202778
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 69202779}
+  - component: {fileID: 69202780}
+  m_Layer: 0
+  m_Name: BigFraction
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &69202779
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 69202778}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1841144036}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &69202780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 69202778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5aa1c9d045bc45de835e06c43846bca5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  screenPrefab: {fileID: 9020772216965816971, guid: 7b7b607580586e14baa17c41c3b0f7d5,
+    type: 3}
+  facilitatorMessage:
+  - 'Great work!
+
+    Uh-oh, here comes a pirate ship. Good thing you know how to
+    prepare gunpowder.'
+  - To hit the ship, you will need to choose the biggest gunpowder. You can try as
+    many times as you like!
+  resources:
+  - {fileID: 8776090296815469457, guid: 4c0a74cd3a572094b9538d7eb015b521, type: 3}
+  - {fileID: 8776090296815469457, guid: 471fffb5b13626f41b9fb755a300a12f, type: 3}
+  - {fileID: 8776090296815469457, guid: 98070f94c0ea40949b8a6cf8cc976882, type: 3}
+  usesShip: 1
+  barrelLabels: 1
+  instructions: Use the biggest gunpowder.
+  machineMessage: ACME Gunpowder-tron
+  goalShape: {fileID: 8776090296815469457, guid: 4c0a74cd3a572094b9538d7eb015b521,
+    type: 3}
+  isTutorial: 0
+  showFractions: 1
 --- !u!1 &94885629 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2750599040174886747, guid: bf23d0c2adc2b0b4cb713c313fa5b2be,
@@ -2088,6 +2152,72 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &733994528
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 733994529}
+  - component: {fileID: 733994530}
+  m_Layer: 0
+  m_Name: MixFraction
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &733994529
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 733994528}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1841144036}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &733994530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 733994528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ac71d923302ee349825632d63d2d996, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  screenPrefab: {fileID: 9020772216965816971, guid: 7e75425d53bc22c4696832e699bdbf2d,
+    type: 3}
+  facilitatorMessage:
+  - 'Nice!
+
+    But there''s another ship.'
+  - This time, you will need to combine two sizes of gunpowder in order to hit the
+    ship.
+  - 'Try as many times as you like!
+
+    I''m here to help if you get stuck.'
+  resources:
+  - {fileID: 8776090296815469457, guid: 471fffb5b13626f41b9fb755a300a12f, type: 3}
+  - {fileID: 8776090296815469457, guid: 4c0a74cd3a572094b9538d7eb015b521, type: 3}
+  - {fileID: 8776090296815469457, guid: 98070f94c0ea40949b8a6cf8cc976882, type: 3}
+  usesShip: 1
+  barrelLabels: 1
+  goalExpression: 0
+  feedbackPrefab: {fileID: 2455744527702415268, guid: 5447f35523d393f40b14064bf062366a,
+    type: 3}
+  goal:
+    num: 5
+    den: 6
 --- !u!4 &742647390 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1680228527446532010, guid: 5f4363ff3ce375d428eb573c91550d8e,
@@ -2236,11 +2366,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 784385547}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1945594635}
+  m_Father: {fileID: 1014335559}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &784385549
@@ -2613,7 +2743,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1.8
+  m_Intensity: 1.4
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -3113,6 +3243,40 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 983932033}
   m_CullTransparentMesh: 0
+--- !u!1 &1014335558
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1014335559}
+  m_Layer: 0
+  m_Name: Geometry
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1014335559
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1014335558}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1162538924}
+  - {fileID: 784385548}
+  - {fileID: 1879804702}
+  - {fileID: 1837825685}
+  m_Father: {fileID: 1945594635}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1016222068
 GameObject:
   m_ObjectHideFlags: 0
@@ -3567,11 +3731,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1162538923}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1945594635}
+  m_Father: {fileID: 1014335559}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1162538925
@@ -4799,6 +4963,73 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1115310035}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1692578770
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1692578771}
+  - component: {fileID: 1692578772}
+  m_Layer: 0
+  m_Name: Tutorial
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1692578771
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1692578770}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1841144036}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1692578772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1692578770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5aa1c9d045bc45de835e06c43846bca5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  screenPrefab: {fileID: 9020772216965816971, guid: 7b7b607580586e14baa17c41c3b0f7d5,
+    type: 3}
+  facilitatorMessage:
+  - 'Welcome to the fractions game!
+
+    To win, you will need to identify fractions
+    by their names and values.'
+  - On your right, there are some barrels of gunpowder. These must go into the Gunpowder-tron
+    before being used.
+  - The page in your hand will tell you exactly how much gunpowder to make.
+  - Try it! Take a 1/2 kg of gunpowder from the barrel by clicking, and click on
+    the machine to put it in.
+  resources:
+  - {fileID: 8776090296815469457, guid: 4c0a74cd3a572094b9538d7eb015b521, type: 3}
+  - {fileID: 8776090296815469457, guid: 471fffb5b13626f41b9fb755a300a12f, type: 3}
+  - {fileID: 8776090296815469457, guid: 98070f94c0ea40949b8a6cf8cc976882, type: 3}
+  usesShip: 0
+  barrelLabels: 1
+  instructions: Put one 1/2 kg into the machine
+  machineMessage: ACME Gunpowder-tron
+  goalShape: {fileID: 8776090296815469457, guid: 4c0a74cd3a572094b9538d7eb015b521,
+    type: 3}
+  isTutorial: 1
+  showFractions: 1
 --- !u!1 &1699139132
 GameObject:
   m_ObjectHideFlags: 0
@@ -5167,7 +5398,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1945594635}
+  m_Father: {fileID: 1014335559}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1837825686
@@ -5207,6 +5438,39 @@ MonoBehaviour:
     attribute: 2
   feedbackScreen: {fileID: 6610905993076720092, guid: 270facb46de3eb940a2b0456f0035229,
     type: 3}
+--- !u!1 &1841144035
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1841144036}
+  m_Layer: 0
+  m_Name: Fractions
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1841144036
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1841144035}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1692578771}
+  - {fileID: 69202779}
+  - {fileID: 733994529}
+  m_Father: {fileID: 1945594635}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1850079839
 GameObject:
   m_ObjectHideFlags: 0
@@ -5275,8 +5539,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1850079839}
-  m_LocalRotation: {x: -0.31188518, y: 0.5756599, z: 0.25190464, w: 0.7126622}
-  m_LocalPosition: {x: -158.88963, y: -10.049136, z: -4.353299}
+  m_LocalRotation: {x: -0.08864899, y: 0.48756397, z: 0.050110944, w: 0.86712843}
+  m_LocalPosition: {x: -157.98409, y: -6.8343873, z: -3.7662206}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -5315,11 +5579,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1879804701}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1945594635}
+  m_Father: {fileID: 1014335559}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1879804703
@@ -5399,10 +5663,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goals:
-  - {fileID: 1162538925}
-  - {fileID: 784385549}
-  - {fileID: 1879804703}
-  - {fileID: 1837825686}
+  - {fileID: 1692578772}
+  - {fileID: 69202780}
+  - {fileID: 733994530}
   barrelPrefab: {fileID: 4476680892931255092, guid: 102b8cac146827f43b1e77b9ebe5584c,
     type: 3}
   barrelArea: {fileID: 1016222069}
@@ -5420,10 +5683,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1162538924}
-  - {fileID: 784385548}
-  - {fileID: 1879804702}
-  - {fileID: 1837825685}
+  - {fileID: 1014335559}
+  - {fileID: 1841144036}
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

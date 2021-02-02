@@ -61,10 +61,10 @@ public class CannonScript : MonoBehaviour
 
         FacilitatorScript.Instance.Hide();
 
-        // var lookDirection = Quaternion.LookRotation(GameManager.Instance.EnemyPosition - transform.position).eulerAngles
-        //     .y;
-        // StartCoroutine(_moveCannon(firingPosition.localPosition, Quaternion.Euler(0, lookDirection, 0), MoveTime));
-        StartCoroutine(_moveCannon(firingPosition.localPosition, firingPosition.localRotation, MoveTime));
+        var lookDirection = Quaternion.LookRotation(GameManager.Instance.EnemyPosition - transform.position).eulerAngles
+            .y;
+        StartCoroutine(_moveCannon(firingPosition.localPosition, transform.localRotation * Quaternion.Euler(new Vector3(0, lookDirection, 0)), MoveTime));
+        //StartCoroutine(_moveCannon(firingPosition.localPosition, firingPosition.localRotation, MoveTime));
         _firingPosition = true;
         _primed = true;
     }
