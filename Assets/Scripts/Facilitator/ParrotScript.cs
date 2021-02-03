@@ -16,8 +16,8 @@ namespace Facilitator
 
         private IEnumerator Bounce()
         {
-            var initialPos = hat.transform.localPosition;
-            var initialRot = hat.transform.localRotation;
+            var initialPos = hat.transform.position;
+            var initialRot = hat.transform.rotation;
             StartCoroutine(Flip());
             yield return Lerper.Lerp(hat.transform, initialPos + 0.05f * Vector3.up, initialRot, 0.15f);
             yield return Lerper.Lerp(hat.transform, initialPos, initialRot, 0.15f);

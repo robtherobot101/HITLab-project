@@ -16,7 +16,9 @@
             "."
         ],
         "fbxSavePaths": [
-            "."
+            ".",
+            "/file/Usersj$/jma326/Home/Desktop",
+            "/file/Usersj$/jma326/Home/Desktop/New folder"
         ],
         "selectedFbxPath": 0,
         "selectedPrefabPath": 0,

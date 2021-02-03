@@ -1,11 +1,15 @@
 ﻿using System;
 using System.Collections;
+using System.Numerics;
 using Facilitator;
 using Grinder;
 using Managers;
 using Scenarios.Goals;
 using UnityEngine;
+using UnityEngine.Animations;
 using Utils;
+using Quaternion = UnityEngine.Quaternion;
+using Vector3 = UnityEngine.Vector3;
 
 public class CannonScript : MonoBehaviour
 {
@@ -23,7 +27,6 @@ public class CannonScript : MonoBehaviour
 
     [SerializeField] private Transform firingPosition;
     [SerializeField] private Transform preparingPosition;
-    [SerializeField] private Transform cannonTransform;
 
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private Transform cannonBallSpawn;
@@ -36,7 +39,7 @@ public class CannonScript : MonoBehaviour
 
     private void Reset()
     {
-        StartCoroutine(_moveCannon(preparingPosition.localPosition, preparingPosition.localRotation, MoveTime));
+        StartCoroutine(_moveCannon(preparingPosition.position, preparingPosition.rotation, MoveTime));
         _firingPosition = false;
     }
 
@@ -60,11 +63,7 @@ public class CannonScript : MonoBehaviour
         if (o == null) return;
 
         FacilitatorScript.Instance.Hide();
-
-        var lookDirection = Quaternion.LookRotation(GameManager.Instance.EnemyPosition - transform.position).eulerAngles
-            .y;
-        StartCoroutine(_moveCannon(firingPosition.localPosition, transform.localRotation * Quaternion.Euler(new Vector3(0, lookDirection, 0)), MoveTime));
-        //StartCoroutine(_moveCannon(firingPosition.localPosition, firingPosition.localRotation, MoveTime));
+        StartCoroutine(_moveCannon(firingPosition.position, Quaternion.Euler(Vector3.Scale(Quaternion.LookRotation(GameManager.Instance.EnemyPosition - transform.position).eulerAngles, Vector3.up)), MoveTime));
         _firingPosition = true;
         _primed = true;
     }
@@ -114,15 +113,15 @@ public class CannonScript : MonoBehaviour
         }
         explosionEffect.Play();
         StartCoroutine(Coroutines.OneAfterTheOther(
-            Lerper.Lerp(cannonTransform, cannonTransform.localPosition - cannonTransform.forward * 0.7f - Vector3.down * 0.3f, cannonTransform.localRotation * Quaternion.Euler(-5, 0, 10), 0.1f),
-            Lerper.Lerp(cannonTransform, cannonTransform.localPosition, cannonTransform.localRotation, 0.5f)));
+            Lerper.Lerp(transform, transform.position - transform.forward * 0.7f - Vector3.down * 0.3f, transform.rotation * Quaternion.Euler(-5, 0, 10), 0.1f),
+            Lerper.Lerp(transform, transform.position, transform.rotation, 0.5f)));
     }
 
     private IEnumerator _moveCannon(Vector3 goalPos, Quaternion goalRot, float duration)
     {
         _moving = true;
         audioSource.PlayOneShot(moveSound);
-        yield return Lerper.Lerp(cannonTransform, goalPos, goalRot, duration);
+        yield return Lerper.Lerp(transform, goalPos, goalRot, duration);
         _moving = false;
     }
 }
