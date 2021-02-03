@@ -18,16 +18,8 @@ namespace Facilitator
         {
             var initialPos = hat.transform.position;
             var initialRot = hat.transform.rotation;
-            StartCoroutine(Flip());
-            yield return Lerper.Lerp(hat.transform, initialPos + 0.05f * Vector3.up, initialRot, 0.15f);
-            yield return Lerper.Lerp(hat.transform, initialPos, initialRot, 0.15f);
-            StopCoroutine(Flip());
-        }
-
-        private IEnumerator Flip()
-        {
-            hat.transform.Rotate(0, 0, Time.deltaTime * 360);
-            yield return null;
+            yield return Lerper.Lerp(hat.transform, initialPos + 0.5f * Vector3.up, initialRot * Quaternion.AngleAxis(180f, hat.transform.forward), 0.4f);
+            yield return Lerper.Lerp(hat.transform, initialPos, initialRot * Quaternion.AngleAxis(359f, hat.transform.forward), 0.4f);
         }
     }
 }
