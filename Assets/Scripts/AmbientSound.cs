@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using NUnit.Framework.Constraints;
@@ -11,7 +12,7 @@ public class AmbientSound : MonoBehaviour
     private float _goalVolume;
     
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         _goalVolume = sound.volume;
         sound.volume = 0f;

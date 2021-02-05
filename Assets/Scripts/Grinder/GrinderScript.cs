@@ -28,6 +28,7 @@ namespace Grinder
 
         private void OnMouseDown()
         {
+            
             if (_grinding || !GameManager.Instance.CurrentGoal.CanAdd()) return;
 
             var grindingObject = PlayerController.Instance.Take("Shape");

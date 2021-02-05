@@ -13,11 +13,28 @@ namespace Utils
             get
             {
                 if (_instance == null)
-                    throw new UninstantiatedException($"The singleton {typeof(T)} has" +
-                                                      " not been instantiated. Make sure it is" +
-                                                      " attached to a GameObject.");
+                    // throw new UninstantiatedException($"The singleton {typeof(T)} has" +
+                    //                                   " not been instantiated. Make sure it is" +
+                    //                                   " attached to a GameObject.");
+                    _instance = FindExistingInstance() ?? CreateNewInstance();
                 return _instance;
             }
+        }
+        
+        private static T FindExistingInstance()
+        {
+            T[] existingInstances = FindObjectsOfType<T>();
+
+            // No instance found
+            if (existingInstances == null || existingInstances.Length == 0) return null;
+
+            return existingInstances[0];
+        }
+        
+        private static T CreateNewInstance()
+        {
+            var containerGO = new GameObject("__" + typeof(T).Name + " (Singleton)");
+            return containerGO.AddComponent<T>();
         }
 
         private void Awake()

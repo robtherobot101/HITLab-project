@@ -23,12 +23,11 @@ namespace Managers
         public List<ShapeScript> GrinderShapes => grinder.Shapes;
         public Goal CurrentGoal => _goalEnumerator.Current;
 
-        private void Start()
+        private void OnEnable()
         {
             // EventManager.Instance.missed += GiveFeedbackAndReset;
             // EventManager.Instance.sunk += NextScenario;
             EventManager.Instance.sunk += ProgressOrReset;
-
             _goalEnumerator = goals.GetEnumerator();
             if (_goalEnumerator.MoveNext()) SetupGoal();
         }

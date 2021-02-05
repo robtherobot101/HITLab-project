@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using Managers;
 using UnityEngine;
@@ -21,5 +22,7 @@ namespace Facilitator
             yield return Lerper.Lerp(hat.transform, initialPos + 0.5f * Vector3.up, initialRot * Quaternion.AngleAxis(180f, hat.transform.forward), 0.4f);
             yield return Lerper.Lerp(hat.transform, initialPos, initialRot * Quaternion.AngleAxis(359f, hat.transform.forward), 0.4f);
         }
+
+        private void OnMouseDown() => StartCoroutine(Bounce());
     }
 }

@@ -68,16 +68,16 @@ public class CannonScript : MonoBehaviour
         _primed = true;
     }
 
-    private void OnMouseEnter()
-    {
-        _initialColour = material.color;
-        material.color = Color.yellow;
-    }
-
-    private void OnMouseExit()
-    {
-        material.color = _initialColour;
-    }
+    // private void OnMouseEnter()
+    // {
+    //     _initialColour = material.color;
+    //     material.color = Color.yellow;
+    // }
+    //
+    // private void OnMouseExit()
+    // {
+    //     material.color = _initialColour;
+    // }
 
     private void Fire()
     {

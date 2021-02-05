@@ -35,7 +35,7 @@ public class EnemyScript : MonoBehaviour
         _tr.rotation = _initialRotation;
         _tr.position = _initialPosition - 500 * _tr.forward + 10 * Vector3.down;
 
-        StartCoroutine(Lerper.Lerp(_tr, _initialPosition, _initialRotation, 3));
+        StartCoroutine(Coroutines.OneAfterTheOther(Lerper.Lerp(_tr, _initialPosition, _initialRotation, 3), Rock()));
     }
 
     private void OnTriggerEnter(Collider other)
@@ -54,5 +54,20 @@ public class EnemyScript : MonoBehaviour
         gameObject.SetActive(false);
         EventManager.Instance.sunk?.Invoke();
         //Reset();
+    }
+
+    private IEnumerator Rock()
+    {
+        var tx = 0f;
+        var tz = 0f;
+        var initialRotation = _tr.rotation;
+        while (!_rb.useGravity)
+        {
+            _tr.rotation = initialRotation * Quaternion.SlerpUnclamped(Quaternion.identity, Quaternion.Euler(2, 0, 0), Mathf.Sin(tx))
+                                           * Quaternion.SlerpUnclamped(Quaternion.identity, Quaternion.Euler(0, 0, 2), Mathf.Sin(tz));
+            tx += Time.deltaTime * Random.Range(0.5f, 2f);
+            tz += Time.deltaTime * Random.Range(0.5f, 2f);;
+            yield return null;
+        }
     }
 }
