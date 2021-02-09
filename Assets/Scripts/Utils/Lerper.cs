@@ -16,7 +16,7 @@ namespace Utils
                 var t = time / duration;
                 t = t * t * (3f - 2f * t);
                 tf.position = Vector3.Lerp(startPos, goalPos, t);
-                tf.rotation = Quaternion.Lerp(startRot, goalRot, t);
+                tf.rotation = Quaternion.Slerp(startRot, goalRot, t);
                 time += Time.deltaTime;
                 yield return null;
             }

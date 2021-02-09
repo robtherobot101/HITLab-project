@@ -63,7 +63,7 @@ public class EnemyScript : MonoBehaviour
         var initialRotation = _tr.rotation;
         while (!_rb.useGravity)
         {
-            _tr.rotation = initialRotation * Quaternion.SlerpUnclamped(Quaternion.identity, Quaternion.Euler(2, 0, 0), Mathf.Sin(tx))
+            _tr.rotation = initialRotation * Quaternion.SlerpUnclamped(Quaternion.identity, Quaternion.Euler(1, 0, 0), Mathf.Sin(tx))
                                            * Quaternion.SlerpUnclamped(Quaternion.identity, Quaternion.Euler(0, 0, 2), Mathf.Sin(tz));
             tx += Time.deltaTime * Random.Range(0.5f, 2f);
             tz += Time.deltaTime * Random.Range(0.5f, 2f);;
