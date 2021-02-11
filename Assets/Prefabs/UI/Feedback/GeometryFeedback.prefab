@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7817709767490035579
 RectTransform:
   m_ObjectHideFlags: 0
@@ -33,10 +33,10 @@ RectTransform:
   m_Father: {fileID: 2455744527702415269}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 78.5, y: -75}
+  m_SizeDelta: {x: 157, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5435907970791973470
 CanvasRenderer:
@@ -347,9 +347,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b17aaaba7de7cc4db78c0f2d70275e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  facesMessage: {fileID: 5471367163555627262}
-  verticesMessage: {fileID: 7817709767490035579}
-  edgesMessage: {fileID: 6250914083800613742}
+  facesMessage: {fileID: 3520313679649084456}
+  verticesMessage: {fileID: 9212910828426903243}
+  edgesMessage: {fileID: 2400233437899537053}
   faceHelper: {fileID: 0}
   vertexHelper: {fileID: 7160535645026271682, guid: 972edeff2e95db5478194363cdff1dce,
     type: 3}
@@ -1198,7 +1198,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 78.5, y: -45}
-  m_SizeDelta: {x: 157, y: 90}
+  m_SizeDelta: {x: 157, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2824602835969325339
 CanvasRenderer:

@@ -12,6 +12,9 @@ namespace Facilitator
         [SerializeField] private GameObject vertexHelper;
         [SerializeField] private GameObject edgeHelper;
 
+        public void FacesWrong() => facesMessage.SetActive(true);
+        public void VerticesWrong() => verticesMessage.SetActive(true);
+        public void EdgesWrong() => edgesMessage.SetActive(true);
 
         public void ShowFaceHelp()
         {

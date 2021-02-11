@@ -44,6 +44,7 @@ namespace Facilitator
             messageArea.DestroyAllChildren();
             message.transform.SetParent(messageArea, false);
             canvas.enabled = true;
+            nextButton.SetActive(false);
         }
     }
 }

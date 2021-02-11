@@ -55,52 +55,38 @@ namespace Scenarios.Goals
 
         public override void GiveFeedback()
         {
-            var s = "";
+            var o = Instantiate(feedbackScreen);
+            var feedback = o.GetComponent<GeometryFeedback>();
+            FacilitatorScript.Instance.Say(o.gameObject);
 
             for (var i = 0; i < targets.Count; i++)
             {
-                s += $"{i + 1}. ";
-                object goal;
-                object count;
                 switch (targets[i].attribute)
                 {
                     case Attribute.Faces:
-                        goal = targets[i].Shape.Faces;
-                        count = GameManager.Instance.GrinderShapes[i].Faces;
+                        if (targets[i].Shape.Faces != GameManager.Instance.GrinderShapes[i].Faces)
+                        {
+                            feedback.FacesWrong();
+                        }
                         break;
                     case Attribute.Edges:
-                        goal = targets[i].Shape.Edges;
-                        count = GameManager.Instance.GrinderShapes[i].Edges;
+                        if (targets[i].Shape.Edges != GameManager.Instance.GrinderShapes[i].Edges)
+                        {
+                            feedback.EdgesWrong();
+                        }
                         break;
                     case Attribute.Vertices:
-                        goal = targets[i].Shape.Vertices;
-                        count = GameManager.Instance.GrinderShapes[i].Vertices;
+                        if (targets[i].Shape.Vertices != GameManager.Instance.GrinderShapes[i].Vertices)
+                        {
+                            feedback.VerticesWrong();
+                        }
                         break;
                     case Attribute.Name:
-                        goal = targets[i].Shape.ShapeName;
-                        count = GameManager.Instance.GrinderShapes[i].Vertices;
                         break;
                     default:
                         throw new ArgumentOutOfRangeException();
                 }
-
-                if (targets[i].attribute == Attribute.Name)
-                {
-                    if (goal == count) s += $"Shape {i + 1} was not a {goal}.";
-                }
-                else
-                {
-                    if (goal == count)
-                        s +=
-                            $"That's correct. {GameManager.Instance.GrinderShapes[i].ShapeName}s have {goal} {targets[i].attribute.ToString()}.\n";
-                    else
-                        s +=
-                            $"That's incorrect. {GameManager.Instance.GrinderShapes[i].ShapeName}s do not have {goal} {targets[i].attribute.ToString()}.\n";
-                }
             }
-
-            var o = Instantiate(feedbackScreen);
-            FacilitatorScript.Instance.Say(o.gameObject);
         }
 
         public override bool RequirementsSatisfied()
