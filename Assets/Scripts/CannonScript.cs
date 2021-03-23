@@ -113,15 +113,15 @@ public class CannonScript : MonoBehaviour
         }
         explosionEffect.Play();
         StartCoroutine(Coroutines.OneAfterTheOther(
-            Lerper.Lerp(transform, transform.position - transform.forward * 0.7f - Vector3.down * 0.3f, transform.rotation * Quaternion.Euler(-5, 0, 10), 0.1f),
-            Lerper.Lerp(transform, transform.position, transform.rotation, 0.5f)));
+            Lerper.Lerp(transform, 0.1f, transform.position - transform.forward * 0.7f - Vector3.down * 0.3f, transform.rotation * Quaternion.Euler(-5, 0, 10)),
+            Lerper.Lerp(transform, 0.5f, transform.position, transform.rotation)));
     }
 
     private IEnumerator _moveCannon(Vector3 goalPos, Quaternion goalRot, float duration)
     {
         _moving = true;
         audioSource.PlayOneShot(moveSound);
-        yield return Lerper.Lerp(transform, goalPos, goalRot, duration);
+        yield return Lerper.Lerp(transform, duration, goalPos, goalRot);
         _moving = false;
     }
 }

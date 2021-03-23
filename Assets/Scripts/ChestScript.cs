@@ -20,7 +20,7 @@ public class ChestScript : MonoBehaviour
         var initialPosition = t.position;
         t.position = initialPosition + 10 * Vector3.down + 50 * Vector3.right;
 
-        StartCoroutine(Lerper.Lerp(t, initialPosition, t.rotation, 3));
+        StartCoroutine(Lerper.Lerp(t, 3, initialPosition, t.rotation));
     }
 
     // private void Start()

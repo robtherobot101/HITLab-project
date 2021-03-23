@@ -13,6 +13,7 @@ namespace Facilitator
 
         private void Start()
         {
+            Debug.Log("wat");
             EventManager.Instance.cannonFired += () => StartCoroutine(Bounce());
         }
 
@@ -21,8 +22,9 @@ namespace Facilitator
             _bouncing = true;
             var initialPos = hat.transform.position;
             var initialRot = hat.transform.rotation;
-            //yield return Lerper.Lerp(hat.transform, initialPos + 0.5f * Vector3.up, initialRot * Quaternion.AngleAxis(180f, hat.transform.forward), 0.4f);
-            yield return Lerper.Lerp(hat.transform, initialPos, initialRot * Quaternion.AngleAxis(359f, hat.transform.forward), 0.4f);
+            StartCoroutine(Lerper.Lerp(hat.transform, 0.8f, 360f, hat.transform.up));
+            yield return Lerper.Lerp(hat.transform, 0.4f, initialPos + 0.5f * Vector3.up);
+            yield return Lerper.Lerp(hat.transform, 0.4f, initialPos);
             _bouncing = false;
         }
 

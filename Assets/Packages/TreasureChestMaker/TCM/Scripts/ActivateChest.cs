@@ -18,7 +18,7 @@ public class ActivateChest : MonoBehaviour {
 	{
 		lidNoise.Play();
 		_opening = true;
-		yield return Lerper.Lerp(lid, lid.position, _open ? lidClose.rotation : lidOpen.rotation, 5 / openSpeed);
+		yield return Lerper.Lerp(lid, 5 / openSpeed, lid.position, _open ? lidClose.rotation : lidOpen.rotation);
 		_open = !_open;
 		_opening = false;
 	}

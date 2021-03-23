@@ -35,7 +35,7 @@ public class EnemyScript : MonoBehaviour
         _tr.rotation = _initialRotation;
         _tr.position = _initialPosition - 500 * _tr.forward + 10 * Vector3.down;
 
-        StartCoroutine(Coroutines.OneAfterTheOther(Lerper.Lerp(_tr, _initialPosition, _initialRotation, 3), Rock()));
+        StartCoroutine(Coroutines.OneAfterTheOther(Lerper.Lerp(_tr, 3, _initialPosition, _initialRotation), Rock()));
     }
 
     private void OnTriggerEnter(Collider other)

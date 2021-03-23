@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Facilitator.GeometryExamples
@@ -5,6 +6,11 @@ namespace Facilitator.GeometryExamples
     public class Vertices : MonoBehaviour
     {
         [SerializeField] private Material markersMaterial;
+
+        private void Start()
+        {
+            Destroy(gameObject, 5f);
+        }
 
         // Update is called once per frame
         private void Update()
